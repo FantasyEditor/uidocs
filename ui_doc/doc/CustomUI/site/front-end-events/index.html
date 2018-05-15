@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>界面事件 - 自定义界面文档</title>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u754c\u9762\u4e8b\u4ef6";
+    var mkdocs_page_input_path = "front-end-events.md";
+    var mkdocs_page_url = "/front-end-events/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> 自定义界面文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../json-define/index.html">界面描述（json）</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../front-end/index.html">界面接口</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="index.html">界面事件</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">如何响应界面事件</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#button_clicked">button_clicked</a></li>
+        
+            <li><a class="toctree-l3" href="#button_right_clicked">button_right_clicked</a></li>
+        
+            <li><a class="toctree-l3" href="#button_drag_and_drop">button_drag_and_drop</a></li>
+        
+            <li><a class="toctree-l3" href="#button_mouse_enter">button_mouse_enter</a></li>
+        
+            <li><a class="toctree-l3" href="#button_mouse_leave">button_mouse_leave</a></li>
+        
+            <li><a class="toctree-l3" href="#label_mouse_enter">label_mouse_enter</a></li>
+        
+            <li><a class="toctree-l3" href="#label_mouse_leave">label_mouse_leave</a></li>
+        
+            <li><a class="toctree-l3" href="#canvas_clicked">canvas_clicked</a></li>
+        
+            <li><a class="toctree-l3" href="#canvas_right_clicked">canvas_right_clicked</a></li>
+        
+            <li><a class="toctree-l3" href="#canvas_mousedown">canvas_mousedown</a></li>
+        
+            <li><a class="toctree-l3" href="#canvas_mousemove">canvas_mousemove</a></li>
+        
+            <li><a class="toctree-l3" href="#canvas_mouseup">canvas_mouseup</a></li>
+        
+            <li><a class="toctree-l3" href="#input_text_changed">input_text_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#input_get_focus">input_get_focus</a></li>
+        
+            <li><a class="toctree-l3" href="#input_lose_focus">input_lose_focus</a></li>
+        
+            <li><a class="toctree-l3" href="#panel_mouse_enter">panel_mouse_enter</a></li>
+        
+            <li><a class="toctree-l3" href="#panel_mouse_leave">panel_mouse_leave</a></li>
+        
+            <li><a class="toctree-l3" href="#panel_clicked">panel_clicked</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game/index.html">游戏接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game-events/index.html">游戏事件</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../common/index.html">常用功能</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">自定义界面文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>界面事件</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">如何响应界面事件</h1>
+<p>在 <code>custom_ui.lua</code> 的逻辑代码中实现对应的回调函数即可，如</p>
+<pre><code>
+custom = {}
+
+-- 注册游戏逻辑
+game_events.register_ui_logic(custom)
+
+-- 按钮被点击
+custom.on_button_clicked = function(button_id)
+
+    -- 调用游戏接口，请求释放技能
+    game.CastSpell(1, true)
+
+end
+
+</code></pre>
+
+<hr />
+<h3 id="button_clicked">button_clicked</h3>
+<p><strong>on_button_clicked(button_id)</strong></p>
+<p>按钮被点击</p>
+<h4 id="_2"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮控件的 id</li>
+</ul>
+<hr />
+<h3 id="button_right_clicked">button_right_clicked</h3>
+<p><strong>on_button_right_clicked(button_id)</strong></p>
+<p>按钮被右击</p>
+<h4 id="_3"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮控件的 id</li>
+</ul>
+<hr />
+<h3 id="button_drag_and_drop">button_drag_and_drop</h3>
+<p><strong>on_button_drag_and_drop(drag_info)</strong></p>
+<p>结束拖拽按钮</p>
+<h4 id="_4"><em>参数列表</em></h4>
+<ul>
+<li><code>drag_info [table]</code> 包含两个子属性<ul>
+<li><code>source_id [string]</code> 被拖放按钮的 id</li>
+<li><code>target_id [string]</code> 松开鼠标时，鼠标指针所在按钮的 id，如果松开鼠标时鼠标指针没有在任何按钮上，此值为 <code>nil</code></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="button_mouse_enter">button_mouse_enter</h3>
+<p><strong>on_button_mouse_enter(button_id)</strong></p>
+<p>鼠标指针移入按钮，一般在这个回调里调用 <code>set_tooltip</code> 显示提示信息</p>
+<h4 id="_5"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮控件的 id</li>
+</ul>
+<hr />
+<h3 id="button_mouse_leave">button_mouse_leave</h3>
+<p><strong>on_button_mouse_leave(button_id)</strong></p>
+<p>鼠标指针移出按钮，一般在这个回调里调用 <code>remove_tooltip</code> 移除提示信息</p>
+<h4 id="_6"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮控件的 id</li>
+</ul>
+<hr />
+<h3 id="label_mouse_enter">label_mouse_enter</h3>
+<p><strong>on_label_mouse_enter(label_id)</strong></p>
+<p>鼠标指针移入标签，一般在这个回调里调用 <code>set_tooltip</code> 显示提示信息</p>
+<h4 id="_7"><em>参数列表</em></h4>
+<ul>
+<li><code>label_id [string]</code> 标签控件的 id</li>
+</ul>
+<hr />
+<h3 id="label_mouse_leave">label_mouse_leave</h3>
+<p><strong>on_label_mouse_leave(label_id)</strong></p>
+<p>鼠标指针移出标签，一般在这个回调里调用 <code>remove_tooltip</code> 移除提示信息</p>
+<h4 id="_8"><em>参数列表</em></h4>
+<ul>
+<li><code>label_id [string]</code> 标签控件的 id</li>
+</ul>
+<hr />
+<h3 id="canvas_clicked">canvas_clicked</h3>
+<p><strong>on_canvas_clicked(canvas_id, x, y)</strong></p>
+<p>画布控件被点击</p>
+<h4 id="_9"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件的 id</li>
+<li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
+</ul>
+<hr />
+<h3 id="canvas_right_clicked">canvas_right_clicked</h3>
+<p><strong>on_canvas_right_clicked(canvas_id, x, y)</strong></p>
+<p>画布控件被右击</p>
+<h4 id="_10"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件的 id</li>
+<li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
+</ul>
+<hr />
+<h3 id="canvas_mousedown">canvas_mousedown</h3>
+<p><strong>on_canvas_mousedown(canvas_id, x, y)</strong></p>
+<p>画布控件被按下</p>
+<h4 id="_11"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件的 id</li>
+<li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
+</ul>
+<hr />
+<h3 id="canvas_mousemove">canvas_mousemove</h3>
+<p><strong>on_canvas_mousemove(canvas_id, x, y)</strong></p>
+<p>画布控件的move事件</p>
+<h4 id="_12"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件的 id</li>
+<li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
+</ul>
+<hr />
+<h3 id="canvas_mouseup">canvas_mouseup</h3>
+<p><strong>on_canvas_mouseup(canvas_id, x, y)</strong></p>
+<p>画布控件的move事件</p>
+<h4 id="_13"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件的 id</li>
+<li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
+</ul>
+<hr />
+<h3 id="input_text_changed">input_text_changed</h3>
+<p><strong>on_input_text_changed(input_id, text)</strong></p>
+<p>输入框文本改变</p>
+<h4 id="_14"><em>参数列表</em></h4>
+<ul>
+<li><code>input_id [string]</code> 输入框 id</li>
+<li><code>text [string]</code> 输入框文本</li>
+</ul>
+<hr />
+<h3 id="input_get_focus">input_get_focus</h3>
+<p><strong>on_input_get_focus(input_id)</strong></p>
+<p>输入框得到焦点</p>
+<h4 id="_15"><em>参数列表</em></h4>
+<ul>
+<li><code>input_id [string]</code> 输入框 id</li>
+</ul>
+<hr />
+<h3 id="input_lose_focus">input_lose_focus</h3>
+<p><strong>on_input_lose_focus(input_id)</strong></p>
+<p>输入框失去焦点</p>
+<h4 id="_16"><em>参数列表</em></h4>
+<ul>
+<li><code>input_id [string]</code> 输入框 id</li>
+</ul>
+<hr />
+<h3 id="panel_mouse_enter">panel_mouse_enter</h3>
+<p><strong>on_panel_mouse_move(panel_id)</strong></p>
+<p>鼠标进入面板</p>
+<h4 id="_17"><em>参数列表</em></h4>
+<ul>
+<li><code>panel_id [string]</code> 面板 id</li>
+</ul>
+<hr />
+<h3 id="panel_mouse_leave">panel_mouse_leave</h3>
+<p><strong>on_panel_mouse_move(panel_id)</strong></p>
+<p>鼠标进入面板</p>
+<h4 id="_18"><em>参数列表</em></h4>
+<ul>
+<li><code>panel_id [string]</code> 面板 id</li>
+</ul>
+<hr />
+<h3 id="panel_clicked">panel_clicked</h3>
+<p><strong>on_panel_clicked(panel_id)</strong></p>
+<p>面板被点击</p>
+<h4 id="_19"><em>参数列表</em></h4>
+<ul>
+<li><code>panel_id [string]</code> 面板 id</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../game/index.html" class="btn btn-neutral float-right" title="游戏接口">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../front-end/index.html" class="btn btn-neutral" title="界面接口"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../front-end/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../game/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

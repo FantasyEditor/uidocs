@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>常用功能 - 自定义界面文档</title>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5e38\u7528\u529f\u80fd";
+    var mkdocs_page_input_path = "common.md";
+    var mkdocs_page_url = "/common/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> 自定义界面文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../json-define/index.html">界面描述（json）</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../front-end/index.html">界面接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../front-end-events/index.html">界面事件</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game/index.html">游戏接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game-events/index.html">游戏事件</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="index.html">常用功能</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">查看日志</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">技能（物品）绑定到控件</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">单位属性绑定到控件</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">玩家属性绑定到控件</a></li>
+    
+
+    <li class="toctree-l2"><a href="#buff">buff 绑定到控件</a></li>
+    
+
+    <li class="toctree-l2"><a href="#lua">客户端控制台输入 lua 代码</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_5">常用功能</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">自定义界面文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>常用功能</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="_1">查看日志</h3>
+<p>使用 <code>utils.debugf(debug_string)</code> 可以打印日志信息。</p>
+<p>日志信息可以使用工具 <a href="ftp://192.168.130.33/Soft/Dbgview.exe">DebugView.exe</a> 来查看</p>
+<p><img alt="" src="../images/debugview.png" /></p>
+<p>弹框测试可以使用 <code>common.MessageBox(debug_string)</code> ：</p>
+<p><img alt="" src="../images/msgbox.png" /></p>
+<hr />
+<p>一些常用的功能被封装到了 <code>CustomUI/Gaming/Script/common</code> 中，主要包括：</p>
+<h3 id="_2">技能（物品）绑定到控件</h3>
+<p>如果需要显示一个技能按钮，只需要修改 <code>config.lua</code> 中的 table <code>config.spell_slot_bindings</code> 即可。</p>
+<p>config.spell_slot_bindings[技能槽位] = {按钮控件 id}</p>
+<pre><code>config.spell_slot_bindings[0] = {&quot;spell_button_0&quot;}
+</code></pre>
+
+<p>上面这句话代表将英雄的第 1 个技能（槽位为0）绑定到控件 id 为 "spell_button_0" 的按钮上。不需要额外的代码，这个按钮就拥有了技能的大部分功能，包括技能冷却效果、技能的 tips、点击技能按钮释放技能等。技能状态的变化会自动更新到这个按钮上。</p>
+<p>显示效果如图：</p>
+<p><img alt="" src="../images/spell_bind.png" /></p>
+<p>同理，物品和召唤师技能的绑定也是同样的一行代码，只是槽位不同</p>
+<ul>
+<li>技能的槽位 0 ~ 99</li>
+<li>物品的槽位 100 ~ 199</li>
+<li>饰品的槽位 200 ~ 299</li>
+<li>隐藏技能的槽位 300 ~ </li>
+</ul>
+<hr />
+<h3 id="_3">单位属性绑定到控件</h3>
+<p>如果需要某控件显示单位属性，当单位属性变化时，控件显示的内容自动更新，只需要修改 table <code>config.unit_attribute_bindings</code> 即可。</p>
+<pre><code>config.unit_attribute_bindings = {
+    [&quot;生命&quot;] = {
+        {&quot;hp_bar:now&quot;},
+        {&quot;main_hero_hp&quot; , function(value)
+            return string.format(&quot;%.f&quot; , value) .. &quot;/&quot; .. string.format(&quot;%.f&quot; , attribute.get_my_unit_attr(&quot;生命上限&quot;))
+        end}, 
+    },
+    [&quot;生命上限&quot;] = {
+        {&quot;hp_bar:max&quot;},
+        {&quot;main_hero_hp&quot; , function(value)
+            return string.format(&quot;%.f&quot; , attribute.get_my_unit_attr(&quot;生命&quot;)) .. &quot;/&quot; .. string.format(&quot;%.f&quot; , value)
+        end},
+    },
+}
+</code></pre>
+
+<p>上面这段代码表示将玩家的生命值和生命上限分别绑定到 2 个控件上 ： <code>hp_bar</code> 和 <code>main_hero_hp</code>。</p>
+<p>其中 <code>hp_bar</code> 是进度条控件，<code>main_hero_hp</code> 是标签控件。</p>
+<p>当玩家生命值或生命上限变化时，进度条和标签控件会自动更新。</p>
+<p>注意， <code>main_hero_hp</code> 控件提供了一个回调函数，用于将传入的生命值或生命上限值转化成想要显示的格式 <code>生命值/生命上限</code>。</p>
+<p>显示效果如图：</p>
+<p><img alt="" src="../images/attr_bind.png" /></p>
+<hr />
+<h3 id="_4">玩家属性绑定到控件</h3>
+<p>修改 <code>config.player_attribute_bindings</code> ,用法和单位属性绑定到控件类似。例子：</p>
+<pre><code>config.player_attribute_bindings = {
+    [&quot;金钱&quot;] = {
+        {&quot;item_slot_shop_show&quot; , function(value)
+            return &quot;&lt;b&gt;&quot; .. string.format(&quot;%.0f&quot;, value) .. &quot;&lt;/b&gt;&quot;
+        end},
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="buff">buff 绑定到控件</h3>
+<p>将 buff 的相关功能绑定到指定 id 的控件，分别修改 <code>config.buff_bindings</code> 和 <code>config.debuff_bindings</code> 。例如：</p>
+<pre><code>config.buff_bindings = {
+
+    -- 以下为控件 id
+    &quot;buff_1&quot;,
+    &quot;buff_2&quot;
+}
+
+config.buff_bindings = {
+
+    -- 以下为控件 id
+    &quot;debuff_1&quot;,
+    &quot;debuff_2&quot;,
+    &quot;debuff_3&quot;
+}
+</code></pre>
+
+<p>上面的代码代表最多显示 2 个 buff ， 3 个 debuff。</p>
+<hr />
+<h3 id="lua">客户端控制台输入 lua 代码</h3>
+<p>ExecuteLua <strong>Lua 代码</strong></p>
+<p>一般用来测试用，例如：</p>
+<p><img alt="" src="../images/execute_lua.png" /></p>
+<hr />
+<h3 id="_5">常用功能</h3>
+<ul>
+<li>获取技能属性 - <code>spell.get_spell(spell_unique_id, desc)</code>  例子：</li>
+</ul>
+<pre><code>spell.get_spell_attr(spell_unique_id, &quot;等级&quot;)
+</code></pre>
+
+<ul>
+<li>获取技能描述 - <code>spell.get_spell_desc(spell_unique_id)</code></li>
+<li>根据技能槽位获取技能唯一 id - <code>spell.slot_table[spell_slot]</code></li>
+<li>获取单位属性 - <code>attribute.get_unit_attr(unit_desc, desc)</code> 例子：</li>
+</ul>
+<pre><code>attribute.get_unit_attr(attribute.get_my_unit_id(), &quot;魔法上限&quot;)
+</code></pre>
+
+<ul>
+<li>获取单位名字 - <code>attribute.get_unit_desc(unit_id)</code></li>
+<li>获取自身单位属性 - <code>attribute.get_my_unit_attr(desc)</code>，例子：</li>
+</ul>
+<pre><code>attribute.get_my_unit_attr(&quot;等级&quot;)
+</code></pre>
+
+<ul>
+<li>table 转 json - <code>json.encode(lua_table)</code></li>
+<li>json 转 table - <code>json.decode(json_str)</code></li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../game-events/index.html" class="btn btn-neutral" title="游戏事件"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../game-events/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

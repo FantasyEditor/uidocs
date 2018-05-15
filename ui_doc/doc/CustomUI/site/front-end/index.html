@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>界面接口 - 自定义界面文档</title>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u754c\u9762\u63a5\u53e3";
+    var mkdocs_page_input_path = "front-end.md";
+    var mkdocs_page_url = "/front-end/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> 自定义界面文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../json-define/index.html">界面描述（json）</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="index.html">界面接口</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">界面接口用法</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#create_custom_ui">create_custom_ui</a></li>
+        
+            <li><a class="toctree-l3" href="#show">show</a></li>
+        
+            <li><a class="toctree-l3" href="#show_with_animation">show_with_animation</a></li>
+        
+            <li><a class="toctree-l3" href="#hide">hide</a></li>
+        
+            <li><a class="toctree-l3" href="#hide_with_animation">hide_with_animation</a></li>
+        
+            <li><a class="toctree-l3" href="#show_animation">show_animation</a></li>
+        
+            <li><a class="toctree-l3" href="#set_enable">set_enable</a></li>
+        
+            <li><a class="toctree-l3" href="#toggle_button">toggle_button</a></li>
+        
+            <li><a class="toctree-l3" href="#set_toggle">set_toggle</a></li>
+        
+            <li><a class="toctree-l3" href="#set_text">set_text</a></li>
+        
+            <li><a class="toctree-l3" href="#set_focus">set_focus</a></li>
+        
+            <li><a class="toctree-l3" href="#set_color">set_color</a></li>
+        
+            <li><a class="toctree-l3" href="#set_font_size">set_font_size</a></li>
+        
+            <li><a class="toctree-l3" href="#add_child">add_child</a></li>
+        
+            <li><a class="toctree-l3" href="#append_child">append_child</a></li>
+        
+            <li><a class="toctree-l3" href="#remove_control">remove_control</a></li>
+        
+            <li><a class="toctree-l3" href="#set_position">set_position</a></li>
+        
+            <li><a class="toctree-l3" href="#set_control_size">set_control_size</a></li>
+        
+            <li><a class="toctree-l3" href="#request_control_rect">request_control_rect</a></li>
+        
+            <li><a class="toctree-l3" href="#scroll_to">scroll_to</a></li>
+        
+            <li><a class="toctree-l3" href="#set_z_index">set_z_index</a></li>
+        
+            <li><a class="toctree-l3" href="#set_max_value">set_max_value</a></li>
+        
+            <li><a class="toctree-l3" href="#set_current_value">set_current_value</a></li>
+        
+            <li><a class="toctree-l3" href="#set_enable_drag">set_enable_drag</a></li>
+        
+            <li><a class="toctree-l3" href="#append_item">append_item</a></li>
+        
+            <li><a class="toctree-l3" href="#set_item_count">set_item_count</a></li>
+        
+            <li><a class="toctree-l3" href="#remove_item">remove_item</a></li>
+        
+            <li><a class="toctree-l3" href="#set_normal_image">set_normal_image</a></li>
+        
+            <li><a class="toctree-l3" href="#set_background_image">set_background_image</a></li>
+        
+            <li><a class="toctree-l3" href="#set_tooltip">set_tooltip</a></li>
+        
+            <li><a class="toctree-l3" href="#remove_tooltip">remove_tooltip</a></li>
+        
+            <li><a class="toctree-l3" href="#set_cooldown">set_cooldown</a></li>
+        
+            <li><a class="toctree-l3" href="#hide_cooldown">hide_cooldown</a></li>
+        
+            <li><a class="toctree-l3" href="#play_animation">play_animation</a></li>
+        
+            <li><a class="toctree-l3" href="#stop_animation">stop_animation</a></li>
+        
+            <li><a class="toctree-l3" href="#play_video">play_video</a></li>
+        
+            <li><a class="toctree-l3" href="#pause_video">pause_video</a></li>
+        
+            <li><a class="toctree-l3" href="#resume_video">resume_video</a></li>
+        
+            <li><a class="toctree-l3" href="#replay_video">replay_video</a></li>
+        
+            <li><a class="toctree-l3" href="#stop_play_video">stop_play_video</a></li>
+        
+            <li><a class="toctree-l3" href="#clear_canvas">clear_canvas</a></li>
+        
+            <li><a class="toctree-l3" href="#draw_arc">draw_arc</a></li>
+        
+            <li><a class="toctree-l3" href="#draw_rect">draw_rect</a></li>
+        
+            <li><a class="toctree-l3" href="#draw_line">draw_line</a></li>
+        
+            <li><a class="toctree-l3" href="#draw_lines">draw_lines</a></li>
+        
+            <li><a class="toctree-l3" href="#play_animation_on_canvas">play_animation_on_canvas</a></li>
+        
+            <li><a class="toctree-l3" href="#preload_image_folder">preload_image_folder</a></li>
+        
+            <li><a class="toctree-l3" href="#preload_image_folder_1">preload_image_folder</a></li>
+        
+            <li><a class="toctree-l3" href="#show_global_mask">show_global_mask</a></li>
+        
+            <li><a class="toctree-l3" href="#hide_global_mask">hide_global_mask</a></li>
+        
+            <li><a class="toctree-l3" href="#set_global_mask">set_global_mask</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../front-end-events/index.html">界面事件</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game/index.html">游戏接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game-events/index.html">游戏事件</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../common/index.html">常用功能</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">自定义界面文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>界面接口</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">界面接口用法</h1>
+<p>在 lua 代码中调用：
+common.InvokeFrontEndMethod( <em>界面接口名</em>, <em>参数1</em>, <em>参数2</em>, ... )</p>
+<p>例如 ： </p>
+<pre><code>-- 在 lua 中调用 set_text(label_id, text) 方法
+common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测试文本&quot;)
+</code></pre>
+
+<hr />
+<h3 id="create_custom_ui">create_custom_ui</h3>
+<p><strong>create_custom_ui(json_str)</strong></p>
+<p>根据 json 字符串所描述的界面信息创建界面，json 的定义参见 <a href="../json-define/index.html">界面描述文件</a></p>
+<h4 id="_2"><em>参数列表</em></h4>
+<ul>
+<li><code>json_str [string]</code> - 用于描述界面的 json 字符串.</li>
+</ul>
+<hr />
+<h3 id="show">show</h3>
+<p><strong>show(control_id)</strong></p>
+<p>显示控件</p>
+<h4 id="_3"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> - 控件 id</li>
+</ul>
+<hr />
+<h3 id="show_with_animation">show_with_animation</h3>
+<p><strong>show_with_animation(control_id, animation)</strong></p>
+<p>显示控件（带动画效果)</p>
+<h4 id="_4"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>animation [string]</code> 动画效果名称，可用的动画效果列表参见 <a href="../../animation/Animate.css.html">动画效果预览</a></li>
+</ul>
+<hr />
+<h3 id="hide">hide</h3>
+<p><strong>hide(control_id)</strong></p>
+<p>隐藏控件</p>
+<h4 id="_5"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> - 控件 id</li>
+</ul>
+<hr />
+<h3 id="hide_with_animation">hide_with_animation</h3>
+<p><strong>hide_with_animation(control_id, animation)</strong></p>
+<p>隐藏控件（带动画效果)</p>
+<h4 id="_6"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>animation [string]</code> 动画效果名称，可用的动画效果列表参见 <a href="../../animation/Animate.css.html">动画效果预览</a></li>
+</ul>
+<hr />
+<h3 id="show_animation">show_animation</h3>
+<p><strong>show_animation(control_id, animation)</strong></p>
+<p>只播放动画效果，不隐藏/显示控件</p>
+<h4 id="_7"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>animation [string]</code> 动画效果名称，可用的动画效果列表参见 <a href="../../animation/Animate.css.html">动画效果预览</a></li>
+</ul>
+<hr />
+<h3 id="set_enable">set_enable</h3>
+<p><strong>set_enable(control_id, enable, reason)</strong></p>
+<p>启用/禁用按钮</p>
+<h4 id="_8"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮 id</li>
+<li><code>enable [bool]</code> 是否可用</li>
+<li><code>reason [string]</code> 禁用原因</li>
+</ul>
+<hr />
+<h3 id="toggle_button">toggle_button</h3>
+<p><strong>toggle_button(button_id)</strong></p>
+<p>切换按钮的开关状态，仅当按钮的 <code>toggle</code> 属性为 true 时有效</p>
+<h4 id="_9"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮 id</li>
+</ul>
+<hr />
+<h3 id="set_toggle">set_toggle</h3>
+<p><strong>set_toggle(button_id, toggle)</strong></p>
+<p>设置按钮的开关状态，仅当按钮的 <code>toggle</code> 属性为 true 时有效</p>
+<h4 id="_10"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮 id</li>
+<li><code>toggle [bool]</code> 开关状态 true / false</li>
+</ul>
+<hr />
+<h3 id="set_text">set_text</h3>
+<p><strong>set_text(control_id, text)</strong></p>
+<p>设置文本</p>
+<h4 id="_11"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>text [string]</code> 文本</li>
+</ul>
+<hr />
+<h3 id="set_focus">set_focus</h3>
+<p><strong>set_text(input_id)</strong></p>
+<p>让输入框获取焦点</p>
+<h4 id="_12"><em>参数列表</em></h4>
+<ul>
+<li><code>input_id [string]</code> 输入框控件 id</li>
+</ul>
+<hr />
+<h3 id="set_color">set_color</h3>
+<p><strong>set_color(control_id, color)</strong></p>
+<p>设置文本颜色</p>
+<h4 id="_13"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>color [string]</code> 颜色值，如 <code>#aabbcc</code> 或 <code>rgba(255, 200, 100, 0.5)</code></li>
+</ul>
+<hr />
+<h3 id="set_font_size">set_font_size</h3>
+<p><strong>set_color(control_id, font_size)</strong></p>
+<p>设置文本字体大小</p>
+<h4 id="_14"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>font_size [number]</code> 字体大小，单位像素</li>
+</ul>
+<hr />
+<h3 id="add_child">add_child</h3>
+<p><strong>add_child(control_id, json_str)</strong></p>
+<p>为指定控件添加一个子控件，子控件需要提供相对于父控件的坐标偏移量 <code>x</code> 和 <code>y</code></p>
+<h4 id="_15"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>json_str [string]</code> 子控件的界面描述信息</li>
+</ul>
+<hr />
+<h3 id="append_child">append_child</h3>
+<p><strong>append_child(control_id, json_str)</strong></p>
+<p>用于向浮动布局的容器中追加子控件，子控件不需要提供坐标信息 <code>x</code> 和 <code>y</code>，
+父控件会自动将子控件布局到默认位置</p>
+<h4 id="_16"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>json_str [string]</code> 子控件的界面描述信息</li>
+</ul>
+<hr />
+<h3 id="remove_control">remove_control</h3>
+<p><strong>remove_control(control_id)</strong></p>
+<p>删除控件以及控件下的全部子控件</p>
+<h4 id="_17"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+</ul>
+<hr />
+<h3 id="set_position">set_position</h3>
+<p><strong>set_position(control_id, x, y)</strong></p>
+<p>设置控件坐标</p>
+<h4 id="_18"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>x [int]</code> x 坐标</li>
+<li><code>y [int]</code> y 坐标</li>
+</ul>
+<hr />
+<h3 id="set_control_size">set_control_size</h3>
+<p><strong>set_control_size(control_id, x, y)</strong></p>
+<p>设置控件宽高</p>
+<h4 id="_19"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>w [int]</code> 控件宽度</li>
+<li><code>h [int]</code> 控件高度</li>
+</ul>
+<hr />
+<h3 id="request_control_rect">request_control_rect</h3>
+<p><strong>request_control_rect(control_id)</strong></p>
+<p>请求获取控件位置及宽高</p>
+<p>这个接口是异步的，前端会派发事件 <code>on_get_control_rect</code> 给 lua，控件的位置和宽高作为事件的参数传给用户</p>
+<h4 id="_20"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+</ul>
+<h4 id="_21"><em>返回值</em></h4>
+<p><strong>on_get_control_rect(rect)</strong></p>
+<ul>
+<li><code>rect.x [int]</code> <code>rect.y [int]</code> <code>rect.w [int]</code> <code>rect.h [int]</code> 控件的位置和宽高</li>
+</ul>
+<hr />
+<h3 id="scroll_to">scroll_to</h3>
+<p><strong>scroll_to(control_id, pos)</strong></p>
+<p>设置有滚动区域的控件（目前只支持 panel）中滚动条位置</p>
+<h4 id="_22"><em>参数</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>pos [number]</code> 滚动条位置</li>
+</ul>
+<hr />
+<h3 id="set_z_index">set_z_index</h3>
+<p><strong>set_z_index(control_id, z_index)</strong></p>
+<p>设置控件层级</p>
+<h4 id="_23"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>z_index [int]</code> 控件层级</li>
+</ul>
+<hr />
+<h3 id="set_max_value">set_max_value</h3>
+<p><strong>set_max_value(process_id, max_value)</strong></p>
+<p>设置进度条最大值</p>
+<h4 id="_24"><em>参数列表</em></h4>
+<ul>
+<li><code>process_id [string]</code> 进度条 id</li>
+<li><code>max_value [float]</code> 进度条最大值</li>
+</ul>
+<hr />
+<h3 id="set_current_value">set_current_value</h3>
+<p><strong>set_current_value(process_id, current_value)</strong></p>
+<p>设置进度条当前值</p>
+<h4 id="_25"><em>参数列表</em></h4>
+<ul>
+<li><code>process_id [string]</code> 进度条 id</li>
+<li><code>current_value [float]</code> 进度条当前值</li>
+</ul>
+<hr />
+<h3 id="set_enable_drag">set_enable_drag</h3>
+<p><strong>set_enable_drag(button_id, enable)</strong></p>
+<p>设置按钮是否允许拖放</p>
+<h4 id="_26"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮 id</li>
+<li><code>enable [bool]</code> true/false</li>
+</ul>
+<hr />
+<h3 id="append_item">append_item</h3>
+<p><strong>append_item(button_group_id, button_json_str)</strong></p>
+<p>为按钮组添加一个按钮</p>
+<h4 id="_27"><em>参数列表</em></h4>
+<ul>
+<li><code>button_group_id [string]</code> 按钮组 id</li>
+<li><code>button_json_str [string]</code> 按钮的界面描述信息</li>
+</ul>
+<hr />
+<h3 id="set_item_count">set_item_count</h3>
+<p>*<em>set_item_count(button_group_id, item_count)</em></p>
+<p>修改按钮组中显示的格子数量</p>
+<h4 id="_28"><em>参数列表</em></h4>
+<ul>
+<li><code>button_group_id [string]</code> 按钮组 id</li>
+<li><code>item_count [int]</code> 格子数量</li>
+</ul>
+<hr />
+<h3 id="remove_item">remove_item</h3>
+<p><strong>remove_item(button_group_id, button_id)</strong></p>
+<p>移除按钮组中的指定按钮</p>
+<h4 id="_29"><em>参数列表</em></h4>
+<ul>
+<li><code>button_group_id [string]</code> 按钮组 id</li>
+<li><code>button_json_str [string]</code> 按钮 id</li>
+</ul>
+<hr />
+<h3 id="set_normal_image">set_normal_image</h3>
+<p><strong>set_normal_image(button_id, image_path)</strong></p>
+<p>设置按钮图片</p>
+<h4 id="_30"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮 id</li>
+<li><code>image_path [string]</code> 图片路径</li>
+</ul>
+<hr />
+<h3 id="set_background_image">set_background_image</h3>
+<p><strong>set_background_image(control_id, image_path)</strong></p>
+<p>设置控件背景图片</p>
+<h4 id="_31"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>image_path [string]</code> 图片路径</li>
+</ul>
+<hr />
+<h3 id="set_tooltip">set_tooltip</h3>
+<p><strong>set_tooltip(control_id, json_str, offset_x, offset_y)</strong></p>
+<p>设置控件的提示框，一般在鼠标移入控件的时候调用此接口。</p>
+<p>提示框具体显示内容由 <code>json_str</code> 中配置的界面描述信息决定。默认情况下，提示框显示在控件的正上方，<code>offset_x</code> 和 <code>offset_y</code> 可以进一步调整控件的位置。</p>
+<p>如果需要提示框自适应宽度，在 <code>json_str</code> 中配置的界面描述信息中不提供宽度属性 <code>w</code> 即可。</p>
+<h4 id="_32"><em>参数列表</em></h4>
+<ul>
+<li><code>control_id [string]</code> 控件 id</li>
+<li><code>json_str [string]</code> 提示框的界面描述信息，可以是任意控件，如内含子控件的 panel</li>
+<li><code>offset_x [int]</code> 横轴的偏移量</li>
+<li><code>offset_y [int]</code> 纵轴的偏移量</li>
+</ul>
+<hr />
+<h3 id="remove_tooltip">remove_tooltip</h3>
+<p><strong>remove_tooltip()</strong></p>
+<p>移除控件的提示框，一般在鼠标移出控件时调用此接口</p>
+<hr />
+<h3 id="set_cooldown">set_cooldown</h3>
+<p><strong>set_cooldown(button_id, left_time, total_time, show_text)</strong></p>
+<p>设置按钮的冷却效果，如技能、buff 的冷却效果等。</p>
+<p>一般情况下不需要直接调用此接口，因为技能、buff 等常用界面逻辑已经被封装好了。</p>
+<h4 id="_33"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮 id</li>
+<li><code>left_time [float]</code> 剩余时间</li>
+<li><code>total_time [float]</code> 总时间</li>
+<li><code>show_text [bool]</code> 是否显示倒计时数字</li>
+</ul>
+<hr />
+<h3 id="hide_cooldown">hide_cooldown</h3>
+<p><strong>hide_cooldown(button_id)</strong></p>
+<p>隐藏按钮的冷却效果。</p>
+<p>一般情况下不需要直接调用此接口，因为技能、buff 等常用界面逻辑已经被封装好了。</p>
+<h4 id="_34"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮 id</li>
+</ul>
+<hr />
+<h3 id="play_animation">play_animation</h3>
+<p><strong>play_animation(label_id, animation_path, image_count, infinite, repeat_times)</strong></p>
+<p>播放序列帧动画。</p>
+<p>序列帧动画图片需要单独放在一个目录里，每帧命名为 <code>0_00001.png</code>, <code>0_00002.png</code>,<code>0_00003.png</code> 以此类推。</p>
+<h4 id="_35"><em>参数列表</em></h4>
+<ul>
+<li><code>label_id [string]</code> 动画控件 id (一般是一个标签)</li>
+<li><code>animation_path [string]</code> 存放动画序列帧图片的目录</li>
+<li><code>image_count [int]</code> 序列帧数量</li>
+<li><code>infinite [int]</code> 0 或 1，代表是否循环播放</li>
+<li><code>repeat_times [int]</code> 每帧重复播放几次，一般为 1</li>
+</ul>
+<hr />
+<h3 id="stop_animation">stop_animation</h3>
+<p><strong>stop_animation(label_id)</strong></p>
+<p>停止播放序列帧动画</p>
+<h4 id="_36"><em>参数列表</em></h4>
+<ul>
+<li><code>label_id [string]</code> 动画控件 id (一般是一个标签)</li>
+</ul>
+<hr />
+<h3 id="play_video">play_video</h3>
+<p><strong>play_video(video_id, video_src, loading_image, loop, show_last_frame)</strong></p>
+<p>播放视频，必须为 <code>webm</code> 格式</p>
+<h4 id="_37"><em>参数列表</em></h4>
+<ul>
+<li><code>video_id [string]</code> 视频控件的 id</li>
+<li><code>video_src [string]</code> 视频路径</li>
+<li><code>loading_image [string]</code> 视频加载时显示的图片路径</li>
+<li><code>loop [bool]</code> 是否循环播放</li>
+<li><code>show_last_frame [bool]</code> 播完是否停留在最后一帧</li>
+</ul>
+<hr />
+<h3 id="pause_video">pause_video</h3>
+<p><strong>pause_video(video_id)</strong></p>
+<p>暂停视频</p>
+<h4 id="_38"><em>参数列表</em></h4>
+<ul>
+<li><code>video_id [string]</code> 视频控件的 id</li>
+</ul>
+<hr />
+<h3 id="resume_video">resume_video</h3>
+<p><strong>resume_video(video_id)</strong></p>
+<p>继续播放视频</p>
+<h4 id="_39"><em>参数列表</em></h4>
+<ul>
+<li><code>video_id [string]</code> 视频控件的 id</li>
+</ul>
+<hr />
+<h3 id="replay_video">replay_video</h3>
+<p><strong>replay_video(video_id)</strong></p>
+<p>重新播放视频</p>
+<h4 id="_40"><em>参数列表</em></h4>
+<ul>
+<li><code>video_id [string]</code> 视频控件的 id</li>
+</ul>
+<hr />
+<h3 id="stop_play_video">stop_play_video</h3>
+<p><strong>stop_play_video()</strong></p>
+<p>停止播放视频</p>
+<hr />
+<h3 id="clear_canvas">clear_canvas</h3>
+<p><strong>clear_canvas(canvas_id)</strong></p>
+<p>清空画布控件</p>
+<h4 id="_41"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件 id</li>
+</ul>
+<hr />
+<h3 id="draw_arc">draw_arc</h3>
+<p><strong>draw_arc(canvas_id, params)</strong></p>
+<p>在画布控件上画圆弧</p>
+<h4 id="_42"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件 id</li>
+<li><code>params [string]</code> 圆弧相关参数，是一个 json 字符串，包含如下属性：<ul>
+<li><code>x [int]</code> - 圆心起始 x 坐标</li>
+<li><code>y [int]</code> - 圆心起始 y 坐标</li>
+<li><code>radius [int]</code> - 半径</li>
+<li><code>start_arc [int]</code> - 起始点的角度,取值范围 0 ~ 360,可指定正负</li>
+<li><code>end_arc [int]</code> - 结束点的角度</li>
+<li><code>color [string]</code> - 颜色</li>
+<li><code>line_width [int]</code> - 线的粗细，-1 为填充</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="draw_rect">draw_rect</h3>
+<p><strong>draw_rect(canvas_id, params)</strong></p>
+<p>在画布控件上画矩形</p>
+<h4 id="_43"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件 id</li>
+<li><code>params [string]</code> 矩形相关参数，是一个 json 字符串，包含如下属性：<ul>
+<li><code>x [int]</code> - 起始 x 坐标</li>
+<li><code>y [int]</code> - 起始 y 坐标</li>
+<li><code>w [int]</code> - 宽度</li>
+<li><code>h [int]</code> - 高度</li>
+<li><code>color [string]</code> - 颜色</li>
+<li><code>line_width [int]</code> - 线的粗细，-1 为填充</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="draw_line">draw_line</h3>
+<p><strong>draw_line(canvas_id, params)</strong></p>
+<p>在画布控件上画线</p>
+<h4 id="_44"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件 id</li>
+<li><code>params [string]</code> 画线相关参数，是一个 json 字符串，包含如下属性：<ul>
+<li><code>src_x [int]</code> - 起始 x 坐标</li>
+<li><code>src_y [int]</code> - 起始 y 坐标</li>
+<li><code>dst_x [int]</code> - 目标 x 坐标</li>
+<li><code>dst_y [int]</code> - 目标 y 坐标</li>
+<li><code>color [string]</code> - 颜色</li>
+<li><code>line_width [int]</code> - 线的宽度</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="draw_lines">draw_lines</h3>
+<p><strong>draw_lines(canvas_id, params)</strong></p>
+<p>在画布上画折线</p>
+<h4 id="_45"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件 id</li>
+<li><code>params [string]</code> 画折线相关参数，是一个 json 字符串，包含如下属性：<ul>
+<li><code>points [array]</code> - 折线上拐点的数组，<code>[{x1, y1}, {x2, y2} ...]</code></li>
+<li><code>color [string]</code> - 颜色</li>
+<li><code>line_width [int]</code> - 线的宽度</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="play_animation_on_canvas">play_animation_on_canvas</h3>
+<p><strong>play_animation_on_canvas(canvas_id, params)</strong></p>
+<p>在画布上播放序列帧动画，序列帧的命名规则详见 <a href="#play_animation">play_animation</a></p>
+<h4 id="_46"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件 id</li>
+<li><code>params [string]</code> 播放动画的相关参数，是一个 json 字符串，包含如下属性：<ul>
+<li><code>x [int]</code> 动画中心的 x 坐标</li>
+<li><code>y [int]</code> 动画中心的 y 坐标</li>
+<li><code>w [int]</code> 动画的宽度</li>
+<li><code>h [int]</code> 动画的高度</li>
+<li><code>animation_path [string]</code> 序列帧路径</li>
+<li><code>frame_coutn [int]</code> 序列帧图片数量</li>
+<li><code>loop [bool]</code> 是否循环播放</li>
+<li><code>loop_start [int]</code> (可选) 从第几帧开始循环播放</li>
+<li><code>duration [int]</code> 持续时间，单位毫秒</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="preload_image_folder">preload_image_folder</h3>
+<p><strong>preload_image_folder(image_folder_path, image_count)</strong></p>
+<p>预加载序列帧图片。</p>
+<p>当序列帧图片过大，数量过多时，第一次播放序列帧时会卡顿。可以在界面初始化的时候调用此接口将序列帧图片预加载一下，让序列帧动画能够流畅播放</p>
+<h4 id="_47"><em>参数列表</em></h4>
+<ul>
+<li><code>image_folder_path [string]</code> 序列帧图片目录</li>
+<li><code>image_count [int]</code> 序列帧数量</li>
+</ul>
+<hr />
+<h3 id="preload_image_folder_1">preload_image_folder</h3>
+<p><strong>preload_image_folder(image_folder_path, image_count)</strong></p>
+<p>预加载序列帧图片。</p>
+<p>当序列帧图片过大，数量过多时，第一次播放序列帧时会卡顿。可以在界面初始化的时候调用此接口将序列帧图片预加载一下，让序列帧动画能够流畅播放</p>
+<h4 id="_48"><em>参数列表</em></h4>
+<ul>
+<li><code>image_folder_path [string]</code> 序列帧图片目录</li>
+<li><code>image_count [int]</code> 序列帧数量</li>
+</ul>
+<hr />
+<h3 id="show_global_mask">show_global_mask</h3>
+<p><strong>game.show_global_mask()</strong></p>
+<p>显示蒙版</p>
+<hr />
+<h3 id="hide_global_mask">hide_global_mask</h3>
+<p><strong>game.hide_global_mask()</strong></p>
+<p>隐藏蒙版</p>
+<hr />
+<h3 id="set_global_mask">set_global_mask</h3>
+<p><strong>game.set_global_mask(mask_info)</strong></p>
+<p>设置蒙版的颜色，以及镂空区域信息</p>
+<h4 id="_49"><em>参数列表</em></h4>
+<ul>
+<li><code>mask_info [string]</code> 一个 json 字符串，包含如下参数<ul>
+<li><code>mask_color [string]</code> 蒙版颜色</li>
+<li><code>clip_area [array]</code> 镂空区域数组，包含的对象的属性如下：<ul>
+<li><code>type [string]</code> 可以是矩形 <code>rect</code> 或圆形 <code>circle</code></li>
+<li><code>x [number]</code> <code>y [number]</code> 矩形起点坐标或圆形圆心坐标</li>
+<li><code>r [number]</code> 圆形半径</li>
+<li><code>w [number]</code> <code>h [number]</code> 矩形宽高</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../front-end-events/index.html" class="btn btn-neutral float-right" title="界面事件">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../json-define/index.html" class="btn btn-neutral" title="界面描述（json）"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../json-define/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../front-end-events/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

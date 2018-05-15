@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>游戏事件 - 自定义界面文档</title>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6e38\u620f\u4e8b\u4ef6";
+    var mkdocs_page_input_path = "game-events.md";
+    var mkdocs_page_url = "/game-events/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> 自定义界面文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../json-define/index.html">界面描述（json）</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../front-end/index.html">界面接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../front-end-events/index.html">界面事件</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game/index.html">游戏接口</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="index.html">游戏事件</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">如何响应游戏事件</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#on_screen_resolution_changed">on_screen_resolution_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#on_key_down">on_key_down</a></li>
+        
+            <li><a class="toctree-l3" href="#on_key_up">on_key_up</a></li>
+        
+            <li><a class="toctree-l3" href="#on_mouse_down">on_mouse_down</a></li>
+        
+            <li><a class="toctree-l3" href="#on_mouse_up">on_mouse_up</a></li>
+        
+            <li><a class="toctree-l3" href="#on_mouse_move">on_mouse_move</a></li>
+        
+            <li><a class="toctree-l3" href="#on_mouse_lose_capture">on_mouse_lose_capture</a></li>
+        
+            <li><a class="toctree-l3" href="#on_update">on_update</a></li>
+        
+            <li><a class="toctree-l3" href="#on_enter_game">on_enter_game</a></li>
+        
+            <li><a class="toctree-l3" href="#on_custom_ui_event">on_custom_ui_event</a></li>
+        
+            <li><a class="toctree-l3" href="#on_game_setting_changed">on_game_setting_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#on_error_tip">on_error_tip</a></li>
+        
+            <li><a class="toctree-l3" href="#on_system_message">on_system_message</a></li>
+        
+            <li><a class="toctree-l3" href="#on_server_message">on_server_message</a></li>
+        
+            <li><a class="toctree-l3" href="#on_unit_clicked">on_unit_clicked</a></li>
+        
+            <li><a class="toctree-l3" href="#on_init_player_info">on_init_player_info</a></li>
+        
+            <li><a class="toctree-l3" href="#on_unit_created">on_unit_created</a></li>
+        
+            <li><a class="toctree-l3" href="#on_player_attributes_changed">on_player_attributes_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#on_unit_attributes_changed">on_unit_attributes_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#on_buff_attached">on_buff_attached</a></li>
+        
+            <li><a class="toctree-l3" href="#on_buff_detached">on_buff_detached</a></li>
+        
+            <li><a class="toctree-l3" href="#on_buff_update">on_buff_update</a></li>
+        
+            <li><a class="toctree-l3" href="#on_update_spell_upgradable">on_update_spell_upgradable</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_actived">on_spell_actived</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_attributes_changed">on_spell_attributes_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_upgrade">on_spell_upgrade</a></li>
+        
+            <li><a class="toctree-l3" href="#on_add_spell">on_add_spell</a></li>
+        
+            <li><a class="toctree-l3" href="#on_remove_spell">on_remove_spell</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_stack_change">on_spell_stack_change</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_slot_changed">on_spell_slot_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_cd_changed">on_spell_cd_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_cd_finished">on_spell_cd_finished</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_cast_start">on_spell_cast_start</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_cast_notify">on_spell_cast_notify</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_cast_end">on_spell_cast_end</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_cast_break">on_spell_cast_break</a></li>
+        
+            <li><a class="toctree-l3" href="#on_spell_cast_result">on_spell_cast_result</a></li>
+        
+            <li><a class="toctree-l3" href="#on_minimap_init">on_minimap_init</a></li>
+        
+            <li><a class="toctree-l3" href="#on_minimap_clicked">on_minimap_clicked</a></li>
+        
+            <li><a class="toctree-l3" href="#on_minimap_right_clicked">on_minimap_right_clicked</a></li>
+        
+            <li><a class="toctree-l3" href="#on_minimap_signal_response">on_minimap_signal_response</a></li>
+        
+            <li><a class="toctree-l3" href="#on_minimap_show_spell_indicator">on_minimap_show_spell_indicator</a></li>
+        
+            <li><a class="toctree-l3" href="#on_minimap_hide_spell_indicator">on_minimap_hide_spell_indicator</a></li>
+        
+            <li><a class="toctree-l3" href="#on_minimap_show_hero_move_path">on_minimap_show_hero_move_path</a></li>
+        
+            <li><a class="toctree-l3" href="#on_minimap_show_spell_indicator_1">on_minimap_show_spell_indicator</a></li>
+        
+            <li><a class="toctree-l3" href="#on_show_unit_tip">on_show_unit_tip</a></li>
+        
+            <li><a class="toctree-l3" href="#on_unit_destory">on_unit_destory</a></li>
+        
+            <li><a class="toctree-l3" href="#on_game_over_lobby_reward">on_game_over_lobby_reward</a></li>
+        
+            <li><a class="toctree-l3" href="#on_game_result">on_game_result</a></li>
+        
+            <li><a class="toctree-l3" href="#on_block_speak_res">on_block_speak_res</a></li>
+        
+            <li><a class="toctree-l3" href="#on_unblock_speak_res">on_unblock_speak_res</a></li>
+        
+            <li><a class="toctree-l3" href="#on_user_guide_notify">on_user_guide_notify</a></li>
+        
+            <li><a class="toctree-l3" href="#on_user_guide_showhide_shop">on_user_guide_showhide_shop</a></li>
+        
+            <li><a class="toctree-l3" href="#on_user_move_target">on_user_move_target</a></li>
+        
+            <li><a class="toctree-l3" href="#on_disconnected">on_disconnected</a></li>
+        
+            <li><a class="toctree-l3" href="#on_tower_attack_notify">on_tower_attack_notify</a></li>
+        
+            <li><a class="toctree-l3" href="#on_sound_play_finished">on_sound_play_finished</a></li>
+        
+            <li><a class="toctree-l3" href="#on_speech_channel_changed">on_speech_channel_changed</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../common/index.html">常用功能</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">自定义界面文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>游戏事件</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">如何响应游戏事件</h1>
+<p>在 <code>custom_ui.lua</code> 的逻辑代码中实现对应的回调函数即可，如</p>
+<pre><code>
+custom = {}
+
+-- 注册游戏逻辑
+game_events.register_ui_logic(custom)
+
+-- 响应按键事件
+custom.on_key_down = function(event_args)
+    if event_args == &quot;F7&quot; then
+        -- do something
+    end
+end
+
+</code></pre>
+
+<hr />
+<h3 id="on_screen_resolution_changed">on_screen_resolution_changed</h3>
+<p><strong>on_screen_resolution_changed(w, h)</strong></p>
+<p>游戏分辨率改变</p>
+<h4 id="_2"><em>参数列表</em></h4>
+<ul>
+<li><code>x [int]</code> 横轴分辨率</li>
+<li><code>y [int]</code> 纵轴分辨率</li>
+</ul>
+<hr />
+<h3 id="on_key_down">on_key_down</h3>
+<p><strong>on_key_down(key_str)</strong></p>
+<p>按键按下</p>
+<h4 id="_3"><em>参数列表</em></h4>
+<ul>
+<li><code>key_str [string]</code> 按下的按键</li>
+</ul>
+<hr />
+<h3 id="on_key_up">on_key_up</h3>
+<p><strong>on_key_up(key_str)</strong></p>
+<p>按键松开</p>
+<h4 id="_4"><em>参数列表</em></h4>
+<ul>
+<li><code>key_str [string]</code> 松开的按键</li>
+</ul>
+<hr />
+<h3 id="on_mouse_down">on_mouse_down</h3>
+<p><strong>on_mouse_down(button_type, x, y)</strong></p>
+<p>鼠标按下</p>
+<h4 id="_5"><em>参数列表</em></h4>
+<ul>
+<li><code>button_type [string]</code> 按键类型，是左键还是右键</li>
+<li><code>x [number]</code> <code>y [number]</code> 当前鼠标坐标</li>
+</ul>
+<hr />
+<h3 id="on_mouse_up">on_mouse_up</h3>
+<p><strong>on_mouse_up(button_type, x, y)</strong></p>
+<p>鼠标松开</p>
+<h4 id="_6"><em>参数列表</em></h4>
+<ul>
+<li><code>button_type [string]</code> 按键类型，是左键还是右键</li>
+<li><code>x [number]</code> <code>y [number]</code> 当前鼠标坐标</li>
+</ul>
+<hr />
+<h3 id="on_mouse_move">on_mouse_move</h3>
+<p><strong>on_mouse_move(x, y)</strong></p>
+<p>鼠标移动</p>
+<h4 id="_7"><em>参数列表</em></h4>
+<ul>
+<li><code>x [number]</code> <code>y [number]</code> 当前鼠标坐标</li>
+</ul>
+<hr />
+<h3 id="on_mouse_lose_capture">on_mouse_lose_capture</h3>
+<p><strong>on_mouse_lose_capture()</strong></p>
+<p>鼠标失去焦点（按下鼠标，然后 alt + tab）</p>
+<hr />
+<h3 id="on_update">on_update</h3>
+<p><strong>on_update(delta)</strong></p>
+<p>帧回调，每帧都会被调用</p>
+<h4 id="_8"><em>参数列表</em></h4>
+<ul>
+<li><code>delta [float]</code> 距离上一帧的间隔时间，单位为秒</li>
+</ul>
+<p>举例，每隔 30 ms 执行一些逻辑，可以这样处理：</p>
+<pre><code>custom_ui.update = function(delta)
+
+    delta = delta * 1000
+
+    if timer.last_delta + delta &gt;= 30 then
+        delta = timer.last_delta + delta
+        timer.last_delta = 0
+    else
+        timer.last_delta = timer.last_delta + delta
+        return
+    end
+
+    -- do something ...
+
+end
+</code></pre>
+
+<hr />
+<h3 id="on_enter_game">on_enter_game</h3>
+<p><strong>on_enter_game()</strong></p>
+<p>选人结束，进入游戏</p>
+<hr />
+<h3 id="on_custom_ui_event">on_custom_ui_event</h3>
+<p><strong>on_custom_ui_event(event_id, info)</strong></p>
+<p>接收服务器发过来的自定义界面消息</p>
+<h4 id="_9"><em>参数列表</em></h4>
+<ul>
+<li><code>event_id [int]</code> 消息 id</li>
+<li><code>info [string]</code> 自定义消息内容</li>
+</ul>
+<p>服务端给自定义界面发消息的例子（服务端脚本代码):</p>
+<pre><code>ac.auxiliary.custom_ui_event(81, &quot;御坂美琴&quot;)
+
+</code></pre>
+
+<p>自定义界面处理服务端发送过来的消息：</p>
+<pre><code>custom_ui.on_custom_ui_event = function(event_id, info)
+    if event_id == 81 then
+        common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label_1&quot;, info)
+    end
+end
+</code></pre>
+
+<hr />
+<h3 id="on_game_setting_changed">on_game_setting_changed</h3>
+<p><strong>on_game_setting_changed()</strong></p>
+<p>游戏设置改变的回调。</p>
+<p>举例，自定义界面某个控件显示玩家技能快捷键的字符。当玩家修改快捷键后，点击设置界面的确定按钮，会触发这个回调，在这个回调函数里更新快捷键控件的显示内容即可。</p>
+<hr />
+<h3 id="on_error_tip">on_error_tip</h3>
+<p><strong>on_error_tip(error_text, duration)</strong></p>
+<p>技能释放错误信息</p>
+<h4 id="_10"><em>参数列表</em></h4>
+<ul>
+<li><code>error_text [string]</code> 错误信息</li>
+<li><code>duration [int]</code> 持续时间(ms)</li>
+</ul>
+<hr />
+<h3 id="on_system_message">on_system_message</h3>
+<p><strong>on_system_message(message, duration)</strong></p>
+<p>系统消息</p>
+<h4 id="_11"><em>参数列表</em></h4>
+<ul>
+<li><code>message [string]</code> 系统消息</li>
+<li><code>duration [int]</code> 持续时间(ms)</li>
+</ul>
+<hr />
+<h3 id="on_server_message">on_server_message</h3>
+<p><strong>on_server_message(message)</strong></p>
+<p>服务器错误提示</p>
+<h4 id="_12"><em>参数列表</em></h4>
+<ul>
+<li><code>message [string]</code> 错误信息</li>
+</ul>
+<hr />
+<h3 id="on_unit_clicked">on_unit_clicked</h3>
+<p><strong>on_unit_clicked(unit_id, shop_index)</strong></p>
+<p>单位被点击，如果是商店被点击，则 shop_index 为商店的编号</p>
+<h4 id="_13"><em>参数列表</em></h4>
+<ul>
+<li><code>unit_id [int]</code> 单位 id</li>
+<li><code>shop_index [int]</code> 单位的编号</li>
+</ul>
+<hr />
+<h3 id="on_init_player_info">on_init_player_info</h3>
+<p><strong>on_init_player_info(hero_changed)</strong></p>
+<p>玩家信息初始化。</p>
+<p>一般自定义界面的初始化放到这个回调里执行，因为此时能够保证玩家信息已经获取完毕。</p>
+<p>当玩家切换英雄时也会调用这个回调函数，此时 <code>hero_changed</code> 为 <code>true</code></p>
+<h4 id="_14"><em>参数列表</em></h4>
+<ul>
+<li><code>hero_changed [bool]</code> 当玩家信息初始化时，此值为 false。当切换英雄时，此值为 true。</li>
+</ul>
+<hr />
+<h3 id="on_unit_created">on_unit_created</h3>
+<p>单位创建事件。</p>
+<p><strong>on_unit_created(unit_id, unit_attrs)</strong></p>
+<h4 id="_15"><em>参数列表</em></h4>
+<ul>
+<li><code>unit_id [int]</code> 单位 id</li>
+<li><code>unit_attrs [table]</code> 单位创建时附带的属性</li>
+</ul>
+<p>单位属性 <code>unit_attrs</code> 是一个属性的键值对集合，key 是 <code>table/constant.ini</code> 中定义的整数, 如 unit_attrs[1] 为单位的生命值。</p>
+<pre><code>['单位属性']
+-- 以下不要修改 --
+'生命' = 1
+'生命上限' = 2
+'生命恢复' = 3
+'魔法' = 4
+'魔法上限' = 5
+'魔法恢复' = 6
+'视野范围' = 7
+'行为限制' = 10
+'攻击速度' = 11
+'冷却缩减' = 12
+'减耗' = 13
+'护甲' = 14
+'攻击' = 15
+'攻击范围' = 16
+'搜敌范围' = 17
+'移动速度' = 18
+-- 以上不要修改 --
+'等级' = 21
+'护盾' = 22
+'经验' = 23
+'经验上限' = 24
+'技能点' = 25
+-----------------
+'破甲' = 31
+'穿透' = 32
+'吸血' = 33
+'暴击' = 34
+'暴击伤害' = 35
+'格挡' = 36
+'魔抗' = 37
+'法术破甲' = 38
+'法术穿透' = 39
+'基础攻击' = 40
+'额外攻击' = 41
+</code></pre>
+
+<p>除此之外，有一个特殊的单位属性 <code>unit_attrs["unit_type"]</code> 代表单位类型</p>
+<hr />
+<h3 id="on_player_attributes_changed">on_player_attributes_changed</h3>
+<p><strong>on_player_attributes_changed(player_attrs)</strong></p>
+<p>玩家属性变化事件。</p>
+<h4 id="_16"><em>参数列表</em></h4>
+<ul>
+<li><code>player_attrs [table]</code> 变化的玩家属性集合</li>
+</ul>
+<p>玩家属性 <code>player_attrs</code> 是一个属性的键值对集合，key 是 <code>constant.ini</code> 中定义的整数, 如 player_attrs[4] 为玩家的金钱。</p>
+<pre><code>['玩家属性']
+-- 以下不要修改 --
+'英雄ID' = 1
+'英雄类型' = 2
+'队伍' = 3
+-- 以上不要修改 --
+'金钱' = 4
+'击杀' = 5
+'死亡' = 6
+'助攻' = 7
+'补刀' = 8
+'杀兵' = 9
+'杀野' = 10
+'屠龙' = 11
+'大招状态' = 12
+'大招冷却' = 13
+'大招冷却上限' = 14
+'复活时间' = 15
+'复活时间上限' = 16
+'总资产' = 17
+'BUFF状态' = 18
+</code></pre>
+
+<hr />
+<h3 id="on_unit_attributes_changed">on_unit_attributes_changed</h3>
+<p><strong>on_unit_attributes_changed(unit_attrs)</strong></p>
+<p>单位属性变化事件。</p>
+<h4 id="_17"><em>参数列表</em></h4>
+<ul>
+<li><code>unit_attrs [table]</code> 变化的单位属性集合</li>
+</ul>
+<hr />
+<h3 id="on_buff_attached">on_buff_attached</h3>
+<p><strong>on_buff_attached(unit_id, buff_id, buff_index, total_time, left_time, engery_count, source_slot)</strong></p>
+<p>添加 buff</p>
+<h4 id="_18"><em>参数列表</em></h4>
+<ul>
+<li><code>unit_id [int]</code> 单位 id</li>
+<li><code>buff_id [int]</code> buff id</li>
+<li><code>buff_index [int]</code> buff 索引</li>
+<li><code>total_time [int]</code> buff 持续时间</li>
+<li><code>left_time [int]</code> 剩余持续时间</li>
+<li><code>engery_count [int]</code> buff 层数</li>
+<li><code>source_slot [int]</code> buff 槽位</li>
+</ul>
+<hr />
+<h3 id="on_buff_detached">on_buff_detached</h3>
+<p><strong>on_buff_detached(unit_id, buff_id, buff_index)</strong></p>
+<p>删除 buff</p>
+<h4 id="_19"><em>参数列表</em></h4>
+<ul>
+<li><code>unit_id [int]</code> 单位 id</li>
+<li><code>buff_id [int]</code> buff id</li>
+<li><code>buff_index [int]</code> buff 索引</li>
+</ul>
+<hr />
+<h3 id="on_buff_update">on_buff_update</h3>
+<p><strong>on_buff_update(unit_id, buff_id, buff_index, total_time, left_time, engery_count, source_slot)</strong></p>
+<p>更新 buff</p>
+<h4 id="_20"><em>参数列表</em></h4>
+<ul>
+<li><code>unit_id [int]</code> 单位 id</li>
+<li><code>buff_id [int]</code> buff id</li>
+<li><code>buff_index [int]</code> buff 索引</li>
+<li><code>total_time [int]</code> buff 持续时间</li>
+<li><code>left_time [int]</code> 剩余持续时间</li>
+<li><code>engery_count [int]</code> buff 层数</li>
+<li><code>source_slot [int]</code> buff 槽位</li>
+</ul>
+<hr />
+<h3 id="on_update_spell_upgradable">on_update_spell_upgradable</h3>
+<p><strong>on_update_spell_upgradable(spell_unique_id, upgradable)</strong></p>
+<p>技能是否可以升级。</p>
+<h4 id="_21"><em>参数列表</em></h4>
+<ul>
+<li><code>spell_unique_id [int]</code> 技能唯一 id</li>
+<li><code>upgradable [bool]</code> 技能是否可升级</li>
+</ul>
+<hr />
+<h3 id="on_spell_actived">on_spell_actived</h3>
+<p><strong>on_spell_actived(unique_id, actived)</strong></p>
+<p>技能激活状态变化</p>
+<h4 id="_22"><em>参数列表</em></h4>
+<ul>
+<li><code>unique_id [int]</code> 技能唯一 id</li>
+<li><code>actived [bool]</code> 技能是否处于激活状态</li>
+</ul>
+<hr />
+<h3 id="on_spell_attributes_changed">on_spell_attributes_changed</h3>
+<p><strong>on_spell_attributes_changed(unique_id, spell_attrs)</strong></p>
+<p>技能属性变化</p>
+<h4 id="_23"><em>参数列表</em></h4>
+<ul>
+<li><code>unique_id [int]</code> 技能唯一 id</li>
+<li><code>spell_attrs [table]</code> 变化的技能属性</li>
+</ul>
+<p>spell_attrs 是一个键值对集合， key 的含义参见下表</p>
+<pre><code>-- 技能属性 id -&gt; 描述
+spell.spell_attr_id_to_desc = {
+    [2] = &quot;需要魔法&quot;,
+    [4] = &quot;目标类型&quot;,
+    [10] = &quot;冷却时间&quot;,
+    [11] = &quot;充能时间&quot;,
+    [13] = &quot;激活&quot;,
+    [14] = &quot;等级限制&quot;,
+    [18] = &quot;堆叠次数&quot;,
+    [19] = &quot;是否显示堆叠次数&quot;,
+    [20] = &quot;槽位&quot;,
+    [21] = &quot;等级&quot;,
+    [22] = &quot;冷却模式&quot;,
+    [23] = &quot;充能最大次数&quot;,
+    [&quot;spell_id&quot;] = &quot;技能编号&quot;
+}
+
+</code></pre>
+
+<hr />
+<h3 id="on_spell_upgrade">on_spell_upgrade</h3>
+<p><strong>on_spell_upgrade(unique_id, spell_level)</strong></p>
+<p>技能升级事件</p>
+<h4 id="_24"><em>参数列表</em></h4>
+<ul>
+<li><code>unique_id [int]</code> 技能唯一 id</li>
+<li><code>spell_level [int]</code> 技能当前等级</li>
+</ul>
+<hr />
+<h3 id="on_add_spell">on_add_spell</h3>
+<p><strong>on_add_spell(unique_id , spell_attrs)</strong></p>
+<p>添加技能（或物品）事件</p>
+<h4 id="_25"><em>参数列表</em></h4>
+<ul>
+<li><code>unique_id [int]</code> 技能唯一 id</li>
+<li><code>spell_attrs [table]</code> 技能属性集合</li>
+</ul>
+<hr />
+<h3 id="on_remove_spell">on_remove_spell</h3>
+<p><strong>on_remove_spell(removed_spells)</strong></p>
+<p>删除技能事件</p>
+<h4 id="_26"><em>参数列表</em></h4>
+<ul>
+<li><code>removed_spells [array]</code> 删除的技能数组</li>
+</ul>
+<p>例子：</p>
+<pre><code>for index, spells in pairs(removed_spells) do
+    for unique_id, spell_id in pairs(spells) do
+        -- unique_id spell_id 分别对应技能唯一 id 和技能编号
+    end
+end
+
+</code></pre>
+
+<hr />
+<h3 id="on_spell_stack_change">on_spell_stack_change</h3>
+<p><strong>on_spell_stack_change(unique_id, spell_attrs)</strong></p>
+<p>技能层数变化</p>
+<h4 id="_27"><em>参数列表</em></h4>
+<ul>
+<li><code>unque_id [int]</code> 技能唯一 id</li>
+<li><code>spell_attrs [table]</code> 技能属性</li>
+</ul>
+<hr />
+<h3 id="on_spell_slot_changed">on_spell_slot_changed</h3>
+<p><strong>on_spell_slot_changed(unique_id, source_slot, target_slot)</strong></p>
+<p>技能槽位变化</p>
+<h4 id="_28"><em>参数列表</em></h4>
+<ul>
+<li><code>unque_id [int]</code> 技能唯一 id</li>
+<li><code>source_slot [int]</code> 变化前的技能槽位</li>
+<li><code>target_slot [int]</code> 变化后的技能槽位</li>
+</ul>
+<hr />
+<h3 id="on_spell_cd_changed">on_spell_cd_changed</h3>
+<p><strong>on_spell_cd_changed(spell_unique_id, left_time, total_time, cd_type)</strong></p>
+<p>技能 CD 变化</p>
+<h4 id="_29"><em>参数列表</em></h4>
+<ul>
+<li><code>spell_unique_id [int]</code> 技能唯一 id</li>
+<li><code>left_time [int]</code> 剩余 CD 时间 (ms)</li>
+<li><code>total_time [int]</code> 总时间</li>
+<li><code>cd_type [int]</code> CD 类型<ul>
+<li>0 ：普通 CD</li>
+<li>1 ：充能 CD</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="on_spell_cd_finished">on_spell_cd_finished</h3>
+<p><strong>on_spell_cd_finished(spell_unique_id, cd_type)</strong></p>
+<p>技能 CD 结束</p>
+<h4 id="_30"><em>参数列表</em></h4>
+<ul>
+<li><code>spell_unique_id [int]</code> 技能唯一 id</li>
+<li><code>cd_type [int]</code> CD 类型<ul>
+<li>0 ：普通 CD</li>
+<li>1 ：充能 CD</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="on_spell_cast_start">on_spell_cast_start</h3>
+<p><strong>on_spell_cast_start(spell_id, left_time, total_time)</strong></p>
+<p>技能开始读条</p>
+<h4 id="_31"><em>参数列表</em></h4>
+<ul>
+<li><code>spell_id [int]</code> 技能编号</li>
+<li><code>left_time [int]</code> 剩余时间</li>
+<li><code>total_time [int]</code> 总时间</li>
+</ul>
+<hr />
+<h3 id="on_spell_cast_notify">on_spell_cast_notify</h3>
+<p><strong>on_spell_cast_notify(spell_id, left_time, total_time)</strong></p>
+<p>技能读条进度更新</p>
+<h4 id="_32"><em>参数列表</em></h4>
+<ul>
+<li><code>spell_id [int]</code> 技能编号</li>
+<li><code>left_time [int]</code> 剩余时间</li>
+<li><code>total_time [int]</code> 总时间</li>
+</ul>
+<hr />
+<h3 id="on_spell_cast_end">on_spell_cast_end</h3>
+<p><strong>on_spell_cast_end(spell_id, left_time, total_time)</strong></p>
+<p>技能终止读条</p>
+<h4 id="_33"><em>参数列表</em></h4>
+<ul>
+<li><code>spell_id [int]</code> 技能编号</li>
+<li><code>left_time [int]</code> 剩余时间</li>
+<li><code>total_time [int]</code> 总时间</li>
+</ul>
+<hr />
+<h3 id="on_spell_cast_break">on_spell_cast_break</h3>
+<p><strong>on_spell_cast_break(spell_id)</strong></p>
+<p>技能读条中断</p>
+<h4 id="_34"><em>参数列表</em></h4>
+<ul>
+<li><code>spell_id [int]</code> 技能编号</li>
+</ul>
+<hr />
+<h3 id="on_spell_cast_result">on_spell_cast_result</h3>
+<p><strong>on_spell_cast_result(error_message)</strong></p>
+<p>技能释放结果</p>
+<h4 id="_35"><em>参数列表</em></h4>
+<ul>
+<li><code>error_message [string]</code> 技能释放失败的错误信息</li>
+</ul>
+<hr />
+<h3 id="on_minimap_init">on_minimap_init</h3>
+<p><strong>on_minimap_init()</strong></p>
+<p>小地图初始化</p>
+<hr />
+<h3 id="on_minimap_clicked">on_minimap_clicked</h3>
+<p><strong>on_minimap_clicked(x, y)</strong></p>
+<p>小地图被左击</p>
+<h4 id="_36"><em>参数列表</em></h4>
+<ul>
+<li><code>x [int]</code> 小地图坐标 x</li>
+<li><code>y [int]</code> 小地图坐标 y</li>
+</ul>
+<hr />
+<h3 id="on_minimap_right_clicked">on_minimap_right_clicked</h3>
+<p><strong>on_minimap_right_clicked(x, y)</strong></p>
+<p>小地图被右击</p>
+<h4 id="_37"><em>参数列表</em></h4>
+<ul>
+<li><code>x [int]</code> 小地图坐标 x</li>
+<li><code>y [int]</code> 小地图坐标 y</li>
+</ul>
+<hr />
+<h3 id="on_minimap_signal_response">on_minimap_signal_response</h3>
+<p><strong>on_minimap_signal_response(type, x, y, unit_id, duration)</strong></p>
+<p>显示小地图信号</p>
+<h4 id="_38"><em>参数列表</em></h4>
+<ul>
+<li><code>type [int]</code> 信号类型</li>
+<li><code>x [int]</code> 小地图坐标 x</li>
+<li><code>y [int]</code> 小地图坐标 y</li>
+<li><code>unit_id [int]</code> 单位 id</li>
+<li><code>duration [int]</code> 持续时间</li>
+</ul>
+<p>信号类型的枚举：</p>
+<pre><code>local MINIMAP_SIGNAL_DEFEND_TOWER = 1
+local MINIMAP_SIGNAL_GATHER = 2
+local MINIMAP_SIGNAL_ATTACK = 3
+local MINIMAP_SIGNAL_RETREAT = 4
+local MINIMAP_SIGNAL_SOS = 5
+local MINIMAP_SIGNAL_ENEMY_DISAPPEAR = 6
+local MINIMAP_SIGNAL_COMING = 7
+</code></pre>
+
+<hr />
+<h3 id="on_minimap_show_spell_indicator">on_minimap_show_spell_indicator</h3>
+<p><strong>on_minimap_show_spell_indicator(x, y, radius)</strong></p>
+<p>小地图显示技能指示器</p>
+<h4 id="_39"><em>参数列表</em></h4>
+<ul>
+<li><code>x [int]</code> 小地图坐标 x</li>
+<li><code>y [int]</code> 小地图坐标 y</li>
+<li><code>radius [int]</code> 技能指示器半径</li>
+</ul>
+<hr />
+<h3 id="on_minimap_hide_spell_indicator">on_minimap_hide_spell_indicator</h3>
+<p><strong>on_minimap_hide_spell_indicator()</strong></p>
+<p>小地图隐藏技能指示器</p>
+<hr />
+<h3 id="on_minimap_show_hero_move_path">on_minimap_show_hero_move_path</h3>
+<p><strong>on_minimap_show_hero_move_path(path_info)</strong></p>
+<p>小地图显示英雄移动路径</p>
+<h4 id="_40"><em>参数列表</em></h4>
+<ul>
+<li><code>path_info [array]</code> 英雄在小地图上移动路径的数组，包含路径点的信息<ul>
+<li><code>x [int]</code> 路径点 x 坐标</li>
+<li><code>y [int]</code> 路径点 y 坐标</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="on_minimap_show_spell_indicator_1">on_minimap_show_spell_indicator</h3>
+<p><strong>on_minimap_show_spell_indicator(x, y, radius)</strong></p>
+<p>小地图显示技能指示器</p>
+<h4 id="_41"><em>参数列表</em></h4>
+<ul>
+<li><code>x [int]</code> 小地图坐标 x</li>
+<li><code>y [int]</code> 小地图坐标 y</li>
+<li><code>radius [int]</code> 技能指示器半径</li>
+</ul>
+<hr />
+<h3 id="on_show_unit_tip">on_show_unit_tip</h3>
+<p><strong>on_show_unit_tip(panel_visible, tip_title, tip_content, pos_x, pos_y)</strong></p>
+<p>显示单位tip
+在UnitData.ini里可配置</p>
+<pre><code>TipTitle=&quot;&lt;FONT COLOR='#0000ff'&gt;基础伤害&lt;/FONT&gt;&quot;
+TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉法基怎么办怎么办水利水电拉法基&lt;/FONT&gt;&quot;
+</code></pre>
+
+<p>来确定要显示的标题，内容，以及文字颜色</p>
+<h4 id="_42"><em>参数列表</em></h4>
+<ul>
+<li><code>panel_visible[bool]</code> 单位tip显示还是关闭</li>
+<li><code>tip_title [string]</code> tip 标题</li>
+<li><code>tip_content [string]</code> tip 内容</li>
+<li><code>pos_x [int]</code> 显示的屏幕坐标 x</li>
+<li><code>pos_y [int]</code> 显示的屏幕坐标 y</li>
+</ul>
+<hr />
+<h3 id="on_unit_destory">on_unit_destory</h3>
+<p><strong>on_unit_destory(unit_id)</strong></p>
+<p>单位销毁</p>
+<h4 id="_43"><em>参数列表</em></h4>
+<ul>
+<li><code>unit_id [int]</code> 单位 id</li>
+</ul>
+<hr />
+<h3 id="on_game_over_lobby_reward">on_game_over_lobby_reward</h3>
+<p><strong>on_game_over_lobby_reward(lobby_data_info)</strong></p>
+<p>大厅相关数据通知</p>
+<h4 id="_44"><em>参数列表</em></h4>
+<ul>
+<li><code>lobby_data_info [string]</code> 大厅战报数据</li>
+</ul>
+<hr />
+<h3 id="on_game_result">on_game_result</h3>
+<p><strong>on_game_result(result_info)</strong></p>
+<p>游戏结束数据通知</p>
+<h4 id="_45"><em>参数列表</em></h4>
+<ul>
+<li><code>result_info [string]</code> 游戏内战报数据</li>
+</ul>
+<hr />
+<h3 id="on_block_speak_res">on_block_speak_res</h3>
+<p><strong>on_block_speak_res(slot_id, result)</strong></p>
+<p>玩家禁言结果返回</p>
+<h4 id="_46"><em>参数列表</em></h4>
+<ul>
+<li><code>slot_id [int]</code> 玩家槽位id</li>
+<li><code>result [int]</code> 禁言结果返回(0成功，其他失败)</li>
+</ul>
+<hr />
+<h3 id="on_unblock_speak_res">on_unblock_speak_res</h3>
+<p><strong>on_unblock_speak_res(slot_id, result)</strong></p>
+<p>玩家解除禁言结果返回</p>
+<h4 id="_47"><em>参数列表</em></h4>
+<ul>
+<li><code>slot_id [int]</code> 玩家槽位id</li>
+<li><code>result [int]</code> 禁言结果返回(0成功，其他失败)</li>
+</ul>
+<hr />
+<h3 id="on_user_guide_notify">on_user_guide_notify</h3>
+<p><strong>on_user_guide_notify(msg_str)</strong></p>
+<p>新手引导流程通知</p>
+<h4 id="_48"><em>参数列表</em></h4>
+<ul>
+<li><code>msg_str [string]</code> 引导步骤消息内容</li>
+</ul>
+<hr />
+<h3 id="on_user_guide_showhide_shop">on_user_guide_showhide_shop</h3>
+<p><strong>on_user_guide_showhide_shop(bshop)</strong></p>
+<p>打开关闭商店通知</p>
+<h4 id="_49"><em>参数列表</em></h4>
+<ul>
+<li><code>bshop [bool]</code> 是否打开</li>
+</ul>
+<hr />
+<h3 id="on_user_move_target">on_user_move_target</h3>
+<p><strong>on_user_move_target(pos_x, pos_y)</strong></p>
+<p>移动到指定位置通知</p>
+<h4 id="_50"><em>参数列表</em></h4>
+<ul>
+<li><code>pos_x [number]</code> x 坐标</li>
+<li><code>pos_y [number]</code> y 坐标</li>
+</ul>
+<hr />
+<h3 id="on_disconnected">on_disconnected</h3>
+<p><strong>on_disconnected(error_code)</strong></p>
+<p>断开连接通知</p>
+<h4 id="_51"><em>参数列表</em></h4>
+<ul>
+<li><code>error_code [int]</code> 返回的errorcode</li>
+</ul>
+<hr />
+<h3 id="on_tower_attack_notify">on_tower_attack_notify</h3>
+<p><strong>on_tower_attack_notify(tower_id, tower_target_id)</strong></p>
+<p>被塔攻击的消息通知</p>
+<h4 id="_52"><em>参数列表</em></h4>
+<ul>
+<li><code>tower_id [int]</code> 塔的Id</li>
+<li><code>tower_target_id [int]</code> 塔攻击的目标Id</li>
+</ul>
+<hr />
+<h3 id="on_sound_play_finished">on_sound_play_finished</h3>
+<p><strong>on_sound_play_finished(sound_id)</strong></p>
+<p>声音播完的通知</p>
+<h4 id="_53"><em>参数列表</em></h4>
+<ul>
+<li><code>sound_id [string]</code> 播完的soundId</li>
+</ul>
+<hr />
+<h3 id="on_speech_channel_changed">on_speech_channel_changed</h3>
+<p><strong>on_speech_channel_changed(current_channel)</strong></p>
+<p>语音频道切换通知</p>
+<h4 id="_54"><em>参数列表</em></h4>
+<ul>
+<li><code>current_channel [int]</code> 当前语音频道</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../common/index.html" class="btn btn-neutral float-right" title="常用功能">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../game/index.html" class="btn btn-neutral" title="游戏接口"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../game/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../common/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

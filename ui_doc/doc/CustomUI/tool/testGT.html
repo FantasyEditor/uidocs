@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/codemirror.css" />
+    <link rel="stylesheet" href="css/neat.css" />
+    <link rel="stylesheet" href="css/preview.css" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon" id="map-name-label">地图名</span>
+                    <input type="text" class="form-control" id="map-name" aria-decribedby="map-name-label" value="10v10">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="load-map">加载</button>
+                    <span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon" id="json-file-name-label">JSON 文件</span>
+                    <input type="file" class="form-control" id="json-file-name" aria-decribedby="json-file-name-label">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon" id="width-label">界面宽</span>
+                    <input type="text" class="form-control" id="width" aria-decribedby="width-label" value="1920">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon" id="height-label">界面高</span>
+                    <input type="text" class="form-control" id="height" aria-decribedby="height-label" value="1080">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary pull-right" id="test-json" style="margin-right:10px">测试 json</button>
+                <button class="btn btn-primary pull-right" id="test-lua" style="margin-right:10px">测试 lua</button>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="auto-refresh"> 自动刷新
+                </label>
+            </div>
+        </div>
+
+        <div class="row" id="content">
+            <div class="col-md-8" id="frame-container">
+                <iframe src="" id="frame"></iframe>
+            </div>
+            <div class="col-md-4" id="code-container">
+            <textarea id="json-content" name="json-content">
+            // 这里可以直接输入 json 数据，也可以从 json 文件打开
+            {
+                "content": [
+                    {
+                        "type":"panel",
+                        "id":"test",
+                        "x":400,
+                        "y":400,
+                        "w":500,
+                        "h":500,
+                        "background_color":"rgba(255, 0, 0, 0.1)"
+                    }
+                ]
+            }        
+            </textarea>
+            <textarea id="lua-content" name="lua-content">
+            -- 这里可以输入测试用的 lua 代码
+            -- 可以使用 common.InvokeFrontEndMethod 调用前端接口
+
+            common.InvokeFrontEndMethod("hide", "test")
+            </textarea>
+            </div>
+        </div>
+        <textarea id="common" style="display:none">
+        common = {}
+        common.InvokeFrontEndMethod = function(...)
+            local arg = {...}
+            local str = "ui.Interface." .. arg[1] .. "("
+            for i, v in ipairs(arg) do
+                if i > 1 then
+                    str = str .. "\"" .. tostring(v) .. "\","
+                end
+            end
+            str = string.sub(str, 1, -2) .. ")"
+            js.global:eval(str)
+        end
+        </textarea>
+        <textarea id="timer" style="display:none">
+        -------------------------------------------
+        --  定时器
+        -------------------------------------------
+
+        timer = {}
+
+        timer.timers = {}
+
+        timer.last_delta = 0
+
+        timer.interval = 30
+
+        timer.large_value = 1000 * 60 * 60 * 60 * 24
+
+        -- 添加定时器
+        timer.add = function(key, total_time, process_callback, end_callback, user_data)
+
+            if total_time == nil then total_time = timer.large_value end
+            
+            timer.timers[key] = {
+                ["total_time"] = total_time, 
+                ["left_time"] = total_time, 
+                ["process_callback"] = process_callback,
+                ["end_callback"] = end_callback,
+                ["user_data"] = user_data
+            }
+            
+        end
+
+        -- 更新
+        timer.update = function(delta)
+
+            for key, timer_info in pairs(timer.timers) do
+
+                if timer_info["left_time"] - delta >= 0 then
+                    timer_info["left_time"] = timer_info["left_time"] - delta
+                else
+                    timer_info["left_time"] = 0
+                end
+
+                if timer_info["left_time"] == 0 then
+                    timer_info["end_callback"](timer_info["user_data"])
+                    timer.timers[key] = nil
+                else
+                    if timer_info["process_callback"] ~= nil then
+                        timer_info["process_callback"](timer_info["left_time"], timer_info["total_time"], timer_info["user_data"])
+                    end
+                end
+
+            end
+
+        end
+
+        -- 是否包含
+        timer.has_timer = function(key)
+            return timer.timers[key] ~= nil
+        end
+
+        -- 设置 user data
+        timer.set_user_data = function(key, user_data_key, value)
+            if timer.timers[key] == nil then return nil end
+            timer.timers[key]["user_data"][user_data_key] = value;
+        end
+
+        -- 修改进度
+        timer.set_process = function(key, left_time, total_time)
+
+            if timer.timers[key] ~= nil then
+                timer.timers[key]["left_time"] = left_time
+            end
+
+            if total_time ~= nil and timer.timers[key] ~= nil then
+                timer.timers[key]["total_time"] = total_time
+            end
+
+        end
+
+        -- 获取用户数据
+        timer.get_user_data = function(key)
+            if timer.timers[key] == nil then return nil end
+            return timer.timers[key]["user_data"]
+        end
+
+        -- 停止
+        timer.stop = function(key)
+            
+            if timer.timers[key] ~= nil then
+                timer.timers[key]["left_time"] = 0
+            end
+
+        end
+
+        js.global:setInterval(timer.update(30), 30)
+    </textarea>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid text-center">
+            <p class="navbar-text"><a href="../site/index.html" target="_blank">自定义界面文档</a></p>
+            <p class="navbar-text"><a href="../animation/Animate.css.html" target="_blank">动画效果示例</a></p>
+        </div>
+    </nav>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/lua.vm.js"></script>
+    <script src="js/codemirror.js"></script>
+    <script src="js/matchbrackets.js"></script>
+    <script src="js/javascript.js"></script>
+    <script src="js/lua.js"></script>
+    <script src="js/preview.js"></script>
+
+</body>
+
+</html>

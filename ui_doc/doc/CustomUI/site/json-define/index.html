@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>界面描述（json） - 自定义界面文档</title>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u754c\u9762\u63cf\u8ff0\uff08json\uff09";
+    var mkdocs_page_input_path = "json-define.md";
+    var mkdocs_page_url = "/json-define/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> 自定义界面文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">主页</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="index.html">界面描述（json）</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#hello-world">Hello world</a></li>
+    
+
+    <li class="toctree-l2"><a href="#uijson">通过 ui.json 文件创建界面</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_1">动态创建界面</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">通用属性</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">控件类型：面板</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">控件类型：按钮</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_5">控件类型：标签</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_6">控件类型：进度条</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_7">控件类型：圆形进度条</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_8">控件类型：画布</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_9">控件类型：按钮组</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_10">控件类型：视频</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_11">控件类型：输入框</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../front-end/index.html">界面接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../front-end-events/index.html">界面事件</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game/index.html">游戏接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../game-events/index.html">游戏事件</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../common/index.html">常用功能</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">自定义界面文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>界面描述（json）</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="hello-world">Hello world</h2>
+<p>自定义界面的相关信息用 json 来描述，json 中可以包含控件的类型、布局、父子关系等信息，也可以根据不同的控件类型指定一些控件特有的属性，如文本、背景图片、字体、颜色等。</p>
+<p>例如，下面的 json 描述了一个居中显示的带有一个确定按钮的对话框：</p>
+<pre><code>{
+    // type 指定控件类型是一个面板
+    // 每个控价对象必须包含这个属性，以确定控件类型
+    &quot;type&quot;: &quot;panel&quot;,
+
+    // 控件 id ，是控件的一个全局标识符，必须全局唯一
+    &quot;id&quot;: &quot;test_panel&quot;,
+
+    // 坐标及宽高
+    &quot;x&quot;: 0,
+    &quot;y&quot;: 0,
+    &quot;w&quot;: 400,
+    &quot;h&quot;: 400,
+
+    // 锚点布局，指定控件自己的锚点和父控件的锚点。对最底层控件而言，父控件是游戏窗口。
+    // 这里指定两个锚点为中心点 &quot;center&quot;，而 x 和 y 都为 0，代表面板和游戏窗口的中心重合。
+    &quot;parent_anchor&quot;: &quot;center&quot;,
+    &quot;self_anchor&quot;: &quot;center&quot;,
+
+    // 背景图片, 这个属于控件特有的属性，后面会列出各种控件都包含哪些属性
+    &quot;background_image&quot;: &quot;image/tips.png&quot;,
+
+    // 面板包含的子控件, 是一个数组，面板可以无限嵌套
+    &quot;children&quot;: [
+        {
+            &quot;type&quot; : &quot;button&quot;,
+            &quot;id&quot;: &quot;test_button&quot;,
+
+            // 这里没指定锚点，则 x, y 为相对父控件左上角的坐标
+            &quot;x&quot;: 250,
+            &quot;y&quot;: 320,
+            &quot;w&quot;: 100,
+            &quot;h&quot;: 30,
+            &quot;text&quot;: &quot;确定&quot;,
+            &quot;normal_image&quot;: &quot;image/button.png&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>对应的界面效果：
+<img alt="" src="../images/helloworld.png" />
+<a href="../images/helloworld.png">查看大图</a></p>
+<hr />
+<h2 id="uijson">通过 ui.json 文件创建界面</h2>
+<p>每张地图加载后都会读取 <code>CustomUI/Gaming/Scipt/ui.json</code> 创建一个默认界面。ui.json 的文件结构如下：</p>
+<pre><code>{
+    // 这是一个默认要显示的控件数组
+    &quot;content&quot;: [
+
+        // 这里可以包含上面所描述的控件的 json 信息
+        {
+            &quot;id&quot; : &quot;panel_1&quot;,
+            &quot;type&quot; : &quot;panel&quot;,
+
+            // 下略
+        },
+
+        // 可以包含多个控件
+        {
+            &quot;id&quot; : &quot;panel_2&quot;,
+            &quot;type&quot; : &quot;panel&quot;,
+
+            // 下略
+        }
+    ]
+}
+</code></pre>
+
+<p>以上面提到的对话框为例，如果想要在游戏一开始的时候显示对话款，可以将 ui.json 文件修改成这样:</p>
+<pre><code>{
+    &quot;content&quot;: [
+        {
+            // type 指定控件类型是一个面板
+            // 每个控价对象必须包含这个属性，以确定控件类型
+            &quot;type&quot;: &quot;panel&quot;,
+
+            // 控件 id ，是控件的一个全局标识符，必须全局唯一
+            &quot;id&quot;: &quot;test_panel&quot;,
+
+            // 坐标及宽高
+            &quot;x&quot;: 0,
+            &quot;y&quot;: 0,
+            &quot;w&quot;: 400,
+            &quot;h&quot;: 400,
+
+            // 锚点布局，指定控件自己的锚点和父控件的锚点。对最底层控件而言，父控件是游戏窗口。
+            // 这里指定两个锚点为中心点 &quot;center&quot;，而 x 和 y 都为 0，代表面板和游戏窗口的中心重合。
+            &quot;parent_anchor&quot;: &quot;center&quot;,
+            &quot;self_anchor&quot;: &quot;center&quot;,
+
+            // 背景图片, 这个属于控件特有的属性，后面会列出各种控件都包含哪些属性
+            &quot;background_image&quot;: &quot;image/tips.png&quot;,
+
+            // 面板包含的子控件, 是一个数组，面板可以无限嵌套
+            &quot;children&quot;: [
+                {
+                    &quot;type&quot; : &quot;button&quot;,
+                    &quot;id&quot;: &quot;test_button&quot;,
+
+                    // 这里没指定锚点，则 x, y 为相对父控件左上角的坐标
+                    &quot;x&quot;: 250,
+                    &quot;y&quot;: 320,
+                    &quot;w&quot;: 100,
+                    &quot;h&quot;: 30,
+                    &quot;text&quot;: &quot;确定&quot;,
+                    &quot;normal_image&quot;: &quot;image/button.png&quot;
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+
+<p>默认布局文件的文件名 ui.json 是可以更改的，参见 <code>CustomUI/Gaming/Script/config.lua</code> 中加载 json 文件的代码，你可以将它修改为其他 json 文件：
+<img alt="" src="../images/json_path.png" /></p>
+<hr />
+<h2 id="_1">动态创建界面</h2>
+<p>一些界面接口提供动态添加界面的功能，如 <code>add_child</code>、<code>set_tooltip</code> 等。</p>
+<p>这些接口一般要求提供一个 json 字符串作为参数，这个 json 中定义的属性和上面提到的 json 定义是一致的。</p>
+<p>例如，下面的 lua 代码是在选择英雄后，动态给面板添加 4 个技能框：</p>
+<pre><code>for i = 1 , 4 do
+
+    -- 技能按钮的 id 动态生成
+    name = &quot;spell_slot_&quot; .. i
+
+    -- 动态增加按钮的 x 坐标
+    main_x = icon_padding + (icon_width + icon_spacing) * (i - 1)
+
+    -- 注意，这里用 lua 的表记录界面信息，看上去清晰一些
+    -- 后面在调用界面接口时，用 json.encode 把 lua 的表结构转换成 json 字符串
+    control_info = {
+            type = &quot;button&quot;,
+            id = name,
+            x = main_x + 2,
+            y = 4,
+            w = icon_width,
+            h = icon_heigth,
+            z_index = 1002,
+            normal_image = &quot;image/HeroMainPanel/遮罩.png&quot;,
+            mask = &quot;image/HeroMainPanel/遮罩2.png&quot;,
+    }
+
+    -- 调用 add_child 接口，在技能面板中插入按钮
+    -- json.encode 方法将 table 转化成 json 字符串传给前端
+    common.InvokeFrontEndMethod(&quot;add_child&quot; , parent_panel , json.encode(control_info))
+end
+
+</code></pre>
+
+<hr />
+<h2 id="_2">通用属性</h2>
+<p>下面列出的属性是所有类型的控件都拥有的：</p>
+<ul>
+<li>
+<p><code>type [string]</code> 必填项，表明控件的类型，可以是以下值</p>
+<ul>
+<li><code>panel</code> 面板，一般作为其他空间的容器</li>
+<li><code>button</code> 按钮，包含显示技能冷却效果的功能</li>
+<li><code>label</code> 标签，用来显示文本、图片、播放动画</li>
+<li><code>progress_bar</code> 进度条，如血条</li>
+<li><code>rounded_progress_bar</code> 圆形进度条，如 5v5 的经验条</li>
+<li><code>canvas</code> 画布，可以在上面画线、矩形、圆形、动画等</li>
+<li><code>button_group</code> 按钮组，如背包</li>
+<li><code>video</code> 视频</li>
+<li><code>input</code> 输入框</li>
+</ul>
+</li>
+<li>
+<p><code>id [string]</code> 控件的 id，必填项，必须全局唯一，很多界面接口需要传入这个 id 作为控件唯一标识符</p>
+</li>
+<li><code>x [int]</code> <code>y [int]</code> 必填项，控件自身锚点相对于父控件锚点（如果是最顶层控件，那么则是相对于屏幕锚点）的坐标。如果没指定锚点，则是控件左上角相对于父控件左上角的坐标。可以为负数。</li>
+<li><code>w [int]</code> <code>h [int]</code> 控件的宽高</li>
+<li><code>z_index [int]</code> 控件的层级，这个值比较大的控件会显示在其他控件上面，取值 0 ~ 9999</li>
+<li><code>show [bool]</code> 控件刚创建时是否显示</li>
+<li><code>disable_mouse_through [bool]</code> 是否禁用鼠标穿透，如果设置为 true，鼠标在界面上移动及点击右键不会传递给游戏</li>
+<li><code>parent_anchor [string]</code> <code>self_anchor [string]</code> 父控件和子控件的锚点。可以为以下 9 个值之一：<ul>
+<li><code>top_left</code> <code>top_center</code> <code>top_right</code></li>
+<li><code>left_center</code> <code>center</code> <code>right_center</code></li>
+<li><code>bottom_left</code> <code>bottom_center</code> <code>bottom_right</code></li>
+</ul>
+</li>
+</ul>
+<pre><code>-- 举例：在距离屏幕右下角 (30,30) 处显示一个按钮，对应的 json 为
+{
+    &quot;x&quot; : -30,
+    &quot;y&quot; : -30,
+    &quot;w&quot; : 100,
+    &quot;h&quot; : 30,
+    &quot;parent_anchor&quot; : &quot;bottom_right&quot;,
+    &quot;self_anchor&quot; : &quot;bottom_right&quot;
+}
+
+</code></pre>
+
+<hr />
+<h2 id="_3">控件类型：面板</h2>
+<p>面板包含的属性如下：</p>
+<ul>
+<li><code>background_image [string]</code> 背景图片路径，用 / 分割，如 <code>"background_image": "image/HeroMainPanel/panel_2.png"</code>，其中 image 目录对应 CustomUI/Gaming/View/image ，资源图片都放在这个目录里面</li>
+<li><code>border_image_slice</code> <code>border_image_source</code> <code>border_image_width</code> 用于指定面板的九宫格切分，这样当面板大小变化时，面板的背景图片4个角不会被拉伸，4条边只会横向或纵向拉伸，避免图片失真。具体例子参见 5v5 的道具面板的 json 定义。</li>
+<li><code>grid_layout [bool]</code> 是否采用浮动布局。如果采用浮动布局，则面板的子控件中定义的 <code>x</code> <code>y</code> 属性失效，由面板按顺序自动排列所属的子控件。为浮动布局的面板添加子控件时，应该使用 <code>append_child</code> 方法。当子控件所占空间大于面板空间时，面板会显示滚动条。</li>
+<li><code>children [array]</code> 指定面板的子控件，面板的子控件可以是任意类型的控件。 </li>
+<li><code>base_line [string]</code> 仅当 panel 作为 tooltip 时有效，可选值：<code>top</code> <code>bottom</code> 。指定 tooltip 的对齐方式，是底部对齐还是顶部对齐。</li>
+<li><code>enable_scroll [bool]</code> 设置为 true 时，当 panel 中子控件区域超出 panel 大小时，会出现滚动条</li>
+<li><code>scroll_bar_color [string]</code> <code>scroll_bar_hover_color [string]</code> 滚动条颜色，分为通常状态和鼠标滑过时的状态</li>
+</ul>
+<hr />
+<h2 id="_4">控件类型：按钮</h2>
+<p>按钮控件的属性如下：</p>
+<ul>
+<li><code>normal_image [string]</code> 按钮图片路径</li>
+<li><code>hover_image [string]</code> 鼠标移到按钮上显示的图片</li>
+<li><code>active_image [string]</code> 鼠标点击按钮显示的图片</li>
+<li><code>disable_image [string]</code> 按钮禁用状态时的图片</li>
+<li><code>mask [string]</code> 遮罩图片，指定一张方形的背景图片和一张圆形的遮罩，可以将方形的背景图裁剪为圆形</li>
+<li><code>text [string]</code> 按钮的文本</li>
+<li><code>color [string]</code> 文本颜色，如 <code>#ff0000</code> 或 <code>rgba(255, 0, 0, 0.5)</code></li>
+<li><code>font_weight [string]</code> 文本粗细，可选项 <code>normal</code> 或 <code>bold</code></li>
+<li><code>font_family [string]</code> 字体，如 <code>Microsoft Yahei</code></li>
+<li><code>font_size [int]</code> 字体大小</li>
+<li><code>toggle [bool]</code> 指定为 true 时，此按钮为开关按钮</li>
+<li><code>toggle_image [string]</code> 仅当 <code>toggle</code> 为 true 时有效，为按钮关闭状态时的路径</li>
+</ul>
+<p>按钮控件也可以用来显示技能的冷却效果，相关属性如下：</p>
+<ul>
+<li><code>cool_down_show_text [bool]</code> 是否显示倒计时文本</li>
+<li><code>cool_down_font_size [string]</code> 倒计时文本字体大小</li>
+<li><code>cool_down_revert [bool]</code> 冷却效果默认顺时针转动，将这个属性设置成 true 时，冷却效果将反转。</li>
+</ul>
+<hr />
+<h2 id="_5">控件类型：标签</h2>
+<p>标签可以显示文本、图片或序列帧动画</p>
+<ul>
+<li><code>text [string]</code> 文本内容</li>
+<li><code>text_align [string]</code> 对齐方式 ： left，center，right</li>
+<li><code>vertical_align [string]</code> 垂直对齐方式，目前只支持垂直对齐 center</li>
+<li><code>line_height [int]</code> 行高</li>
+<li><code>color [string]</code> 文本颜色，如 <code>#ff0000</code> 或 <code>rgba(255, 0, 0, 0.5)</code></li>
+<li><code>font_weight [string]</code> 文本粗细，可选项 <code>normal</code> 或 <code>bold</code></li>
+<li><code>font_family [string]</code> 字体，如 <code>Microsoft Yahei</code></li>
+<li><code>font_size [int]</code> 字体大小</li>
+<li><code>border_image_slice</code> <code>border_image_source</code> <code>border_image_width</code> 和 panel 的对应属性功能一致</li>
+<li><code>mask [string]</code> 遮罩图片，指定一张方形的背景图片和一张圆形的遮罩，可以将方形的背景图裁剪为圆形</li>
+<li><code>enable_animation [bool]</code> 设置为 true 时，可以播放序列帧动画</li>
+<li><code>show_animation_last_frame [bool]</code> 播放序列帧时，是否停留在最后一帧</li>
+<li><code>has_tooltip [bool]</code> 设置为 true 时，鼠标移入时可以显示提示框</li>
+<li><code>model_view [bool]</code> 设置为 true 时，可以显示模型预览框</li>
+<li><code>animation_duration [number]</code> 设置使用 <code>show_with_animation</code> 和 <code>hide_with_animation</code> 播放动画时，动画的持续时间</li>
+</ul>
+<hr />
+<h2 id="_6">控件类型：进度条</h2>
+<p>默认情况下，进度条上会显示类似 <code>50/100</code> 的展示进度的文本。</p>
+<ul>
+<li><code>color [string]</code> 进度条上文本的颜色</li>
+<li><code>font_faimly [string]</code> 文本字体</li>
+<li><code>font_size [int]</code> 文本字体大小</li>
+<li><code>background_image [string]</code> 进度条背景图片</li>
+<li><code>show_text [bool]</code> 是否显示进度条文本</li>
+<li><code>head_animation [string]</code> 进度条头部的序列帧动画路径</li>
+<li><code>invert [bool]</code> 是否反向显示进度</li>
+</ul>
+<hr />
+<h2 id="_7">控件类型：圆形进度条</h2>
+<p>圆形进度条与进度条类似，只是表现形式不同，参见 5v5 技能面板的经验条。</p>
+<ul>
+<li><code>color [string]</code> 进度条的颜色</li>
+<li><code>mask_image [string]</code> 进度条的背景图片，根据当前进度会对这张图片进行裁剪</li>
+</ul>
+<hr />
+<h2 id="_8">控件类型：画布</h2>
+<p>画布控件可用来绘制简单的图形。</p>
+<ul>
+<li><code>backgroun_color [string]</code> 背景色</li>
+</ul>
+<hr />
+<h2 id="_9">控件类型：按钮组</h2>
+<p>按钮组包含一系列按表格布局的按钮，如背包</p>
+<ul>
+<li><code>item_count [int]</code> 按钮组中的按钮数量</li>
+<li><code>item_width [int]</code> 按钮组中按钮的宽度</li>
+<li><code>item_height [int]</code> 按钮组中按钮的高度</li>
+<li><code>item_background_image [string]</code> 按钮组空格子的背景图</li>
+</ul>
+<hr />
+<h2 id="_10">控件类型：视频</h2>
+<p>视频控件用来播放 <code>webm</code> 格式的视频</p>
+<ul>
+<li><code>video_path [string]</code> 视频文件的路径</li>
+</ul>
+<hr />
+<h2 id="_11">控件类型：输入框</h2>
+<p>用于输入文字</p>
+<ul>
+<li><code>border_width [number]</code> 边框宽度</li>
+<li><code>border_color [string]</code> 边框颜色</li>
+<li><code>text_align [string]</code> 对齐方式 ： left，center，right</li>
+<li><code>color [string]</code> 文本颜色，如 <code>#ff0000</code> 或 <code>rgba(255, 0, 0, 0.5)</code></li>
+<li><code>font_weight [string]</code> 文本粗细，可选项 <code>normal</code> 或 <code>bold</code></li>
+<li><code>font_family [string]</code> 字体，如 <code>Microsoft Yahei</code></li>
+<li><code>font_size [int]</code> 字体大小</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../front-end/index.html" class="btn btn-neutral float-right" title="界面接口">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="主页"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../front-end/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

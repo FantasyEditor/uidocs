@@ -1,0 +1,51 @@
+html,
+body {
+    font-family: "Microsoft Yahei";
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+body {
+    height: 90%;
+    padding-top: 10px;
+}
+
+#footer {
+    margin: 10px auto;
+    width: 800px;
+    text-align: center;
+}
+
+.form-inline {
+    margin-left: 10px;
+}
+
+.CodeMirror {
+    border: 1px solid #aaaaaa;
+    margin-top: 10px;
+    margin-right: 10px;
+    height: calc(50% - 5px) !important;
+    width: auto;
+}
+
+.form-group {
+    display: inline;
+}
+
+#content {
+    height: 800px;
+}
+
+#frame-container, #code-container{
+    height: 100%;
+}
+
+#frame {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #aaaaaa;
+    margin-top: 10px;
+    display: block;
+    overflow: auto;
+}

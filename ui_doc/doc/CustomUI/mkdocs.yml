@@ -1,0 +1,11 @@
+site_name: 自定义界面文档
+pages:
+  - 主页: index.md
+  - 界面描述（json）: json-define.md
+  - 界面接口: front-end.md
+  - 界面事件: front-end-events.md
+  - 游戏接口: game.md
+  - 游戏事件: game-events.md
+  - 常用功能: common.md
+theme: readthedocs
+use_directory_urls: false
