@@ -1,4 +1,6 @@
 site_name: 自定义界面文档
+docs_dir: src
+site_dir: docs
 pages:
   - 主页: index.md
   - 界面描述（json）: json-define.md
