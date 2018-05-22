@@ -246,6 +246,8 @@ common.InvokeFrontEndMethod("set_text", "label", "测试文本")
 
 这个接口是异步的，前端会派发事件 `on_get_control_rect` 给 lua，控件的位置和宽高作为事件的参数传给用户
 
+[注意] 在移动平台是get_control_rect(InWidgetID), 会立即返回 {x, y, w, h}
+
 #### _参数列表_
 
 * `control_id [string]` 控件 id
@@ -692,5 +694,23 @@ common.InvokeFrontEndMethod("set_text", "label", "测试文本")
         - `x [number]` `y [number]` 矩形起点坐标或圆形圆心坐标
         - `r [number]` 圆形半径
         - `w [number]` `h [number]` 矩形宽高
+
+---
+
+### find_children_by_type
+
+**find_children_by_type(InWidgetID, InParams)**
+
+返回给定控件的子控件ID列表, 第一个参数是容器控件ID, 第二控件类型以及可选参数构成的表,如果为空,则返回全部子控件.可以指定是否递归查询, 默认开启递归查询
+这里之所以用表作为参数,是为了接口一致性,确保从comon.InvokeFunction()调用不会出错
+
+例如 find_children_by_type("Spell_Panel_Canvas", {"Button", false})  是非递归查询Spell_Panel_Canvas里面的所有Button
+
+#### _参数列表_
+
+* `InWidgetID [string]` 一个 字符串，是要查找的容器控件ID
+* `InParams[table]`
+	- `WidgetType[string]` 要查找的子控件的类型
+	- `FullSearch[bool]` 是否递归查找
 
 ---
