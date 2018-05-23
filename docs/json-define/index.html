@@ -96,6 +96,21 @@
     <li class="toctree-l2"><a href="#_11">控件类型：输入框</a></li>
     
 
+    <li class="toctree-l2"><a href="#virtualjoystick">控件类型：摇杆(VirtualJoystick)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#verticalbox">控件类型：垂直排列面板VerticalBox</a></li>
+    
+
+    <li class="toctree-l2"><a href="#horizontalbox">控件类型：水平排列面板HorizontalBox</a></li>
+    
+
+    <li class="toctree-l2"><a href="#wrapbox">控件类型：自动换行排版面板WrapBox</a></li>
+    
+
+    <li class="toctree-l2"><a href="#scrollbox">控件类型：滚动框排版面板ScrollBox</a></li>
+    
+
     </ul>
 	    </li>
           
@@ -382,6 +397,9 @@ end
 <li><code>font_size [int]</code> 字体大小</li>
 <li><code>toggle [bool]</code> 指定为 true 时，此按钮为开关按钮</li>
 <li><code>toggle_image [string]</code> 仅当 <code>toggle</code> 为 true 时有效，为按钮关闭状态时的路径</li>
+<li><code>outline_Image [string]</code> [目前只在移动平台使用]额外的图片属性,通常用于給技能按钮设置一个圆形的环</li>
+<li><code>Brush_Percent [float]</code> [目前只在移动平台使用]设置图片在控件上的比例[0.1, 1.0],默认0.9,通常跟技能的圆形环配合,即按钮最边缘是0.1宽度(相对于按钮自身的半径比例)的环,环内部是0.9直径的技能Icon</li>
+<li><code>Ignore_TouchMove [bool]</code> [目前只在移动平台使用]是否忽略TouchMove事件,默认为true</li>
 </ul>
 <p>按钮控件也可以用来显示技能的冷却效果，相关属性如下：</p>
 <ul>
@@ -461,6 +479,34 @@ end
 <li><code>font_family [string]</code> 字体，如 <code>Microsoft Yahei</code></li>
 <li><code>font_size [int]</code> 字体大小</li>
 </ul>
+<h2 id="virtualjoystick">控件类型：摇杆(VirtualJoystick)</h2>
+<p>[目前只能在移动平台使用]用于移动平台的交互</p>
+<ul>
+<li><code>Background_Image [string]</code> 摇杆的背景图片,需要一个正方形图片(通常会设置为一个有圆形图形内容的图片,因为摇杆一般都是圆形的)</li>
+<li><code>Thumb_Image [string]</code> 跟随手指移动的小图片,需要一个正方形图片(通常会设置为一个有圆形图形内容的图片)</li>
+<li><code>Thumb_Size [float]</code> 跟随手指移动的小图片的大小： 数据范围在[0.1, 0.9], 即小图片的半径相对于整个控件的比例,默认为0.4</li>
+<li><code>Background_Size [float]</code> 背景图片的大小: 数据范围在[0.1, 0.9], 即背景图片的半径相对于整个控件的比例,默认为1.0. 通常不需要设置这个属性,除非你希望摇杆本身能跟随手指第一次触摸时调自动调整位置</li>
+<li><code>Auto_Position [bool]</code> 摇杆是否根据手指第一次点击位置自动调整位置，需要配合Background_Size使用, 默认false</li>
+</ul>
+<h2 id="verticalbox">控件类型：垂直排列面板VerticalBox</h2>
+<p>[目前只能在移动平台使用]用于垂直排列若干子控件</p>
+<h2 id="horizontalbox">控件类型：水平排列面板HorizontalBox</h2>
+<p>[目前只能在移动平台使用]用于水平排列若干子控件</p>
+<h2 id="wrapbox">控件类型：自动换行排版面板WrapBox</h2>
+<p>[目前只能在移动平台使用]用于自动排列若干子控件
+默认是水平排列若干子控件,当一行无法容纳更多子控件时,自动将后续子控件排版在下一行</p>
+<ul>
+<li><code>SlotPaddingX [number]</code> 列间距</li>
+<li><code>SlotPaddingY [number]</code> 行间距</li>
+<li><code>WrapWidth [number]</code> 在指定宽度位置换行</li>
+<li><code>ExplicitWrapWidth [bool]</code> 是否禁用实时自动排版,默认是开启的.如果需要实现自由改变面板大小,并及时正确排版,需要指明此属性为false,如果面板大小很少改变大小,则应该使用默认值</li>
+</ul>
+<h2 id="scrollbox">控件类型：滚动框排版面板ScrollBox</h2>
+<p>[目前只能在移动平台使用]用于带滚动效果的面板,当面板可视区域内无法容纳更多子控件时可以滚动以显示更多的控件</p>
+<ul>
+<li><code>Orientation [int]</code> 滚动方向,默认是垂直方向(1), 可根据需要改为水平方向</li>
+<li><code>ScrollBar_Visible [bool]</code> 是否显示滚动条,滚动条的可见性不影响面板内容可否滚动</li>
+</ul>
               
             </div>
           </div>
@@ -485,12 +531,12 @@ end
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -504,7 +550,10 @@ end
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
     <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
 
 </body>
 </html>

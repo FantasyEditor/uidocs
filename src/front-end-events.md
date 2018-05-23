@@ -83,6 +83,54 @@ end
 
 ---
 
+### button_touch_started
+
+**on_button_touch_started(button_id, localPosX, localPosY)**
+
+按下按钮
+
+[只在移动平台使用]因移动平台以手指触控操作为主,没有鼠标的概念,故与PC平台的事件分开. 表示刚开始按下按钮,此时会捕获焦点
+
+#### _参数列表_
+
+- `button_id [string]` 按钮控件的 id
+- `localPosX [number]` 按下位置在按钮控件的本地坐标X
+- `localPosY [number]` 按下位置在按钮控件的本地坐标Y
+
+---
+
+### button_touch_moved
+
+**on_button_touch_moved(button_id, localPosX, localPosY)**
+
+在按钮上滑动
+
+[只在移动平台使用]因移动平台以手指触控操作为主,没有鼠标的概念,故与PC平台的事件分开. 表示在按钮上的滑动操作,按钮会持有焦点,因此手指离开按钮区域,仍然可以接受到move事件
+
+#### _参数列表_
+
+- `button_id [string]` 按钮控件的 id
+- `localPosX [number]` 手指位置在按钮控件的本地坐标X
+- `localPosY [number]` 手指位置在按钮控件的本地坐标Y
+
+---
+
+### button_touch_ended
+
+**on_button_touch_ended(button_id, localPosX, localPosY)**
+
+松开按钮
+
+[只在移动平台使用]因移动平台以手指触控操作为主,没有鼠标的概念,故与PC平台的事件分开. 表示手指离开屏幕,松开按钮(不是手指离开按钮控件区域)
+
+#### _参数列表_
+
+- `button_id [string]` 按钮控件的 id
+- `localPosX [number]` 手指位置在按钮控件的本地坐标X
+- `localPosY [number]` 手指位置在按钮控件的本地坐标Y
+
+---
+
 ### label_mouse_enter
 
 **on_label_mouse_enter(label_id)**
@@ -247,3 +295,65 @@ end
 ---
 
 
+### joystick_touch_started
+
+**on_joystick_touch_started(Joystick_id, DirX, DirY)**
+
+开始按下摇杆
+
+[只在移动平台使用] 按下摇杆后会捕获焦点,即使手指离开控件视觉范围,依然可以滑动摇杆
+#### _参数列表_
+
+- `Joystick_id [string]` 摇杆 id
+- `DirX [number]` 摇杆的操作方向X [0.0, 1.0]
+- `DirY [number]` 摇杆的操作方向Y [0.0, 1.0]
+
+
+```
+                (0.0, -1.0)
+                    上
+                    |
+                    |
+                    |
+(-1.0, 0.0左)一一一摇杆中心(0.0, 0.0)一一一右(1.0, 0.0) 
+                    |
+                    |
+                    |
+                    下
+                (0.0, 1.0)
+```
+
+---
+
+
+### joystick_touch_moved
+
+**on_joystick_touch_moved(Joystick_id, DirX, DirY)**
+
+滑动摇杆
+
+[只在移动平台使用] 持有焦点,无论手指是否在摇杆控件可视范围内,都能收到滑动事件
+#### _参数列表_
+
+- `Joystick_id [string]` 摇杆 id
+- `DirX [number]` 摇杆的操作方向X [0.0, 1.0]
+- `DirY [number]` 摇杆的操作方向Y [0.0, 1.0]
+
+                
+---
+
+### joystick_touch_ended
+
+**on_joystick_touch_ended(Joystick_id, DirX, DirY)**
+
+松开摇杆(手指离开屏幕,不是离开摇杆控件范围)
+
+[只在移动平台使用]
+#### _参数列表_
+
+- `Joystick_id [string]` 摇杆 id
+- `DirX [number]` 摇杆的操作方向X [0.0, 1.0]
+- `DirY [number]` 摇杆的操作方向Y [0.0, 1.0]
+
+                
+---

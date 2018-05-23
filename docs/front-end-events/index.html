@@ -81,6 +81,12 @@
         
             <li><a class="toctree-l3" href="#button_mouse_leave">button_mouse_leave</a></li>
         
+            <li><a class="toctree-l3" href="#button_touch_started">button_touch_started</a></li>
+        
+            <li><a class="toctree-l3" href="#button_touch_moved">button_touch_moved</a></li>
+        
+            <li><a class="toctree-l3" href="#button_touch_ended">button_touch_ended</a></li>
+        
             <li><a class="toctree-l3" href="#label_mouse_enter">label_mouse_enter</a></li>
         
             <li><a class="toctree-l3" href="#label_mouse_leave">label_mouse_leave</a></li>
@@ -106,6 +112,12 @@
             <li><a class="toctree-l3" href="#panel_mouse_leave">panel_mouse_leave</a></li>
         
             <li><a class="toctree-l3" href="#panel_clicked">panel_clicked</a></li>
+        
+            <li><a class="toctree-l3" href="#joystick_touch_started">joystick_touch_started</a></li>
+        
+            <li><a class="toctree-l3" href="#joystick_touch_moved">joystick_touch_moved</a></li>
+        
+            <li><a class="toctree-l3" href="#joystick_touch_ended">joystick_touch_ended</a></li>
         
         </ul>
     
@@ -223,10 +235,43 @@ end
 <li><code>button_id [string]</code> 按钮控件的 id</li>
 </ul>
 <hr />
+<h3 id="button_touch_started">button_touch_started</h3>
+<p><strong>on_button_touch_started(button_id, localPosX, localPosY)</strong></p>
+<p>按下按钮</p>
+<p>[只在移动平台使用]因移动平台以手指触控操作为主,没有鼠标的概念,故与PC平台的事件分开. 表示刚开始按下按钮,此时会捕获焦点</p>
+<h4 id="_7"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮控件的 id</li>
+<li><code>localPosX [number]</code> 按下位置在按钮控件的本地坐标X</li>
+<li><code>localPosY [number]</code> 按下位置在按钮控件的本地坐标Y</li>
+</ul>
+<hr />
+<h3 id="button_touch_moved">button_touch_moved</h3>
+<p><strong>on_button_touch_moved(button_id, localPosX, localPosY)</strong></p>
+<p>在按钮上滑动</p>
+<p>[只在移动平台使用]因移动平台以手指触控操作为主,没有鼠标的概念,故与PC平台的事件分开. 表示在按钮上的滑动操作,按钮会持有焦点,因此手指离开按钮区域,仍然可以接受到move事件</p>
+<h4 id="_8"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮控件的 id</li>
+<li><code>localPosX [number]</code> 手指位置在按钮控件的本地坐标X</li>
+<li><code>localPosY [number]</code> 手指位置在按钮控件的本地坐标Y</li>
+</ul>
+<hr />
+<h3 id="button_touch_ended">button_touch_ended</h3>
+<p><strong>on_button_touch_ended(button_id, localPosX, localPosY)</strong></p>
+<p>松开按钮</p>
+<p>[只在移动平台使用]因移动平台以手指触控操作为主,没有鼠标的概念,故与PC平台的事件分开. 表示手指离开屏幕,松开按钮(不是手指离开按钮控件区域)</p>
+<h4 id="_9"><em>参数列表</em></h4>
+<ul>
+<li><code>button_id [string]</code> 按钮控件的 id</li>
+<li><code>localPosX [number]</code> 手指位置在按钮控件的本地坐标X</li>
+<li><code>localPosY [number]</code> 手指位置在按钮控件的本地坐标Y</li>
+</ul>
+<hr />
 <h3 id="label_mouse_enter">label_mouse_enter</h3>
 <p><strong>on_label_mouse_enter(label_id)</strong></p>
 <p>鼠标指针移入标签，一般在这个回调里调用 <code>set_tooltip</code> 显示提示信息</p>
-<h4 id="_7"><em>参数列表</em></h4>
+<h4 id="_10"><em>参数列表</em></h4>
 <ul>
 <li><code>label_id [string]</code> 标签控件的 id</li>
 </ul>
@@ -234,7 +279,7 @@ end
 <h3 id="label_mouse_leave">label_mouse_leave</h3>
 <p><strong>on_label_mouse_leave(label_id)</strong></p>
 <p>鼠标指针移出标签，一般在这个回调里调用 <code>remove_tooltip</code> 移除提示信息</p>
-<h4 id="_8"><em>参数列表</em></h4>
+<h4 id="_11"><em>参数列表</em></h4>
 <ul>
 <li><code>label_id [string]</code> 标签控件的 id</li>
 </ul>
@@ -242,7 +287,7 @@ end
 <h3 id="canvas_clicked">canvas_clicked</h3>
 <p><strong>on_canvas_clicked(canvas_id, x, y)</strong></p>
 <p>画布控件被点击</p>
-<h4 id="_9"><em>参数列表</em></h4>
+<h4 id="_12"><em>参数列表</em></h4>
 <ul>
 <li><code>canvas_id [string]</code> 画布控件的 id</li>
 <li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
@@ -251,7 +296,7 @@ end
 <h3 id="canvas_right_clicked">canvas_right_clicked</h3>
 <p><strong>on_canvas_right_clicked(canvas_id, x, y)</strong></p>
 <p>画布控件被右击</p>
-<h4 id="_10"><em>参数列表</em></h4>
+<h4 id="_13"><em>参数列表</em></h4>
 <ul>
 <li><code>canvas_id [string]</code> 画布控件的 id</li>
 <li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
@@ -260,7 +305,7 @@ end
 <h3 id="canvas_mousedown">canvas_mousedown</h3>
 <p><strong>on_canvas_mousedown(canvas_id, x, y)</strong></p>
 <p>画布控件被按下</p>
-<h4 id="_11"><em>参数列表</em></h4>
+<h4 id="_14"><em>参数列表</em></h4>
 <ul>
 <li><code>canvas_id [string]</code> 画布控件的 id</li>
 <li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
@@ -269,7 +314,7 @@ end
 <h3 id="canvas_mousemove">canvas_mousemove</h3>
 <p><strong>on_canvas_mousemove(canvas_id, x, y)</strong></p>
 <p>画布控件的move事件</p>
-<h4 id="_12"><em>参数列表</em></h4>
+<h4 id="_15"><em>参数列表</em></h4>
 <ul>
 <li><code>canvas_id [string]</code> 画布控件的 id</li>
 <li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
@@ -278,7 +323,7 @@ end
 <h3 id="canvas_mouseup">canvas_mouseup</h3>
 <p><strong>on_canvas_mouseup(canvas_id, x, y)</strong></p>
 <p>画布控件的move事件</p>
-<h4 id="_13"><em>参数列表</em></h4>
+<h4 id="_16"><em>参数列表</em></h4>
 <ul>
 <li><code>canvas_id [string]</code> 画布控件的 id</li>
 <li><code>x [int]</code> <code>y [int]</code> 点击时鼠标指针相对于画布左上角的坐标</li>
@@ -287,7 +332,7 @@ end
 <h3 id="input_text_changed">input_text_changed</h3>
 <p><strong>on_input_text_changed(input_id, text)</strong></p>
 <p>输入框文本改变</p>
-<h4 id="_14"><em>参数列表</em></h4>
+<h4 id="_17"><em>参数列表</em></h4>
 <ul>
 <li><code>input_id [string]</code> 输入框 id</li>
 <li><code>text [string]</code> 输入框文本</li>
@@ -296,7 +341,7 @@ end
 <h3 id="input_get_focus">input_get_focus</h3>
 <p><strong>on_input_get_focus(input_id)</strong></p>
 <p>输入框得到焦点</p>
-<h4 id="_15"><em>参数列表</em></h4>
+<h4 id="_18"><em>参数列表</em></h4>
 <ul>
 <li><code>input_id [string]</code> 输入框 id</li>
 </ul>
@@ -304,7 +349,7 @@ end
 <h3 id="input_lose_focus">input_lose_focus</h3>
 <p><strong>on_input_lose_focus(input_id)</strong></p>
 <p>输入框失去焦点</p>
-<h4 id="_16"><em>参数列表</em></h4>
+<h4 id="_19"><em>参数列表</em></h4>
 <ul>
 <li><code>input_id [string]</code> 输入框 id</li>
 </ul>
@@ -312,7 +357,7 @@ end
 <h3 id="panel_mouse_enter">panel_mouse_enter</h3>
 <p><strong>on_panel_mouse_move(panel_id)</strong></p>
 <p>鼠标进入面板</p>
-<h4 id="_17"><em>参数列表</em></h4>
+<h4 id="_20"><em>参数列表</em></h4>
 <ul>
 <li><code>panel_id [string]</code> 面板 id</li>
 </ul>
@@ -320,7 +365,7 @@ end
 <h3 id="panel_mouse_leave">panel_mouse_leave</h3>
 <p><strong>on_panel_mouse_move(panel_id)</strong></p>
 <p>鼠标进入面板</p>
-<h4 id="_18"><em>参数列表</em></h4>
+<h4 id="_21"><em>参数列表</em></h4>
 <ul>
 <li><code>panel_id [string]</code> 面板 id</li>
 </ul>
@@ -328,9 +373,55 @@ end
 <h3 id="panel_clicked">panel_clicked</h3>
 <p><strong>on_panel_clicked(panel_id)</strong></p>
 <p>面板被点击</p>
-<h4 id="_19"><em>参数列表</em></h4>
+<h4 id="_22"><em>参数列表</em></h4>
 <ul>
 <li><code>panel_id [string]</code> 面板 id</li>
+</ul>
+<hr />
+<h3 id="joystick_touch_started">joystick_touch_started</h3>
+<p><strong>on_joystick_touch_started(Joystick_id, DirX, DirY)</strong></p>
+<p>开始按下摇杆</p>
+<p>[只在移动平台使用] 按下摇杆后会捕获焦点,即使手指离开控件视觉范围,依然可以滑动摇杆</p>
+<h4 id="_23"><em>参数列表</em></h4>
+<ul>
+<li><code>Joystick_id [string]</code> 摇杆 id</li>
+<li><code>DirX [number]</code> 摇杆的操作方向X [0.0, 1.0]</li>
+<li><code>DirY [number]</code> 摇杆的操作方向Y [0.0, 1.0]</li>
+</ul>
+<pre><code>                (0.0, -1.0)
+                    上
+                    |
+                    |
+                    |
+(-1.0, 0.0左)一一一摇杆中心(0.0, 0.0)一一一右(1.0, 0.0) 
+                    |
+                    |
+                    |
+                    下
+                (0.0, 1.0)
+</code></pre>
+
+<hr />
+<h3 id="joystick_touch_moved">joystick_touch_moved</h3>
+<p><strong>on_joystick_touch_moved(Joystick_id, DirX, DirY)</strong></p>
+<p>滑动摇杆</p>
+<p>[只在移动平台使用] 持有焦点,无论手指是否在摇杆控件可视范围内,都能收到滑动事件</p>
+<h4 id="_24"><em>参数列表</em></h4>
+<ul>
+<li><code>Joystick_id [string]</code> 摇杆 id</li>
+<li><code>DirX [number]</code> 摇杆的操作方向X [0.0, 1.0]</li>
+<li><code>DirY [number]</code> 摇杆的操作方向Y [0.0, 1.0]</li>
+</ul>
+<hr />
+<h3 id="joystick_touch_ended">joystick_touch_ended</h3>
+<p><strong>on_joystick_touch_ended(Joystick_id, DirX, DirY)</strong></p>
+<p>松开摇杆(手指离开屏幕,不是离开摇杆控件范围)</p>
+<p>[只在移动平台使用]</p>
+<h4 id="_25"><em>参数列表</em></h4>
+<ul>
+<li><code>Joystick_id [string]</code> 摇杆 id</li>
+<li><code>DirX [number]</code> 摇杆的操作方向X [0.0, 1.0]</li>
+<li><code>DirY [number]</code> 摇杆的操作方向Y [0.0, 1.0]</li>
 </ul>
 <hr />
               
@@ -357,12 +448,12 @@ end
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -376,7 +467,10 @@ end
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
     <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
 
 </body>
 </html>
