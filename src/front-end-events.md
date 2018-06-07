@@ -89,7 +89,9 @@ end
 
 按下按钮
 
-[只在移动平台使用]因移动平台以手指触控操作为主,没有鼠标的概念,故与PC平台的事件分开. 表示刚开始按下按钮,此时会捕获焦点
+[只在移动平台使用]因移动平台以手指触控操作为主,没有鼠标的概念,故与PC平台的事件分开. 表示刚开始按下按钮,此时会捕获焦点. 
+
+[针对所有捕获焦点的控件,后文不再重复提示]在第一个手指按下(滑动)按钮期间,其他手指再次操作此按钮不会生效,即只会响应第一个按下的手指的事件
 
 #### _参数列表_
 
@@ -152,6 +154,50 @@ end
 #### _参数列表_
 
 - `label_id [string]` 标签控件的 id
+
+---
+
+### label_touch_started
+
+**on_label_touch_started(label_id, InLocalPosX, InLocalPosY)**
+
+[只在移动平台使用]开始按下标签,不捕获焦点!!!, 手指移动出界(离开标有效签范围)则收不到该标签的任何事件,多个手指连续点击标签的事件都会被响应
+
+#### _参数列表_
+
+- `label_id [string]` 标签控件的 id
+- `InLocalPosX [number]` 手指在标签的本地坐标X
+- `InLocalPosY [number]` 手指在标签的本地坐标Y
+- 
+---
+
+### label_touch_moved
+
+**on_label_touch_moved(label_id, InLocalPosX, InLocalPosY)**
+
+[只在移动平台使用]手指在标签上滑动(包括从标签之外的区域滑动进入标签区域)
+
+#### _参数列表_
+
+- `label_id [string]` 标签控件的 id
+- `InLocalPosX [number]` 手指在标签的本地坐标X
+- `InLocalPosY [number]` 手指在标签的本地坐标Y
+- 
+
+---
+
+### label_touch_ended
+
+**on_label_touch_ended(label_id, InLocalPosX, InLocalPosY)**
+
+[只在移动平台使用]手指标签上离开屏幕(不包括从标签区域滑动离开标签区域)
+
+#### _参数列表_
+
+- `label_id [string]` 标签控件的 id
+- `InLocalPosX [number]` 手指在标签的本地坐标X
+- `InLocalPosY [number]` 手指在标签的本地坐标Y
+- 
 
 ---
 
@@ -315,7 +361,7 @@ end
                     |
                     |
                     |
-(-1.0, 0.0左)一一一摇杆中心(0.0, 0.0)一一一右(1.0, 0.0) 
+(-1.0, 0.0)左一一一摇杆中心(0.0, 0.0)一一一右(1.0, 0.0) 
                     |
                     |
                     |

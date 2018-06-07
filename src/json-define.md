@@ -274,7 +274,7 @@ end
 - `has_tooltip [bool]` 设置为 true 时，鼠标移入时可以显示提示框
 - `model_view [bool]` 设置为 true 时，可以显示模型预览框
 - `animation_duration [number]` 设置使用 `show_with_animation` 和 `hide_with_animation` 播放动画时，动画的持续时间
-
+- `Capture_Touch [bool]` 是否捕获焦点, 设置为 true 时，则捕获焦点,即手指离开控件区域, 控件仍然可以接受手指滑动事件, 默认false
 ---
 
 ## 控件类型：进度条
