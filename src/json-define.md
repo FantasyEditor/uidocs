@@ -274,17 +274,11 @@ end
 - `has_tooltip [bool]` 设置为 true 时，鼠标移入时可以显示提示框
 - `model_view [bool]` 设置为 true 时，可以显示模型预览框
 - `animation_duration [number]` 设置使用 `show_with_animation` 和 `hide_with_animation` 播放动画时，动画的持续时间
-- `Capture_Touch [bool]` 是否捕获焦点, 设置为 true 时，则捕获焦点,即手指离开控件区域, 控件仍然可以接受手指滑动事件, 默认false
+- `Capture_Touch [bool]` [移动平台]是否捕获焦点, 设置为 true 时，则捕获焦点,即手指离开控件区域, 控件仍然可以接受手指滑动事件, 默认false
+- `rich_text[bool]` [移动平台]此控件是否为富文本控件,在移动普通,若要显示富文本,必须将这个属性设置true,默认false. 在移动平台富文本的字体和文本颜色只能通过富文本内容定义
+
 ---
 
-## 控件类型：富文本框(RichTextBlock)
-[注意]目前只在移动平台使用
-
-在移动平台上普通的标签不支持富文本显示,如要显示富文本(比如spell/buff的提示信息),则需要使用富文本控件
-
-- `text [string]` 文本内容
-- `text_align [string]` 对齐方式 ： left，center，right
----
 
 ## 控件类型：进度条
 
