@@ -44,6 +44,30 @@ local clien_spell_table = game.GetGameTable("ClientSpell")
 
 ---
 
+### CastSpellMobile
+
+**game.CastSpellMobile(spell_slot, world_location_x, world_location_y, world_location_z, target_unit_id)**
+[注意]目前只在移动平台使用
+
+请求释放技能（或使用物品)。对于需要在指定坐标释放的技能(如鹿目圆香--虹之雨)应当给出有效的世界坐标, 最后一个参数置为-1;
+对于单体目标技能(琦玉--一拳超人)应当给出有效目标单位id, 坐标的给出默认的0即可;
+对于方向技能(电磁炮)给出世界坐标即可,要求方向正确
+
+技能的槽位 0 ~ 99
+物品的槽位 100 ~ 199
+饰品的槽位 200 ~ 299
+隐藏技能的槽位 300 ~ 
+
+#### _参数列表_
+
+- `spell_slot [int]` 技能或物品的槽位
+- `world_location_x [float]` 技能的目标位置x
+- `world_location_y [float]` 技能的目标位置y
+- `world_location_z [float]` 技能的目标位置z
+- `target_unit_id [int]` 技能的目标是单位id
+
+---
+
 ### GetSpellDescription
 
 **game.GetSpellDescription(spell_unique_id, spell_id, spell_level)**

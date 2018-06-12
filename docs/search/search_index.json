@@ -912,7 +912,7 @@
         },
         {
             "location": "/game/index.html",
-            "text": "\u6e38\u620f\u63a5\u53e3\u7528\u6cd5\n\n\n\u5728 lua \u4ee3\u7801\u4e2d\u8c03\u7528 \ngame.\u63a5\u53e3\u540d(\u53c2\u65701, \u53c2\u65702, ...)\n, \u5982\n\n\ngame.CastSpell(1, true)\n\n\n\n\n\n\nGetGameTable\n\n\ngame.GetGameTable(table_name)\n\n\n\u83b7\u53d6\u6e38\u620f\u4e2d\u7684\u8868\u6570\u636e, \u8fd4\u56de\u503c\u662f\u4e00\u4e2a table \u7c7b\u578b\u7684\u6570\u636e\u7ed3\u6784\uff0c\u7528\u6cd5\uff1a\n\n\nlocal clien_spell_table = game.GetGameTable(\"ClientSpell\")\n\n\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\ntable_name [string]\n \u8868\u540d\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\ntable_data [table]\n \u5bf9\u5e94\u7684\u8868\u6570\u636e\n\n\n\n\n\n\nCastSpell\n\n\ngame.CastSpell(spell_slot, manual)\n\n\n\u8bf7\u6c42\u91ca\u653e\u6280\u80fd\uff08\u6216\u4f7f\u7528\u7269\u54c1)\u3002\n\n\n\u6280\u80fd\u7684\u69fd\u4f4d 0 ~ 99\n\u7269\u54c1\u7684\u69fd\u4f4d 100 ~ 199\n\u9970\u54c1\u7684\u69fd\u4f4d 200 ~ 299\n\u9690\u85cf\u6280\u80fd\u7684\u69fd\u4f4d 300 ~ \n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_slot [int]\n \u6280\u80fd\u6216\u7269\u54c1\u7684\u69fd\u4f4d\n\n\nmanual [bool]\n \u662f\u5426\u4e3a\u624b\u52a8\u91ca\u653e\u6280\u80fd\uff0c\u5982\u679c\u4e3a false \uff0c\u5219\u4e3a\u667a\u80fd\u65bd\u6cd5\n\n\n\n\n\n\nGetSpellDescription\n\n\ngame.GetSpellDescription(spell_unique_id, spell_id, spell_level)\n\n\n\u83b7\u53d6\u6280\u80fd\u63cf\u8ff0\u4fe1\u606f\uff0c\u8fd9\u4e2a\u63cf\u8ff0\u4fe1\u606f\u662f\u4f1a\u6839\u636e\u5f53\u524d\u4eba\u7269\u5c5e\u6027\u3001\u6280\u80fd\u7b49\u7ea7\u52a8\u6001\u53d8\u5316\u7684\u3002\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u6280\u80fd\u552f\u4e00 id\n\n\nspell_id [int]\n \u6280\u80fd id\n\n\nspell_level [int]\n \u6280\u80fd\u7b49\u7ea7\u3002\u65e0\u7b49\u7ea7\u8bbe\u5b9a\u7684\u6280\u80fd\u6216\u7269\u54c1\uff0c\u6b64\u503c\u4e3a 1\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nspell_desc [string]\n \u6280\u80fd\u63cf\u8ff0\n\n\nspell_detail [string]\n \u8be6\u7ec6\u63cf\u8ff0\n\n\nupgrade_desc [string]\n \u5347\u7ea7\u63cf\u8ff0\n\n\n\n\n\u4f8b\u5b50\uff1a\n\n\nlocal spell_unique_id = spell.slot_table[spell_slot]\nlocal spell_id = spell.get_spell_attr(spell_unique_id, \"\u6280\u80fd\u7f16\u53f7\")\nlocal spell_level = spell.get_spell_attr(spell_unique_id, \"\u7b49\u7ea7\")\nif spell_level == nil then spell_level = 1 end\n\n-- \u83b7\u53d6\u6280\u80fd\u63cf\u8ff0\nlocal spell_desc, spell_detail, upgrade_desc = \n    game.GetSpellDescription(spell_unique_id, spell_id, spell_level)\n\n\n\n\n\n\n\nShowSpellAssist\n\n\ngame.ShowSpellAssist(spell_slot, show, lock_direction)\n\n\n\u663e\u793a\u6216\u9690\u85cf\u6280\u80fd\u6307\u793a\u5668\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_slot [int]\n \u6280\u80fd\u69fd\u4f4d\n\n\nshow [bool]\n \u663e\u793a/\u9690\u85cf\n\n\nlock_direction [bool]\n \u662f\u5426\u9501\u5b9a\u6280\u80fd\u6307\u793a\u5668\u65b9\u5411\n\n\n\n\n\n\nRequestMoveItem\n\n\ngame.RequestMoveItem(spell_unique_id, target_slot)\n\n\n\u8bf7\u6c42\u79fb\u52a8\u6280\u80fd\u6216\u7269\u54c1\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u6280\u80fd\u552f\u4e00 id\n\n\ntarget_slot [int]\n \u60f3\u8981\u5c06\u6280\u80fd\u6216\u7269\u54c1\u79fb\u52a8\u5230\u54ea\u4e2a\u69fd\u4f4d\n\n\n\n\n\n\nRequestBuyItem\n\n\ngame.RequestBuyItem(item_desc)\n\n\n\u8bf7\u6c42\u8d2d\u4e70\u7269\u54c1\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nitem_desc [string]\n \u7269\u54c1\u63cf\u8ff0\n\n\n\n\n\u4f8b\u5b50\uff1a\n\n\ngame.RequestBuyItem(\"\u6781\u901f\u4e4b\u5f71\")\n\n\n\n\n\n\nRequestUnBuyItem\n\n\ngame.RequestUnBuyRequestUnBuyItem()\n\n\n\u8bf7\u6c42\u53d6\u6d88\u8d2d\u4e70\u7269\u54c1\n\n\n\n\nRequestSaleItem\n\n\ngame.RequestSaleItem(spell_unique_id)\n\n\n\u8bf7\u6c42\u5356\u51fa\u7269\u54c1\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u7269\u54c1\u552f\u4e00 id\n\n\n\n\n\n\nRequestUpgradeSpell\n\n\ngame.RequestUpgradeSpell(spell_unique_id)\n\n\n\u8bf7\u6c42\u5347\u7ea7\u6280\u80fd\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u6280\u80fd\u552f\u4e00 id\n\n\n\n\n\n\nSendCustomMessage\n\n\ngame.SendCustomMessage(message)\n\n\n\u53d1\u9001\u81ea\u5b9a\u4e49\u6d88\u606f\u7ed9\u670d\u52a1\u5668\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmessage [string]\n \u81ea\u5b9a\u4e49\u6d88\u606f\n\n\n\n\n\u670d\u52a1\u7aef\u811a\u672c\u8fd9\u6837\u63a5\u6536\u5ba2\u6237\u7aef\u53d1\u9001\u7684\u81ea\u5b9a\u4e49\u6d88\u606f\uff1a\n\n\nac.game:event('\u81ea\u5b9a\u4e49UI-\u6d88\u606f', function(_, player , msg)\n    -- do something\nend)\n\n\n\n\n\n\nSendChatMessage\n\n\ngame.SendChatMessage(message)\n\n\n\u53d1\u9001\u804a\u5929\u6d88\u606f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmessage [string]\n \u804a\u5929\u6d88\u606f\n\n\n\n\n\n\nGetPlayerList\n\n\ngame.GetPlayerList()\n\n\n\u83b7\u53d6\u73a9\u5bb6\u5217\u8868\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nplayer_list [array]\n \u8fd4\u56de\u73a9\u5bb6\u6570\u7ec4\uff0c\u5b58\u50a8\u7684\u5185\u5bb9\u4e3a\u73a9\u5bb6\u7684\u69fd\u4f4d(slot id)\n\n\n\n\n\n\nGetPlayerInfo\n\n\ngame.GetPlayerInfo(slot_id)\n\n\n\u6839\u636e\u69fd\u4f4d\u83b7\u53d6\u73a9\u5bb6\u4fe1\u606f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nslot_id [int]\n \u73a9\u5bb6\u7684\u69fd\u4f4d(slot id)\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nplayer_id [string]\n \u73a9\u5bb6 id\n\n\nplayer_name [string]\n \u73a9\u5bb6\u540d\n\n\nplayer_title [string]\n \u73a9\u5bb6\u5934\u8854\n\n\ncamp_id [int]\n \u9635\u8425\n\n\nonlie [bool]\n \u662f\u5426\u5728\u7ebf\n\n\nplayer_type [int]\n \u73a9\u5bb6\u7c7b\u578b\n\n\n\n\n\n\nGetMyPlayerInfo\n\n\ngame.GetMyPlayerInfo()\n\n\n\u83b7\u53d6\u81ea\u8eab\u4fe1\u606f\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nplayer_id [int]\n \u73a9\u5bb6 id\n\n\nplayer_name [string]\n \u73a9\u5bb6\u540d\n\n\nplayer_nick_name [string]\n \u6635\u79f0\n\n\n\n\n\n\nGetMyPlayerLocation\n\n\ngame.GetMyPlayerLocation()\n\n\n\u83b7\u53d6\u73a9\u5bb6\u5728\u5c0f\u5730\u56fe\u4e0a\u7684\u5750\u6807\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [float]\n \u73a9\u5bb6\u5728\u5c0f\u5730\u56fe\u4e0a\u7684 x \u5750\u6807\n\n\ny [float]\n \u73a9\u5bb6\u5728\u5c0f\u5730\u56fe\u4e0a\u7684 y \u5750\u6807\n\n\n\n\n\n\nGetMyPlayerState\n\n\ngame.GetMyPlayerState()\n\n\n\u83b7\u53d6\u73a9\u5bb6\u5f53\u524d\u72b6\u6001\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nstate [int]\n \u5f53\u524d\u72b6\u6001\n\n\n\n\n\u5355\u4f4d\u72b6\u6001\u7684\u679a\u4e3e\u503c\u5982\u4e0b\uff1a\n\n\n-- \u5355\u4f4d\u72b6\u6001\u679a\u4e3e\nlocal US_Idle = 1\nlocal US_Walking = 2\nlocal US_Attacking = 3\nlocal US_Dead = 4\nlocal US_Dizzy = 5\nlocal US_SpecialMoving = 6\nlocal US_BUILDING_PREPARE = 7\nlocal US_Relax = 8\n\n\n\n\n\n\nGetUnitLocation\n\n\ngame.GetUnitLocation(unit_id)\n\n\n\u83b7\u53d6\u5355\u4f4d\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_id [int]\n \u5355\u4f4d id\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u5355\u4f4d\u5750\u6807\n\n\n\n\n\n\nGetSocketLocation\n\n\ngame.GetSocketLocation(unit_id, socket_name)\n\n\n\u83b7\u53d6\u5355\u4f4d\u7ed1\u70b9\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_id [int]\n \u5355\u4f4d id\n\n\nsocket_name [string]\n \u7ed1\u70b9\u540d\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u7ed1\u70b9\u5750\u6807\n\n\n\n\n\n\nGetUnitFacing\n\n\ngame.GetUnitFacing(unit_id)\n\n\n\u83b7\u53d6\u5355\u4f4d\u671d\u5411\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_id [int]\n \u5355\u4f4d id\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nfacing [number]\n \u5355\u4f4d\u671d\u5411\n\n\n\n\n\n\nGetLineIntersection\n\n\ngame.GetLineIntersection(x1, y1, x2, y2)\n\n\n\u83b7\u53d6\u7ebf\u6bb5\u4e0e\u5730\u56fe\u78b0\u649e\u4ea4\u70b9\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx1 [number]\n \ny1 [number]\n \u8d77\u70b9\u5750\u6807\n\n\nx2 [number]\n \ny2 [number]\n \u7ec8\u70b9\u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \u78b0\u649e\u70b9\u5750\u6807\n\n\n\n\n\n\nGetLocationUnderCursor\n\n\ngame.GetLocationUnderCursor()\n\n\n\u83b7\u53d6\u9f20\u6807\u6307\u9488\u5bf9\u5e94\u7684\u4e16\u754c\u5750\u6807\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \u4e16\u754c\u5750\u6807\n\n\n\n\n\n\nScreenToWorld\n\n\ngame.ScreenToWorld(x, y)\n\n\n\u5c4f\u5e55\u5750\u6807\u8f6c\u6362\u6210\u4e16\u754c\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [number]\n \ny [number]\n \u5c4f\u5e55\u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u4e16\u754c\u5750\u6807\n\n\n\n\n\n\nWorldToScreen\n\n\ngame.WorldToScreen(x, y, z)\n\n\n\u4e16\u754c\u5750\u6807\u8f6c\u6210\u5c4f\u5e55\u5750\u6807\u8f6c\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [number]\n \ny [number]\n \ny [number]\n \u4e16\u754c\u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u5c4f\u5e55\u5750\u6807\n\n\n\n\n\n\nGetGameTime\n\n\ngame.GetGameTime()\n\n\n\u83b7\u53d6\u6e38\u620f\u65f6\u95f4\n\n\n\u8fd4\u56de\u503c\n\n\n\u5f53\u524d\u6e38\u620f\u65f6\u95f4(\u4ece\u8fdb\u5165\u6e38\u620f\u5f00\u59cb)\n\n\n\n\nGetDisplayTimeSigned\n\n\ngame.GetDisplayTimeSigned()\n\n\n\u83b7\u53d6\u6e38\u620f\u663e\u793a\u7684\u65f6\u95f4\u3002\n\u6e38\u620f\u5904\u4e8e\u5f00\u59cb\u524d\u7684\u5012\u8ba1\u65f6\u65f6\uff0c\u8fd4\u56de\u503c\u662f\u8d1f\u7684\u3002\n\u6e38\u620f\u5f00\u59cb\u540e\uff0c\u8fd4\u56de\u503c\u662f\u6b63\u6570\u3002\n\n\n\u8fd4\u56de\u503c\n\n\n\u6e38\u620f\u663e\u793a\u65f6\u95f4\n\n\n\n\nGetScreenResolution\n\n\ngame.GetScreenResolution()\n\n\n\u83b7\u53d6\u7a97\u53e3\u5206\u8fa8\u7387\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [int]\n \u7a97\u53e3\u5206\u8fa8\u7387 x\n\n\ny [int]\n \u7a97\u53e3\u5206\u8fa8\u7387 y\n\n\n\n\n\n\nGetHotKeyList\n\n\ngame.GetHotKeyList()\n\n\n\u83b7\u53d6\u5feb\u6377\u952e\u5217\u8868\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nhot_key_list [table]\n \u8fd4\u56de\u5feb\u6377\u952e\u5217\u8868\n\n\n\n\nhot_key_list \u7684\u7ed3\u6784\u5982\u4e0b:\n\n\nlocal hot_key_list = game.GetHotKeyList()\n\n-- spell_cast[1], spell_cast[2], spell_cast[3], spell_cast[4]\n-- \u5206\u522b\u5bf9\u5e94\u6280\u80fd 1\uff0c 2\uff0c 3\uff0c 4 \u7684\u5feb\u6377\u952e\nlocal spell_cast = hot_key_list[\"spell_cast\"]\n\n-- spell_quick_cast[1], spell_quick_cast[2], spell_quick_cast[3], spell_quick_cast[4]\n-- \u5206\u522b\u5bf9\u5e94\u6280\u80fd 1\uff0c 2\uff0c 3\uff0c 4 \u7684\u667a\u80fd\u65bd\u6cd5\u5feb\u6377\u952e\nlocal spell_quick_cast = hot_key_list[\"spell_quick_cast\"]\n\n-- \u7269\u54c1\u680f\u7684\u5feb\u6377\u952e\uff0c\u548c\u4e0a\u9762\u7c7b\u4f3c\nlocal item_cast = hot_key_list[\"item_cast\"]\n\n-- \u7269\u54c1\u680f\u7684\u5feb\u6377\u952e\uff0c\u548c\u4e0a\u9762\u7c7b\u4f3c\nlocal item_quick_cast = hot_key_list[\"item_quick_cast\"]\n\n-- \u83dc\u5355\u7684\u5feb\u6377\u952e\uff0c\u5e38\u7528\u7684\u5305\u62ec\uff1a\n-- \u622a\u5c4f 1 \n-- \u961f\u4f0d\u804a\u5929 2 \n-- \u9ed1\u5e97\u804a\u5929 3 \n-- \u663e\u793a/\u9690\u85cfUI 4 \n-- \u663e\u793a/\u9690\u85cf\u5c5e\u6027\u9762\u677f 10\n-- \u663e\u793a/\u9690\u85cf\u5546\u5e97 12\nlocal menu = hot_key_list[\"menu\"]\n\n-- \u955c\u5934\u7684\u5feb\u6377\u952e\uff0c\u5e38\u7528\u7684\u5305\u62ec:\n-- \u9501\u5b9a\u955c\u5934 1\n-- \u9009\u62e9\u82f1\u96c4 2\n-- \u5c06\u82f1\u96c4\u8bbe\u7f6e\u4e3a\u7126\u70b9 3\n-- \u6682\u505c/\u5f00\u59cb\u6e38\u620f 4\nlocal scene = hot_key_list[\"scene\"]\n\n\n\n\n\n\nToggleSettingPanel\n\n\ngame.ToggleSettingPanel()\n\n\n\u6253\u5f00/\u5173\u95ed\u8bbe\u7f6e\u9762\u677f\n\n\n\n\nToggleShopPanel\n\n\n\n\nExitGame\n\n\ngame.ExitGame()\n\n\n\u9000\u51fa\u6e38\u620f\n\n\n\n\nLockGameCursor\n\n\ngame.LockGameCursor()\n\n\n\u5728 tps \u6a21\u5f0f\u4e0b\uff0c\u663e\u793a\u9f20\u6807\u6307\u9488\n\n\n\n\nIsWatchingGame\n\n\ngame.IsWatchingGame()\n\n\n\u5224\u65ad\u662f\u5426\u5904\u4e8e\u89c2\u6218\u6a21\u5f0f\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nisWatching [bool]\n \u662f\u5426\u5904\u4e8e\u89c2\u6218\u6a21\u5f0f\n\n\n\n\n\n\nIsShipping\n\n\ngame.IsShipping()\n\n\n\u5ba2\u6237\u7aef\u662f\u5426\u4e3a shipping \u7248\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nisShipping [bool]\n \u662f\u5426\u4e3a shipping \u7248\n\n\n\n\n\n\nExecuteConsoleCommand\n\n\ngame.ExecuteConsoleCommand(command)\n\n\n\u6267\u884c\u63a7\u5236\u53f0\u547d\u4ee4\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\ncommand [string]\n \u63a7\u5236\u53f0\u547d\u4ee4\n\n\n\n\n\n\nSetEnableClickThrough\n\n\ngame.SetEnableClickThrough(enable)\n\n\n\u8bbe\u7f6e\u9f20\u6807\u53f3\u952e\u7a7f\u900f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nenable [string]\n \u9f20\u6807\u53f3\u952e\u662f\u5426\u7a7f\u900f\u5230\u754c\u9762\n\n\n\n\n\n\nShowMiniMap\n\n\ngame.ShowMiniMap()\n\n\n\u663e\u793a\u5c0f\u5730\u56fe\n\n\n\n\nHideMiniMap\n\n\ngame.HideMiniMap()\n\n\n\u9690\u85cf\u5c0f\u5730\u56fe\n\n\n\n\nUpdateMiniMap\n\n\ngame.UpdateMiniMap(x, y, w, h)\n\n\n\u4fee\u6539\u5c0f\u5730\u56fe\u5927\u5c0f\u53ca\u4f4d\u7f6e\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [int]\n \u6a2a\u8f74\u5750\u6807\n\n\ny [int]\n \u7eb5\u8f74\u5750\u6807\n\n\nw [int]\n \u5c0f\u5730\u56fe\u5bbd\u5ea6\n\n\nh [int]\n \u5c0f\u5730\u56fe\u9ad8\u5ea6\n\n\n\n\n\n\nSetMiniMapBackgroundImage\n\n\ngame.SetMiniMapBackgroundImage(iamge_path)\n\n\n\u8bbe\u7f6e\u5c0f\u5730\u56fe\u80cc\u666f\u56fe\u7247,\u56fe\u7247\u5fc5\u987b\u4e3a png \u683c\u5f0f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nimage_path [string]\n \u5c0f\u5730\u56fe\u80cc\u666f\u56fe\u7247\u8def\u5f84,\u80cc\u666f\u56fe\u7247\u9700\u8981\u653e\u5728 \nCustomUI\\Gaming\\MiniMap\n \u8def\u5f84\u4e0b\n\n\n\n\n\u4f8b\u5b50\uff1a\n\n\ngame.SetMiniMapBackgroundImage(\"Gaming/MiniMap/map.png\")\n\n\n\n\n\n\nMoveCameraToMiniMapPosition\n\n\ngame.MoveCameraToMiniMapPosition(x, y)\n\n\n\u79fb\u52a8\u955c\u5934\u5230\u6307\u5b9a\u5c0f\u5730\u56fe\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [int]\n \u5c0f\u5730\u56fe\u5750\u6807 x\n\n\ny [int]\n \u5c0f\u5730\u56fe\u5750\u6807 y\n\n\n\n\n\n\nMoveHeroToMiniMapPosition\n\n\ngame.MoveHeroToMiniMapPosition(x, y)\n\n\n\u79fb\u52a8\u82f1\u96c4\u5230\u6307\u5b9a\u5c0f\u5730\u56fe\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [int]\n \u5c0f\u5730\u56fe\u5750\u6807 x\n\n\ny [int]\n \u5c0f\u5730\u56fe\u5750\u6807 y\n\n\n\n\n\n\nRequestSendMiniMapSignal\n\n\ngame.RequestSendMiniMapSignal(singal_type, x, y)\n\n\n\u5728\u5c0f\u5730\u56fe\u4e0a\u663e\u793a\u4fe1\u53f7\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nsignal_type [int]\n \u4fe1\u53f7\u7c7b\u578b\n\n\nx [int]\n \u5c0f\u5730\u56fe\u5750\u6807 x\n\n\ny [int]\n \u5c0f\u5730\u56fe\u5750\u6807 y\n\n\n\n\n\u4fe1\u53f7\u7c7b\u578b\u679a\u4e3e\uff1a\n\n\n-- \u5c0f\u5730\u56fe\u4fe1\u53f7\u679a\u4e3e\nlocal MINIMAP_SIGNAL_DEFEND_TOWER = 1\nlocal MINIMAP_SIGNAL_GATHER = 2\nlocal MINIMAP_SIGNAL_ATTACK = 3\nlocal MINIMAP_SIGNAL_RETREAT = 4\nlocal MINIMAP_SIGNAL_SOS = 5\nlocal MINIMAP_SIGNAL_ENEMY_DISAPPEAR = 6\nlocal MINIMAP_SIGNAL_COMING = 7\n\n\n\n\n\n\nGetMiniMapCameraArea\n\n\ngame.GetMiniMapCameraArea()\n\n\n\u83b7\u53d6\u5c0f\u5730\u56fe\u4e0a\u5bf9\u5e94\u7684\u955c\u5934\u8303\u56f4\n\n\n\u8fd4\u56de\u503c\n\n\n\n\narea [array]\n \u5305\u542b 4 \u4e2a\u70b9\uff0c\u6bcf\u4e2a\u70b9\u5305\u542b x\u3001y \u5750\u6807\u3002\u8fd9\u56db\u4e2a\u70b9\u5bf9\u5e94\u7684\u56db\u8fb9\u5f62\u5373\u4e3a\u5c0f\u5730\u56fe\u4e0a\u5bf9\u5e94\u7684\u955c\u5934\u8303\u56f4 \n\n\n\n\n\n\n\n\nDisableCameraMove\n\n\ngame.DisableCameraMove(is_Disable)\n\n\n\u5173\u95ed\u9f20\u6807\u5728\u7a97\u53e3\u8fb9\u7f18\u65f6 \u955c\u5934\u4f1a\u79fb\u52a8\u7684\u63a5\u53e3\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nis_Disable [bool]\n true\u65f6 \u7981\u6b62\u955c\u5934\u79fb\u52a8 false\u65f6\u6062\u590d\n\n\n\n\n\n\nShowEffect\n\n\ngame.ShowEffect(effect_name, life_time)\n\n\n\u64ad\u653e\u7279\u6548\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\neffect_name [string]\n \u7279\u6548\u540d\n\n\nlife_time [int]\n \u6301\u7eed\u65f6\u95f4 (ms)\n\n\n\n\n\n\nClearCameraEffect\n\n\ngame.ClearCameraEffect()\n\n\n\u6e05\u9664\u955c\u5934\u7279\u6548\uff0c\u65e0\u53c2\u6570\n\n\n\n\nPlayEventParticle\n\n\ngame.PlayEventParticle(effect_name)\n\n\n\u64ad\u653e\u97f3\u6548\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\neffect_name [string]\n \u97f3\u6548\u540d\n\n\n\n\n\n\nSetSceneGray\n\n\ngame.SetSceneGray()\n\n\n\u4f7f\u5c4f\u5e55\u53d8\u7070\n\n\n\n\nAddModelToPreviewScene\n\n\ngame.AddModelToPreviewScene(hero_name, x, y, z)\n\n\n\u6dfb\u52a0\u9884\u89c8\u6a21\u578b\u5230\u6a21\u578b\u9884\u89c8\u63a7\u4ef6\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nhero_name [string]\n \u82f1\u96c4\u540d\n\n\nx [number]\n \u6a21\u578b x \u5750\u6807\n\n\ny [number]\n \u6a21\u578b y \u5750\u6807\n\n\nz [number]\n \u6a21\u578b z \u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\uff0c\u4f9b\u5220\u9664\u548c\u8bbe\u7f6e\u6a21\u578b\u7f29\u653e\u548c\u671d\u5411\u65f6\u4f7f\u7528\n\n\n\n\n\n\nRemoveModelFromPreviewScene\n\n\ngame.RemoveModelFromPreviewScene(model_id)\n\n\n\u5220\u9664\u9884\u89c8\u6a21\u578b\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\n\n\n\n\nSetModelPosInPreviewScene\n\n\ngame.SetModelPosInPreviewScene(model_id, scale, rotate)\n\n\n\u8bbe\u7f6e\u6a21\u578b\u7f29\u653e\u548c\u671d\u5411\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\nscale [number]\n \u7f29\u653e\u7cfb\u6570\uff0c\u5927\u4e8e 1 \u4ee3\u8868\u653e\u5927\uff0c\u5c0f\u4e8e 1 \u4ee3\u8868\u7f29\u5c0f\n\n\nrotate [number]\n \u8bbe\u7f6e\u6a21\u578b\u671d\u5411\uff0c\u53d6\u503c\u8303\u56f4 0 ~ 360\n\n\n\n\n\n\nSetModelLocationInPreviewScene\n\n\ngame.SetModelLocationInPreviewScene(model_id, x, y, z)\n\n\n\u8bbe\u7f6e\u6a21\u578b\u5728\u9884\u89c8\u573a\u666f\u4e2d\u7684\u4f4d\u7f6e\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u6a21\u578b\u5728\u9884\u89c8\u573a\u666f\u4e2d\u7684\u5750\u6807\n\n\n\n\n\n\nPlayAnimationInPreviewScene\n\n\ngame.PlayAnimationInPreviewScene(model_id, animation_name, speed, loop)\n\n\n\u4f7f\u9884\u89c8\u573a\u666f\u4e2d\u7684\u6a21\u578b\u64ad\u653e\u52a8\u753b\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\nanimation_name [string]\n \u52a8\u753b\u540d\n\n\nspeed [number]\n \u64ad\u653e\u901f\u5ea6\n\n\nloop [bool]\n \u662f\u5426\u5faa\u73af\u64ad\u653e\n\n\n\n\n\n\nStopAnimationInPreviewScene\n\n\ngame.StopAnimationInPreviewScene(model_id, animation_name)\n\n\n\u4f7f\u9884\u89c8\u573a\u666f\u4e2d\u7684\u6a21\u578b\u505c\u6b62\u64ad\u653e\u52a8\u753b\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\nanimation_name [string]\n \u52a8\u753b\u540d\n\n\n\n\n\n\nIsPlayerMute\n\n\ngame.IsPlayerMute(player_id)\n\n\n\u73a9\u5bb6\u662f\u5426\u88ab\u7981\u97f3\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nplayer_id [string]\n \u73a9\u5bb6id\n\n\n\n\n\n\nOnPlayerMute\n\n\ngame.OnPlayerMute(player_id, bMute)\n\n\n\u7981\u97f3\u73a9\u5bb6\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nplayer_id [string]\n \u73a9\u5bb6id\n\n\nbMute [bool]\n \u662f\u5426\u7981\u97f3\n\n\n\n\n\n\nRequestBlockPlayerSpeak\n\n\ngame.RequestBlockPlayerSpeak(slot, bBlock)\n\n\n\u8bf7\u6c42\u7981\u8a00\u73a9\u5bb6\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nslot [int]\n \u73a9\u5bb6\u69fd\u4f4did\n\n\nbBlock [bool]\n \u662f\u5426\u7981\u8a00\n\n\n\n\n\n\nIsPlayerBlock\n\n\ngame.IsPlayerBlock(slot)\n\n\n\u73a9\u5bb6\u662f\u5426\u88ab\u7981\u97f3\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nslot [int]\n \u73a9\u5bb6\u69fd\u4f4did\n\n\n\n\n\n\nPlayParticle\n\n\ngame.PlayParticle(x, y, z, scale)\n\n\n\u5728\u6307\u5b9a\u70b9\u64ad\u653eparticle\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [number]\n \u6a21\u578b x \u5750\u6807\n\n\ny [number]\n \u6a21\u578b y \u5750\u6807\n\n\nz [number]\n \u6a21\u578b z \u5750\u6807\n\n\nscale[number]\n \u7f29\u653e\u6bd4\u4f8b\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\npsc [int]\n \u521b\u5efa\u7684particle componet\u6307\u9488\n\n\n\n\n\n\nClearParticle\n\n\ngame.ClearParticle(psc)\n\n\n\u5728\u6307\u5b9a\u70b9\u64ad\u653eparticle\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\npsc [int]\n \u8981\u6e05\u6389\u7684particle componet\u6307\u9488\n\n\n\n\n\n\nCreateParticleUnit\n\n\ngame.CreateParticleUnit(x, y, z)\n\n\n\u521b\u5efa\u4e00\u4e2a\u7279\u6548\uff08\u9700\u8981\u4fdd\u5b58\u521b\u5efa\u7684\u7279\u6548\u5355\u4f4d\uff0c\u65b9\u4fbf\u9500\u6bc1\u548c\u79fb\u52a8\u7528\uff09\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nparticle_name [string]\n \u7279\u6548\u540d\u5b57(table/\u901a\u7528/ParticleData\u91cc\u9762\u914d\u7f6e)\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nunit [int]\n \u521b\u5efa\u7684particle\u5355\u4f4d\u6307\u9488\n\n\n\n\n\n\nDestoryParticleUnit\n\n\ngame.DestoryParticleUnit(unit)\n\n\n\u663e\u793a\u955c\u5934\u79fb\u52a8\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit [int]\n \u9700\u8981\u9500\u6bc1\u7684particle\u5355\u4f4d\n\n\n\n\n\n\nMoveParticleUnit\n\n\ngame.MoveParticleUnit(unit, x, y, z)\n\n\n\u521b\u5efa\u4e00\u4e2a\u7279\u6548\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit [int]\n \u9700\u8981\u79fb\u52a8\u7684particle\u5355\u4f4d\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\n\n\n\n\nCreateClientUnit\n\n\ngame.CreateClientUnit(type_id,x, y, z,facing)\n\n\n\u521b\u5efa\u4e00\u4e2a\u5ba2\u6237\u7aef\u5355\u4f4d\uff08\u53ea\u6709\u6a21\u578b\u663e\u793a\uff0c\u4e0d\u8dd1\u670d\u52a1\u7aef\uff0c\u53ea\u5b8c\u5168\u88ab\u5ba2\u6237\u7aef\u64cd\u63a7\u7684\u5355\u4f4d\uff09\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\ntype_id [int]\n \u5355\u4f4d\u7c7b\u578bid (UnitData.ini\u91cc\u9762\u914d\u7f6e\u7684\u5355\u4f4d\u7c7b\u578b)\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\nfacing [number]\n \u9762\u5411\u89d2\u5ea6\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nunit [int]\n \u5ba2\u6237\u7aef\u5355\u4f4d\u7684handle\n\n\n\n\n\n\nDestroyClientUnit\n\n\ngame.DestroyClientUnit(unit_handle)\n\n\n\u9500\u6bc1\u4e00\u4e2a\u5ba2\u6237\u7aef\u5355\u4f4d\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\n\n\n\n\nSetClientUnitLocation\n\n\ngame.SetClientUnitLocation(unit_handle,x, y, z)\n\n\n\u8bbe\u7f6e\u5ba2\u6237\u7aef\u5355\u4f4d\u7684\u4f4d\u7f6e (\u6539\u53d8\u663e\u793a\u7684\u4f4d\u7f6e)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\n\n\n\n\nGetClientUnitLocation\n\n\ngame.GetClientUnitLocation(unit_handle,x, y, z)\n\n\n\u83b7\u53d6\u5ba2\u6237\u7aef\u5355\u4f4d\u7684\u4f4d\u7f6e (\u5f53\u524d\u4f4d\u7f6e)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\n\n\n\n\nSetClientUnitRotation\n\n\ngame.SetClientUnitRotation(unit_handle,x, y, z)\n\n\n\u8bbe\u7f6e\u5ba2\u6237\u7aef\u5355\u4f4d\u7684\u65cb\u8f6c\u8f74\u53c2\u6570 (\u65cb\u8f6c\u6a21\u578b\u8ddf\u8bbe\u7f6e\u9762\u5411)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\nx [number]\n x \u89d2\u5ea6\u5236 \u56f4\u7ed5x\u8f74\u65cb\u8f6c\n\n\ny [number]\n y \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c y\u8f74\u4e3a\u6e38\u620f\u7684\u6c34\u5e73\u8f74\n\n\nz [number]\n z \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c z\u8f74\u4e3a\u6539\u53d8\u5355\u4f4d\u7684\u9762\u5411\u89d2\u5ea6\n\n\n\n\n\n\nGetClientUnitRotation\n\n\ngame.GetClientUnitRotation(unit_handle,x, y, z)\n\n\n\u83b7\u53d6\u5ba2\u6237\u7aef\u5355\u4f4d\u7684\u65cb\u8f6c\u8f74\u53c2\u6570 (\u65cb\u8f6c\u6a21\u578b)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n x \u89d2\u5ea6\u5236 \u56f4\u7ed5x\u8f74\u65cb\u8f6c\n\n\ny [number]\n y \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c y\u8f74\u4e3a\u6e38\u620f\u7684\u6c34\u5e73\u8f74\n\n\nz [number]\n z \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c z\u8f74\u4e3a\u6539\u53d8\u5355\u4f4d\u7684\u9762\u5411\u89d2\u5ea6\n\n\n\n\n\n\nShowCameraMove\n\n\ngame.ShowCameraMove(camera_name)\n\n\n\u663e\u793a\u955c\u5934\u79fb\u52a8\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\ncamera_name [string]\n \u955c\u5934\u4e8b\u4ef6\u7684\u540d\u5b57\n\n\n\n\n\n\nSetForbidRightMouse\n\n\ngame.SetForbidRightMouse(bforbid)\n\n\n\u7981\u6b62\u53f3\u952e\u79fb\u52a8\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nbforbid [bool]\n \u662f\u5426\u7981\u6b62\n\n\n\n\n\n\nSetForbidRightMouse\n\n\ngame.SetForbidRightMouse(bforbid)\n\n\n\u7981\u6b62\u53f3\u952e\u79fb\u52a8\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nbforbid [bool]\n \u662f\u5426\u7981\u6b62\n\n\n\n\n\n\nSetForceGuideShop\n\n\ngame.SetForceGuideShop(bforce)\n\n\n\u8bbe\u7f6e\u662f\u5426\u5f3a\u5236\u5546\u5e97\u5f15\u5bfc\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nbforce [bool]\n \u662f\u5426\u5f3a\u5236\n\n\n\n\n\n\nSetForbidKey\n\n\ngame.SetForbidKey(bforce)\n\n\n\u8bbe\u7f6e\u662f\u5426\u7981\u6b62\u6309\u952e\u54cd\u5e94\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nbforbid [bool]\n \u662f\u5426\u7981\u6b62\n\n\n\n\n\n\nGetTargetSpellDescription\n\n\ngame.GetTargetSpellDescription(spell_unique_id, spell_id, spell_level, unit_id)\n\n\n\u83b7\u53d6\u5355\u4f4d\u5de6\u4e0a\u89d2\u6280\u80fd\u63cf\u8ff0\u4fe1\u606f\uff0c\u8fd9\u4e2a\u63cf\u8ff0\u4fe1\u606f\u662f\u4f1a\u6839\u636e\u5f53\u524d\u4eba\u7269\u5c5e\u6027\u3001\u6280\u80fd\u7b49\u7ea7\u52a8\u6001\u53d8\u5316\u7684(\u654c\u65b9\u7684\u4e0d\u4f1a\u968f\u7b49\u7ea7\u53d8\u5316)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u6280\u80fd\u552f\u4e00 id\n\n\nspell_id [int]\n \u6280\u80fd id\n\n\nspell_level [int]\n \u6280\u80fd\u7b49\u7ea7\u3002\u65e0\u7b49\u7ea7\u8bbe\u5b9a\u7684\u6280\u80fd\u6216\u7269\u54c1\uff0c\u6b64\u503c\u4e3a 1\n\n\nunit_id[int]\n \u5355\u4f4did\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nspell_desc [string]\n \u6280\u80fd\u63cf\u8ff0\n\n\nspell_detail [string]\n \u8be6\u7ec6\u63cf\u8ff0\n\n\n\n\n\n\nOpenInputMethod\n\n\ngame.OpenInputMethod(is_ignore_default_ui)\n\n\n\u6253\u5f00\u8f93\u5165\u6cd5\uff0c\u5ffd\u7565\u6389\u9ed8\u8ba4\u7684ui\n\u6253\u5f00\u540e \u6e38\u620f\u91cc\u7684\u6309\u952e\u64cd\u4f5c\u4f1a\u88ab\u8f93\u5165\u6cd5\u5c4f\u853d\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nis_ignore_default_ui [bool]\n \u662f\u5426\u5ffd\u7565\u81ea\u5e26\u7684UI\n\n\n\n\n\n\nCloseInputMethod\n\n\ngame.CloseInputMethod()\n\n\n\u5173\u95ed\u8f93\u5165\u6cd5\n\u5173\u95ed\u540e \u6062\u590d\u88ab\u5c4f\u853d\u7684\u6309\u952e\n\n\n\n\nIsPariticleStop\n\n\ngame.IsPariticleStop(sound_id)\n\n\n\u97f3\u6548\u662f\u5426\u64ad\u653e\u7ed3\u675f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nsound_id [string]\n \u97f3\u6548sound_id\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nbstop [bool]\n \u662f\u5426\u64ad\u653e\u7ed3\u675f\n\n\n\n\n\n\nStopEventParticle\n\n\ngame.StopEventParticle(sound_id)\n\n\n\u4e3b\u52a8\u505c\u6b62\u64ad\u653e\u67d0\u4e2a\u97f3\u6548\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nsound_id [string]\n \u97f3\u6548sound_id\n\n\n\n\n\n\nPlayMiniMapSignalTips\n\n\ngame.PlayMiniMapSignalTips(minimap_singnal_type, x, y, unit_id, time_delay, singal_type)\n\n\n\u5728\u5730\u56fe\u4e0a\u64ad\u653e\u4fe1\u53f7\u6807\u5fd7\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nminimap_singnal_type [int]\n \u5c0f\u5730\u56fe\u4fe1\u53f7\u7c7b\u578b\n\n\nx [float]\n \u4fe1\u53f7\u4f4d\u7f6ex\n\n\ny [float]\n \u4fe1\u53f7\u4f4d\u7f6ey\n\n\nunit_id [int]\n \u5355\u4f4did\n\n\ntime_delay [float]\n \u6301\u7eed\u65f6\u95f4\n\n\nsingal_type [int]\n \u5927\u5730\u56fe\u4e0a\u7684\u4fe1\u53f7\u7c7b\u578b\n\n\n\n\n\n\nIsSettingOpen\n\n\ngame.IsSettingOpen()\n\n\n\u8bbe\u7f6e\u9762\u677f\u662f\u5426\u6253\u5f00\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nbopen [bool]\n \u662f\u5426\u6253\u5f00\n\n\n\n\n\n\nReconnectGame\n\n\ngame.ReconnectGame()\n\n\n\u91cd\u8fde\u6e38\u620f",
+            "text": "\u6e38\u620f\u63a5\u53e3\u7528\u6cd5\n\n\n\u5728 lua \u4ee3\u7801\u4e2d\u8c03\u7528 \ngame.\u63a5\u53e3\u540d(\u53c2\u65701, \u53c2\u65702, ...)\n, \u5982\n\n\ngame.CastSpell(1, true)\n\n\n\n\n\n\nGetGameTable\n\n\ngame.GetGameTable(table_name)\n\n\n\u83b7\u53d6\u6e38\u620f\u4e2d\u7684\u8868\u6570\u636e, \u8fd4\u56de\u503c\u662f\u4e00\u4e2a table \u7c7b\u578b\u7684\u6570\u636e\u7ed3\u6784\uff0c\u7528\u6cd5\uff1a\n\n\nlocal clien_spell_table = game.GetGameTable(\"ClientSpell\")\n\n\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\ntable_name [string]\n \u8868\u540d\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\ntable_data [table]\n \u5bf9\u5e94\u7684\u8868\u6570\u636e\n\n\n\n\n\n\nCastSpell\n\n\ngame.CastSpell(spell_slot, manual)\n\n\n\u8bf7\u6c42\u91ca\u653e\u6280\u80fd\uff08\u6216\u4f7f\u7528\u7269\u54c1)\u3002\n\n\n\u6280\u80fd\u7684\u69fd\u4f4d 0 ~ 99\n\u7269\u54c1\u7684\u69fd\u4f4d 100 ~ 199\n\u9970\u54c1\u7684\u69fd\u4f4d 200 ~ 299\n\u9690\u85cf\u6280\u80fd\u7684\u69fd\u4f4d 300 ~ \n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_slot [int]\n \u6280\u80fd\u6216\u7269\u54c1\u7684\u69fd\u4f4d\n\n\nmanual [bool]\n \u662f\u5426\u4e3a\u624b\u52a8\u91ca\u653e\u6280\u80fd\uff0c\u5982\u679c\u4e3a false \uff0c\u5219\u4e3a\u667a\u80fd\u65bd\u6cd5\n\n\n\n\n\n\nCastSpellMobile\n\n\ngame.CastSpellMobile(spell_slot, world_location_x, world_location_y, world_location_z, target_unit_id)\n\n[\u6ce8\u610f]\u76ee\u524d\u53ea\u5728\u79fb\u52a8\u5e73\u53f0\u4f7f\u7528\n\n\n\u8bf7\u6c42\u91ca\u653e\u6280\u80fd\uff08\u6216\u4f7f\u7528\u7269\u54c1)\u3002\u5bf9\u4e8e\u9700\u8981\u5728\u6307\u5b9a\u5750\u6807\u91ca\u653e\u7684\u6280\u80fd(\u5982\u9e7f\u76ee\u5706\u9999--\u8679\u4e4b\u96e8)\u5e94\u5f53\u7ed9\u51fa\u6709\u6548\u7684\u4e16\u754c\u5750\u6807, \u6700\u540e\u4e00\u4e2a\u53c2\u6570\u7f6e\u4e3a-1;\n\u5bf9\u4e8e\u5355\u4f53\u76ee\u6807\u6280\u80fd(\u7426\u7389--\u4e00\u62f3\u8d85\u4eba)\u5e94\u5f53\u7ed9\u51fa\u6709\u6548\u76ee\u6807\u5355\u4f4did, \u5750\u6807\u7684\u7ed9\u51fa\u9ed8\u8ba4\u76840\u5373\u53ef;\n\u5bf9\u4e8e\u65b9\u5411\u6280\u80fd(\u7535\u78c1\u70ae)\u7ed9\u51fa\u4e16\u754c\u5750\u6807\u5373\u53ef,\u8981\u6c42\u65b9\u5411\u6b63\u786e\n\n\n\u6280\u80fd\u7684\u69fd\u4f4d 0 ~ 99\n\u7269\u54c1\u7684\u69fd\u4f4d 100 ~ 199\n\u9970\u54c1\u7684\u69fd\u4f4d 200 ~ 299\n\u9690\u85cf\u6280\u80fd\u7684\u69fd\u4f4d 300 ~ \n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_slot [int]\n \u6280\u80fd\u6216\u7269\u54c1\u7684\u69fd\u4f4d\n\n\nworld_location_x [float]\n \u6280\u80fd\u7684\u76ee\u6807\u4f4d\u7f6ex\n\n\nworld_location_y [float]\n \u6280\u80fd\u7684\u76ee\u6807\u4f4d\u7f6ey\n\n\nworld_location_z [float]\n \u6280\u80fd\u7684\u76ee\u6807\u4f4d\u7f6ez\n\n\ntarget_unit_id [int]\n \u6280\u80fd\u7684\u76ee\u6807\u662f\u5355\u4f4did\n\n\n\n\n\n\nGetSpellDescription\n\n\ngame.GetSpellDescription(spell_unique_id, spell_id, spell_level)\n\n\n\u83b7\u53d6\u6280\u80fd\u63cf\u8ff0\u4fe1\u606f\uff0c\u8fd9\u4e2a\u63cf\u8ff0\u4fe1\u606f\u662f\u4f1a\u6839\u636e\u5f53\u524d\u4eba\u7269\u5c5e\u6027\u3001\u6280\u80fd\u7b49\u7ea7\u52a8\u6001\u53d8\u5316\u7684\u3002\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u6280\u80fd\u552f\u4e00 id\n\n\nspell_id [int]\n \u6280\u80fd id\n\n\nspell_level [int]\n \u6280\u80fd\u7b49\u7ea7\u3002\u65e0\u7b49\u7ea7\u8bbe\u5b9a\u7684\u6280\u80fd\u6216\u7269\u54c1\uff0c\u6b64\u503c\u4e3a 1\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nspell_desc [string]\n \u6280\u80fd\u63cf\u8ff0\n\n\nspell_detail [string]\n \u8be6\u7ec6\u63cf\u8ff0\n\n\nupgrade_desc [string]\n \u5347\u7ea7\u63cf\u8ff0\n\n\n\n\n\u4f8b\u5b50\uff1a\n\n\nlocal spell_unique_id = spell.slot_table[spell_slot]\nlocal spell_id = spell.get_spell_attr(spell_unique_id, \"\u6280\u80fd\u7f16\u53f7\")\nlocal spell_level = spell.get_spell_attr(spell_unique_id, \"\u7b49\u7ea7\")\nif spell_level == nil then spell_level = 1 end\n\n-- \u83b7\u53d6\u6280\u80fd\u63cf\u8ff0\nlocal spell_desc, spell_detail, upgrade_desc = \n    game.GetSpellDescription(spell_unique_id, spell_id, spell_level)\n\n\n\n\n\n\n\nShowSpellAssist\n\n\ngame.ShowSpellAssist(spell_slot, show, lock_direction)\n\n\n\u663e\u793a\u6216\u9690\u85cf\u6280\u80fd\u6307\u793a\u5668\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_slot [int]\n \u6280\u80fd\u69fd\u4f4d\n\n\nshow [bool]\n \u663e\u793a/\u9690\u85cf\n\n\nlock_direction [bool]\n \u662f\u5426\u9501\u5b9a\u6280\u80fd\u6307\u793a\u5668\u65b9\u5411\n\n\n\n\n\n\nRequestMoveItem\n\n\ngame.RequestMoveItem(spell_unique_id, target_slot)\n\n\n\u8bf7\u6c42\u79fb\u52a8\u6280\u80fd\u6216\u7269\u54c1\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u6280\u80fd\u552f\u4e00 id\n\n\ntarget_slot [int]\n \u60f3\u8981\u5c06\u6280\u80fd\u6216\u7269\u54c1\u79fb\u52a8\u5230\u54ea\u4e2a\u69fd\u4f4d\n\n\n\n\n\n\nRequestBuyItem\n\n\ngame.RequestBuyItem(item_desc)\n\n\n\u8bf7\u6c42\u8d2d\u4e70\u7269\u54c1\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nitem_desc [string]\n \u7269\u54c1\u63cf\u8ff0\n\n\n\n\n\u4f8b\u5b50\uff1a\n\n\ngame.RequestBuyItem(\"\u6781\u901f\u4e4b\u5f71\")\n\n\n\n\n\n\nRequestUnBuyItem\n\n\ngame.RequestUnBuyRequestUnBuyItem()\n\n\n\u8bf7\u6c42\u53d6\u6d88\u8d2d\u4e70\u7269\u54c1\n\n\n\n\nRequestSaleItem\n\n\ngame.RequestSaleItem(spell_unique_id)\n\n\n\u8bf7\u6c42\u5356\u51fa\u7269\u54c1\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u7269\u54c1\u552f\u4e00 id\n\n\n\n\n\n\nRequestUpgradeSpell\n\n\ngame.RequestUpgradeSpell(spell_unique_id)\n\n\n\u8bf7\u6c42\u5347\u7ea7\u6280\u80fd\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u6280\u80fd\u552f\u4e00 id\n\n\n\n\n\n\nSendCustomMessage\n\n\ngame.SendCustomMessage(message)\n\n\n\u53d1\u9001\u81ea\u5b9a\u4e49\u6d88\u606f\u7ed9\u670d\u52a1\u5668\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmessage [string]\n \u81ea\u5b9a\u4e49\u6d88\u606f\n\n\n\n\n\u670d\u52a1\u7aef\u811a\u672c\u8fd9\u6837\u63a5\u6536\u5ba2\u6237\u7aef\u53d1\u9001\u7684\u81ea\u5b9a\u4e49\u6d88\u606f\uff1a\n\n\nac.game:event('\u81ea\u5b9a\u4e49UI-\u6d88\u606f', function(_, player , msg)\n    -- do something\nend)\n\n\n\n\n\n\nSendChatMessage\n\n\ngame.SendChatMessage(message)\n\n\n\u53d1\u9001\u804a\u5929\u6d88\u606f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmessage [string]\n \u804a\u5929\u6d88\u606f\n\n\n\n\n\n\nGetPlayerList\n\n\ngame.GetPlayerList()\n\n\n\u83b7\u53d6\u73a9\u5bb6\u5217\u8868\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nplayer_list [array]\n \u8fd4\u56de\u73a9\u5bb6\u6570\u7ec4\uff0c\u5b58\u50a8\u7684\u5185\u5bb9\u4e3a\u73a9\u5bb6\u7684\u69fd\u4f4d(slot id)\n\n\n\n\n\n\nGetPlayerInfo\n\n\ngame.GetPlayerInfo(slot_id)\n\n\n\u6839\u636e\u69fd\u4f4d\u83b7\u53d6\u73a9\u5bb6\u4fe1\u606f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nslot_id [int]\n \u73a9\u5bb6\u7684\u69fd\u4f4d(slot id)\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nplayer_id [string]\n \u73a9\u5bb6 id\n\n\nplayer_name [string]\n \u73a9\u5bb6\u540d\n\n\nplayer_title [string]\n \u73a9\u5bb6\u5934\u8854\n\n\ncamp_id [int]\n \u9635\u8425\n\n\nonlie [bool]\n \u662f\u5426\u5728\u7ebf\n\n\nplayer_type [int]\n \u73a9\u5bb6\u7c7b\u578b\n\n\n\n\n\n\nGetMyPlayerInfo\n\n\ngame.GetMyPlayerInfo()\n\n\n\u83b7\u53d6\u81ea\u8eab\u4fe1\u606f\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nplayer_id [int]\n \u73a9\u5bb6 id\n\n\nplayer_name [string]\n \u73a9\u5bb6\u540d\n\n\nplayer_nick_name [string]\n \u6635\u79f0\n\n\n\n\n\n\nGetMyPlayerLocation\n\n\ngame.GetMyPlayerLocation()\n\n\n\u83b7\u53d6\u73a9\u5bb6\u5728\u5c0f\u5730\u56fe\u4e0a\u7684\u5750\u6807\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [float]\n \u73a9\u5bb6\u5728\u5c0f\u5730\u56fe\u4e0a\u7684 x \u5750\u6807\n\n\ny [float]\n \u73a9\u5bb6\u5728\u5c0f\u5730\u56fe\u4e0a\u7684 y \u5750\u6807\n\n\n\n\n\n\nGetMyPlayerState\n\n\ngame.GetMyPlayerState()\n\n\n\u83b7\u53d6\u73a9\u5bb6\u5f53\u524d\u72b6\u6001\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nstate [int]\n \u5f53\u524d\u72b6\u6001\n\n\n\n\n\u5355\u4f4d\u72b6\u6001\u7684\u679a\u4e3e\u503c\u5982\u4e0b\uff1a\n\n\n-- \u5355\u4f4d\u72b6\u6001\u679a\u4e3e\nlocal US_Idle = 1\nlocal US_Walking = 2\nlocal US_Attacking = 3\nlocal US_Dead = 4\nlocal US_Dizzy = 5\nlocal US_SpecialMoving = 6\nlocal US_BUILDING_PREPARE = 7\nlocal US_Relax = 8\n\n\n\n\n\n\nGetUnitLocation\n\n\ngame.GetUnitLocation(unit_id)\n\n\n\u83b7\u53d6\u5355\u4f4d\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_id [int]\n \u5355\u4f4d id\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u5355\u4f4d\u5750\u6807\n\n\n\n\n\n\nGetSocketLocation\n\n\ngame.GetSocketLocation(unit_id, socket_name)\n\n\n\u83b7\u53d6\u5355\u4f4d\u7ed1\u70b9\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_id [int]\n \u5355\u4f4d id\n\n\nsocket_name [string]\n \u7ed1\u70b9\u540d\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u7ed1\u70b9\u5750\u6807\n\n\n\n\n\n\nGetUnitFacing\n\n\ngame.GetUnitFacing(unit_id)\n\n\n\u83b7\u53d6\u5355\u4f4d\u671d\u5411\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_id [int]\n \u5355\u4f4d id\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nfacing [number]\n \u5355\u4f4d\u671d\u5411\n\n\n\n\n\n\nGetLineIntersection\n\n\ngame.GetLineIntersection(x1, y1, x2, y2)\n\n\n\u83b7\u53d6\u7ebf\u6bb5\u4e0e\u5730\u56fe\u78b0\u649e\u4ea4\u70b9\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx1 [number]\n \ny1 [number]\n \u8d77\u70b9\u5750\u6807\n\n\nx2 [number]\n \ny2 [number]\n \u7ec8\u70b9\u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \u78b0\u649e\u70b9\u5750\u6807\n\n\n\n\n\n\nGetLocationUnderCursor\n\n\ngame.GetLocationUnderCursor()\n\n\n\u83b7\u53d6\u9f20\u6807\u6307\u9488\u5bf9\u5e94\u7684\u4e16\u754c\u5750\u6807\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \u4e16\u754c\u5750\u6807\n\n\n\n\n\n\nScreenToWorld\n\n\ngame.ScreenToWorld(x, y)\n\n\n\u5c4f\u5e55\u5750\u6807\u8f6c\u6362\u6210\u4e16\u754c\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [number]\n \ny [number]\n \u5c4f\u5e55\u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u4e16\u754c\u5750\u6807\n\n\n\n\n\n\nWorldToScreen\n\n\ngame.WorldToScreen(x, y, z)\n\n\n\u4e16\u754c\u5750\u6807\u8f6c\u6210\u5c4f\u5e55\u5750\u6807\u8f6c\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [number]\n \ny [number]\n \ny [number]\n \u4e16\u754c\u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u5c4f\u5e55\u5750\u6807\n\n\n\n\n\n\nGetGameTime\n\n\ngame.GetGameTime()\n\n\n\u83b7\u53d6\u6e38\u620f\u65f6\u95f4\n\n\n\u8fd4\u56de\u503c\n\n\n\u5f53\u524d\u6e38\u620f\u65f6\u95f4(\u4ece\u8fdb\u5165\u6e38\u620f\u5f00\u59cb)\n\n\n\n\nGetDisplayTimeSigned\n\n\ngame.GetDisplayTimeSigned()\n\n\n\u83b7\u53d6\u6e38\u620f\u663e\u793a\u7684\u65f6\u95f4\u3002\n\u6e38\u620f\u5904\u4e8e\u5f00\u59cb\u524d\u7684\u5012\u8ba1\u65f6\u65f6\uff0c\u8fd4\u56de\u503c\u662f\u8d1f\u7684\u3002\n\u6e38\u620f\u5f00\u59cb\u540e\uff0c\u8fd4\u56de\u503c\u662f\u6b63\u6570\u3002\n\n\n\u8fd4\u56de\u503c\n\n\n\u6e38\u620f\u663e\u793a\u65f6\u95f4\n\n\n\n\nGetScreenResolution\n\n\ngame.GetScreenResolution()\n\n\n\u83b7\u53d6\u7a97\u53e3\u5206\u8fa8\u7387\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [int]\n \u7a97\u53e3\u5206\u8fa8\u7387 x\n\n\ny [int]\n \u7a97\u53e3\u5206\u8fa8\u7387 y\n\n\n\n\n\n\nGetHotKeyList\n\n\ngame.GetHotKeyList()\n\n\n\u83b7\u53d6\u5feb\u6377\u952e\u5217\u8868\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nhot_key_list [table]\n \u8fd4\u56de\u5feb\u6377\u952e\u5217\u8868\n\n\n\n\nhot_key_list \u7684\u7ed3\u6784\u5982\u4e0b:\n\n\nlocal hot_key_list = game.GetHotKeyList()\n\n-- spell_cast[1], spell_cast[2], spell_cast[3], spell_cast[4]\n-- \u5206\u522b\u5bf9\u5e94\u6280\u80fd 1\uff0c 2\uff0c 3\uff0c 4 \u7684\u5feb\u6377\u952e\nlocal spell_cast = hot_key_list[\"spell_cast\"]\n\n-- spell_quick_cast[1], spell_quick_cast[2], spell_quick_cast[3], spell_quick_cast[4]\n-- \u5206\u522b\u5bf9\u5e94\u6280\u80fd 1\uff0c 2\uff0c 3\uff0c 4 \u7684\u667a\u80fd\u65bd\u6cd5\u5feb\u6377\u952e\nlocal spell_quick_cast = hot_key_list[\"spell_quick_cast\"]\n\n-- \u7269\u54c1\u680f\u7684\u5feb\u6377\u952e\uff0c\u548c\u4e0a\u9762\u7c7b\u4f3c\nlocal item_cast = hot_key_list[\"item_cast\"]\n\n-- \u7269\u54c1\u680f\u7684\u5feb\u6377\u952e\uff0c\u548c\u4e0a\u9762\u7c7b\u4f3c\nlocal item_quick_cast = hot_key_list[\"item_quick_cast\"]\n\n-- \u83dc\u5355\u7684\u5feb\u6377\u952e\uff0c\u5e38\u7528\u7684\u5305\u62ec\uff1a\n-- \u622a\u5c4f 1 \n-- \u961f\u4f0d\u804a\u5929 2 \n-- \u9ed1\u5e97\u804a\u5929 3 \n-- \u663e\u793a/\u9690\u85cfUI 4 \n-- \u663e\u793a/\u9690\u85cf\u5c5e\u6027\u9762\u677f 10\n-- \u663e\u793a/\u9690\u85cf\u5546\u5e97 12\nlocal menu = hot_key_list[\"menu\"]\n\n-- \u955c\u5934\u7684\u5feb\u6377\u952e\uff0c\u5e38\u7528\u7684\u5305\u62ec:\n-- \u9501\u5b9a\u955c\u5934 1\n-- \u9009\u62e9\u82f1\u96c4 2\n-- \u5c06\u82f1\u96c4\u8bbe\u7f6e\u4e3a\u7126\u70b9 3\n-- \u6682\u505c/\u5f00\u59cb\u6e38\u620f 4\nlocal scene = hot_key_list[\"scene\"]\n\n\n\n\n\n\nToggleSettingPanel\n\n\ngame.ToggleSettingPanel()\n\n\n\u6253\u5f00/\u5173\u95ed\u8bbe\u7f6e\u9762\u677f\n\n\n\n\nToggleShopPanel\n\n\n\n\nExitGame\n\n\ngame.ExitGame()\n\n\n\u9000\u51fa\u6e38\u620f\n\n\n\n\nLockGameCursor\n\n\ngame.LockGameCursor()\n\n\n\u5728 tps \u6a21\u5f0f\u4e0b\uff0c\u663e\u793a\u9f20\u6807\u6307\u9488\n\n\n\n\nIsWatchingGame\n\n\ngame.IsWatchingGame()\n\n\n\u5224\u65ad\u662f\u5426\u5904\u4e8e\u89c2\u6218\u6a21\u5f0f\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nisWatching [bool]\n \u662f\u5426\u5904\u4e8e\u89c2\u6218\u6a21\u5f0f\n\n\n\n\n\n\nIsShipping\n\n\ngame.IsShipping()\n\n\n\u5ba2\u6237\u7aef\u662f\u5426\u4e3a shipping \u7248\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nisShipping [bool]\n \u662f\u5426\u4e3a shipping \u7248\n\n\n\n\n\n\nExecuteConsoleCommand\n\n\ngame.ExecuteConsoleCommand(command)\n\n\n\u6267\u884c\u63a7\u5236\u53f0\u547d\u4ee4\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\ncommand [string]\n \u63a7\u5236\u53f0\u547d\u4ee4\n\n\n\n\n\n\nSetEnableClickThrough\n\n\ngame.SetEnableClickThrough(enable)\n\n\n\u8bbe\u7f6e\u9f20\u6807\u53f3\u952e\u7a7f\u900f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nenable [string]\n \u9f20\u6807\u53f3\u952e\u662f\u5426\u7a7f\u900f\u5230\u754c\u9762\n\n\n\n\n\n\nShowMiniMap\n\n\ngame.ShowMiniMap()\n\n\n\u663e\u793a\u5c0f\u5730\u56fe\n\n\n\n\nHideMiniMap\n\n\ngame.HideMiniMap()\n\n\n\u9690\u85cf\u5c0f\u5730\u56fe\n\n\n\n\nUpdateMiniMap\n\n\ngame.UpdateMiniMap(x, y, w, h)\n\n\n\u4fee\u6539\u5c0f\u5730\u56fe\u5927\u5c0f\u53ca\u4f4d\u7f6e\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [int]\n \u6a2a\u8f74\u5750\u6807\n\n\ny [int]\n \u7eb5\u8f74\u5750\u6807\n\n\nw [int]\n \u5c0f\u5730\u56fe\u5bbd\u5ea6\n\n\nh [int]\n \u5c0f\u5730\u56fe\u9ad8\u5ea6\n\n\n\n\n\n\nSetMiniMapBackgroundImage\n\n\ngame.SetMiniMapBackgroundImage(iamge_path)\n\n\n\u8bbe\u7f6e\u5c0f\u5730\u56fe\u80cc\u666f\u56fe\u7247,\u56fe\u7247\u5fc5\u987b\u4e3a png \u683c\u5f0f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nimage_path [string]\n \u5c0f\u5730\u56fe\u80cc\u666f\u56fe\u7247\u8def\u5f84,\u80cc\u666f\u56fe\u7247\u9700\u8981\u653e\u5728 \nCustomUI\\Gaming\\MiniMap\n \u8def\u5f84\u4e0b\n\n\n\n\n\u4f8b\u5b50\uff1a\n\n\ngame.SetMiniMapBackgroundImage(\"Gaming/MiniMap/map.png\")\n\n\n\n\n\n\nMoveCameraToMiniMapPosition\n\n\ngame.MoveCameraToMiniMapPosition(x, y)\n\n\n\u79fb\u52a8\u955c\u5934\u5230\u6307\u5b9a\u5c0f\u5730\u56fe\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [int]\n \u5c0f\u5730\u56fe\u5750\u6807 x\n\n\ny [int]\n \u5c0f\u5730\u56fe\u5750\u6807 y\n\n\n\n\n\n\nMoveHeroToMiniMapPosition\n\n\ngame.MoveHeroToMiniMapPosition(x, y)\n\n\n\u79fb\u52a8\u82f1\u96c4\u5230\u6307\u5b9a\u5c0f\u5730\u56fe\u5750\u6807\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [int]\n \u5c0f\u5730\u56fe\u5750\u6807 x\n\n\ny [int]\n \u5c0f\u5730\u56fe\u5750\u6807 y\n\n\n\n\n\n\nRequestSendMiniMapSignal\n\n\ngame.RequestSendMiniMapSignal(singal_type, x, y)\n\n\n\u5728\u5c0f\u5730\u56fe\u4e0a\u663e\u793a\u4fe1\u53f7\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nsignal_type [int]\n \u4fe1\u53f7\u7c7b\u578b\n\n\nx [int]\n \u5c0f\u5730\u56fe\u5750\u6807 x\n\n\ny [int]\n \u5c0f\u5730\u56fe\u5750\u6807 y\n\n\n\n\n\u4fe1\u53f7\u7c7b\u578b\u679a\u4e3e\uff1a\n\n\n-- \u5c0f\u5730\u56fe\u4fe1\u53f7\u679a\u4e3e\nlocal MINIMAP_SIGNAL_DEFEND_TOWER = 1\nlocal MINIMAP_SIGNAL_GATHER = 2\nlocal MINIMAP_SIGNAL_ATTACK = 3\nlocal MINIMAP_SIGNAL_RETREAT = 4\nlocal MINIMAP_SIGNAL_SOS = 5\nlocal MINIMAP_SIGNAL_ENEMY_DISAPPEAR = 6\nlocal MINIMAP_SIGNAL_COMING = 7\n\n\n\n\n\n\nGetMiniMapCameraArea\n\n\ngame.GetMiniMapCameraArea()\n\n\n\u83b7\u53d6\u5c0f\u5730\u56fe\u4e0a\u5bf9\u5e94\u7684\u955c\u5934\u8303\u56f4\n\n\n\u8fd4\u56de\u503c\n\n\n\n\narea [array]\n \u5305\u542b 4 \u4e2a\u70b9\uff0c\u6bcf\u4e2a\u70b9\u5305\u542b x\u3001y \u5750\u6807\u3002\u8fd9\u56db\u4e2a\u70b9\u5bf9\u5e94\u7684\u56db\u8fb9\u5f62\u5373\u4e3a\u5c0f\u5730\u56fe\u4e0a\u5bf9\u5e94\u7684\u955c\u5934\u8303\u56f4 \n\n\n\n\n\n\n\n\nDisableCameraMove\n\n\ngame.DisableCameraMove(is_Disable)\n\n\n\u5173\u95ed\u9f20\u6807\u5728\u7a97\u53e3\u8fb9\u7f18\u65f6 \u955c\u5934\u4f1a\u79fb\u52a8\u7684\u63a5\u53e3\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nis_Disable [bool]\n true\u65f6 \u7981\u6b62\u955c\u5934\u79fb\u52a8 false\u65f6\u6062\u590d\n\n\n\n\n\n\nShowEffect\n\n\ngame.ShowEffect(effect_name, life_time)\n\n\n\u64ad\u653e\u7279\u6548\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\neffect_name [string]\n \u7279\u6548\u540d\n\n\nlife_time [int]\n \u6301\u7eed\u65f6\u95f4 (ms)\n\n\n\n\n\n\nClearCameraEffect\n\n\ngame.ClearCameraEffect()\n\n\n\u6e05\u9664\u955c\u5934\u7279\u6548\uff0c\u65e0\u53c2\u6570\n\n\n\n\nPlayEventParticle\n\n\ngame.PlayEventParticle(effect_name)\n\n\n\u64ad\u653e\u97f3\u6548\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\neffect_name [string]\n \u97f3\u6548\u540d\n\n\n\n\n\n\nSetSceneGray\n\n\ngame.SetSceneGray()\n\n\n\u4f7f\u5c4f\u5e55\u53d8\u7070\n\n\n\n\nAddModelToPreviewScene\n\n\ngame.AddModelToPreviewScene(hero_name, x, y, z)\n\n\n\u6dfb\u52a0\u9884\u89c8\u6a21\u578b\u5230\u6a21\u578b\u9884\u89c8\u63a7\u4ef6\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nhero_name [string]\n \u82f1\u96c4\u540d\n\n\nx [number]\n \u6a21\u578b x \u5750\u6807\n\n\ny [number]\n \u6a21\u578b y \u5750\u6807\n\n\nz [number]\n \u6a21\u578b z \u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\uff0c\u4f9b\u5220\u9664\u548c\u8bbe\u7f6e\u6a21\u578b\u7f29\u653e\u548c\u671d\u5411\u65f6\u4f7f\u7528\n\n\n\n\n\n\nRemoveModelFromPreviewScene\n\n\ngame.RemoveModelFromPreviewScene(model_id)\n\n\n\u5220\u9664\u9884\u89c8\u6a21\u578b\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\n\n\n\n\nSetModelPosInPreviewScene\n\n\ngame.SetModelPosInPreviewScene(model_id, scale, rotate)\n\n\n\u8bbe\u7f6e\u6a21\u578b\u7f29\u653e\u548c\u671d\u5411\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\nscale [number]\n \u7f29\u653e\u7cfb\u6570\uff0c\u5927\u4e8e 1 \u4ee3\u8868\u653e\u5927\uff0c\u5c0f\u4e8e 1 \u4ee3\u8868\u7f29\u5c0f\n\n\nrotate [number]\n \u8bbe\u7f6e\u6a21\u578b\u671d\u5411\uff0c\u53d6\u503c\u8303\u56f4 0 ~ 360\n\n\n\n\n\n\nSetModelLocationInPreviewScene\n\n\ngame.SetModelLocationInPreviewScene(model_id, x, y, z)\n\n\n\u8bbe\u7f6e\u6a21\u578b\u5728\u9884\u89c8\u573a\u666f\u4e2d\u7684\u4f4d\u7f6e\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\nx [number]\n \ny [number]\n \nz [number]\n \u6a21\u578b\u5728\u9884\u89c8\u573a\u666f\u4e2d\u7684\u5750\u6807\n\n\n\n\n\n\nPlayAnimationInPreviewScene\n\n\ngame.PlayAnimationInPreviewScene(model_id, animation_name, speed, loop)\n\n\n\u4f7f\u9884\u89c8\u573a\u666f\u4e2d\u7684\u6a21\u578b\u64ad\u653e\u52a8\u753b\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\nanimation_name [string]\n \u52a8\u753b\u540d\n\n\nspeed [number]\n \u64ad\u653e\u901f\u5ea6\n\n\nloop [bool]\n \u662f\u5426\u5faa\u73af\u64ad\u653e\n\n\n\n\n\n\nStopAnimationInPreviewScene\n\n\ngame.StopAnimationInPreviewScene(model_id, animation_name)\n\n\n\u4f7f\u9884\u89c8\u573a\u666f\u4e2d\u7684\u6a21\u578b\u505c\u6b62\u64ad\u653e\u52a8\u753b\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nmodel_id [int]\n \u6a21\u578b id\n\n\nanimation_name [string]\n \u52a8\u753b\u540d\n\n\n\n\n\n\nIsPlayerMute\n\n\ngame.IsPlayerMute(player_id)\n\n\n\u73a9\u5bb6\u662f\u5426\u88ab\u7981\u97f3\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nplayer_id [string]\n \u73a9\u5bb6id\n\n\n\n\n\n\nOnPlayerMute\n\n\ngame.OnPlayerMute(player_id, bMute)\n\n\n\u7981\u97f3\u73a9\u5bb6\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nplayer_id [string]\n \u73a9\u5bb6id\n\n\nbMute [bool]\n \u662f\u5426\u7981\u97f3\n\n\n\n\n\n\nRequestBlockPlayerSpeak\n\n\ngame.RequestBlockPlayerSpeak(slot, bBlock)\n\n\n\u8bf7\u6c42\u7981\u8a00\u73a9\u5bb6\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nslot [int]\n \u73a9\u5bb6\u69fd\u4f4did\n\n\nbBlock [bool]\n \u662f\u5426\u7981\u8a00\n\n\n\n\n\n\nIsPlayerBlock\n\n\ngame.IsPlayerBlock(slot)\n\n\n\u73a9\u5bb6\u662f\u5426\u88ab\u7981\u97f3\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nslot [int]\n \u73a9\u5bb6\u69fd\u4f4did\n\n\n\n\n\n\nPlayParticle\n\n\ngame.PlayParticle(x, y, z, scale)\n\n\n\u5728\u6307\u5b9a\u70b9\u64ad\u653eparticle\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nx [number]\n \u6a21\u578b x \u5750\u6807\n\n\ny [number]\n \u6a21\u578b y \u5750\u6807\n\n\nz [number]\n \u6a21\u578b z \u5750\u6807\n\n\nscale[number]\n \u7f29\u653e\u6bd4\u4f8b\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\npsc [int]\n \u521b\u5efa\u7684particle componet\u6307\u9488\n\n\n\n\n\n\nClearParticle\n\n\ngame.ClearParticle(psc)\n\n\n\u5728\u6307\u5b9a\u70b9\u64ad\u653eparticle\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\npsc [int]\n \u8981\u6e05\u6389\u7684particle componet\u6307\u9488\n\n\n\n\n\n\nCreateParticleUnit\n\n\ngame.CreateParticleUnit(x, y, z)\n\n\n\u521b\u5efa\u4e00\u4e2a\u7279\u6548\uff08\u9700\u8981\u4fdd\u5b58\u521b\u5efa\u7684\u7279\u6548\u5355\u4f4d\uff0c\u65b9\u4fbf\u9500\u6bc1\u548c\u79fb\u52a8\u7528\uff09\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nparticle_name [string]\n \u7279\u6548\u540d\u5b57(table/\u901a\u7528/ParticleData\u91cc\u9762\u914d\u7f6e)\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nunit [int]\n \u521b\u5efa\u7684particle\u5355\u4f4d\u6307\u9488\n\n\n\n\n\n\nDestoryParticleUnit\n\n\ngame.DestoryParticleUnit(unit)\n\n\n\u663e\u793a\u955c\u5934\u79fb\u52a8\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit [int]\n \u9700\u8981\u9500\u6bc1\u7684particle\u5355\u4f4d\n\n\n\n\n\n\nMoveParticleUnit\n\n\ngame.MoveParticleUnit(unit, x, y, z)\n\n\n\u521b\u5efa\u4e00\u4e2a\u7279\u6548\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit [int]\n \u9700\u8981\u79fb\u52a8\u7684particle\u5355\u4f4d\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\n\n\n\n\nCreateClientUnit\n\n\ngame.CreateClientUnit(type_id,x, y, z,facing)\n\n\n\u521b\u5efa\u4e00\u4e2a\u5ba2\u6237\u7aef\u5355\u4f4d\uff08\u53ea\u6709\u6a21\u578b\u663e\u793a\uff0c\u4e0d\u8dd1\u670d\u52a1\u7aef\uff0c\u53ea\u5b8c\u5168\u88ab\u5ba2\u6237\u7aef\u64cd\u63a7\u7684\u5355\u4f4d\uff09\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\ntype_id [int]\n \u5355\u4f4d\u7c7b\u578bid (UnitData.ini\u91cc\u9762\u914d\u7f6e\u7684\u5355\u4f4d\u7c7b\u578b)\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\nfacing [number]\n \u9762\u5411\u89d2\u5ea6\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nunit [int]\n \u5ba2\u6237\u7aef\u5355\u4f4d\u7684handle\n\n\n\n\n\n\nDestroyClientUnit\n\n\ngame.DestroyClientUnit(unit_handle)\n\n\n\u9500\u6bc1\u4e00\u4e2a\u5ba2\u6237\u7aef\u5355\u4f4d\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\n\n\n\n\nSetClientUnitLocation\n\n\ngame.SetClientUnitLocation(unit_handle,x, y, z)\n\n\n\u8bbe\u7f6e\u5ba2\u6237\u7aef\u5355\u4f4d\u7684\u4f4d\u7f6e (\u6539\u53d8\u663e\u793a\u7684\u4f4d\u7f6e)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\n\n\n\n\nGetClientUnitLocation\n\n\ngame.GetClientUnitLocation(unit_handle,x, y, z)\n\n\n\u83b7\u53d6\u5ba2\u6237\u7aef\u5355\u4f4d\u7684\u4f4d\u7f6e (\u5f53\u524d\u4f4d\u7f6e)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n x \u5750\u6807\n\n\ny [number]\n y \u5750\u6807\n\n\nz [number]\n z \u5750\u6807\n\n\n\n\n\n\nSetClientUnitRotation\n\n\ngame.SetClientUnitRotation(unit_handle,x, y, z)\n\n\n\u8bbe\u7f6e\u5ba2\u6237\u7aef\u5355\u4f4d\u7684\u65cb\u8f6c\u8f74\u53c2\u6570 (\u65cb\u8f6c\u6a21\u578b\u8ddf\u8bbe\u7f6e\u9762\u5411)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\nx [number]\n x \u89d2\u5ea6\u5236 \u56f4\u7ed5x\u8f74\u65cb\u8f6c\n\n\ny [number]\n y \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c y\u8f74\u4e3a\u6e38\u620f\u7684\u6c34\u5e73\u8f74\n\n\nz [number]\n z \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c z\u8f74\u4e3a\u6539\u53d8\u5355\u4f4d\u7684\u9762\u5411\u89d2\u5ea6\n\n\n\n\n\n\nGetClientUnitRotation\n\n\ngame.GetClientUnitRotation(unit_handle,x, y, z)\n\n\n\u83b7\u53d6\u5ba2\u6237\u7aef\u5355\u4f4d\u7684\u65cb\u8f6c\u8f74\u53c2\u6570 (\u65cb\u8f6c\u6a21\u578b)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nunit_handle [int]\n \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nx [number]\n x \u89d2\u5ea6\u5236 \u56f4\u7ed5x\u8f74\u65cb\u8f6c\n\n\ny [number]\n y \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c y\u8f74\u4e3a\u6e38\u620f\u7684\u6c34\u5e73\u8f74\n\n\nz [number]\n z \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c z\u8f74\u4e3a\u6539\u53d8\u5355\u4f4d\u7684\u9762\u5411\u89d2\u5ea6\n\n\n\n\n\n\nShowCameraMove\n\n\ngame.ShowCameraMove(camera_name)\n\n\n\u663e\u793a\u955c\u5934\u79fb\u52a8\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\ncamera_name [string]\n \u955c\u5934\u4e8b\u4ef6\u7684\u540d\u5b57\n\n\n\n\n\n\nSetForbidRightMouse\n\n\ngame.SetForbidRightMouse(bforbid)\n\n\n\u7981\u6b62\u53f3\u952e\u79fb\u52a8\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nbforbid [bool]\n \u662f\u5426\u7981\u6b62\n\n\n\n\n\n\nSetForbidRightMouse\n\n\ngame.SetForbidRightMouse(bforbid)\n\n\n\u7981\u6b62\u53f3\u952e\u79fb\u52a8\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nbforbid [bool]\n \u662f\u5426\u7981\u6b62\n\n\n\n\n\n\nSetForceGuideShop\n\n\ngame.SetForceGuideShop(bforce)\n\n\n\u8bbe\u7f6e\u662f\u5426\u5f3a\u5236\u5546\u5e97\u5f15\u5bfc\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nbforce [bool]\n \u662f\u5426\u5f3a\u5236\n\n\n\n\n\n\nSetForbidKey\n\n\ngame.SetForbidKey(bforce)\n\n\n\u8bbe\u7f6e\u662f\u5426\u7981\u6b62\u6309\u952e\u54cd\u5e94\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nbforbid [bool]\n \u662f\u5426\u7981\u6b62\n\n\n\n\n\n\nGetTargetSpellDescription\n\n\ngame.GetTargetSpellDescription(spell_unique_id, spell_id, spell_level, unit_id)\n\n\n\u83b7\u53d6\u5355\u4f4d\u5de6\u4e0a\u89d2\u6280\u80fd\u63cf\u8ff0\u4fe1\u606f\uff0c\u8fd9\u4e2a\u63cf\u8ff0\u4fe1\u606f\u662f\u4f1a\u6839\u636e\u5f53\u524d\u4eba\u7269\u5c5e\u6027\u3001\u6280\u80fd\u7b49\u7ea7\u52a8\u6001\u53d8\u5316\u7684(\u654c\u65b9\u7684\u4e0d\u4f1a\u968f\u7b49\u7ea7\u53d8\u5316)\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nspell_unique_id [int]\n \u6280\u80fd\u552f\u4e00 id\n\n\nspell_id [int]\n \u6280\u80fd id\n\n\nspell_level [int]\n \u6280\u80fd\u7b49\u7ea7\u3002\u65e0\u7b49\u7ea7\u8bbe\u5b9a\u7684\u6280\u80fd\u6216\u7269\u54c1\uff0c\u6b64\u503c\u4e3a 1\n\n\nunit_id[int]\n \u5355\u4f4did\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nspell_desc [string]\n \u6280\u80fd\u63cf\u8ff0\n\n\nspell_detail [string]\n \u8be6\u7ec6\u63cf\u8ff0\n\n\n\n\n\n\nOpenInputMethod\n\n\ngame.OpenInputMethod(is_ignore_default_ui)\n\n\n\u6253\u5f00\u8f93\u5165\u6cd5\uff0c\u5ffd\u7565\u6389\u9ed8\u8ba4\u7684ui\n\u6253\u5f00\u540e \u6e38\u620f\u91cc\u7684\u6309\u952e\u64cd\u4f5c\u4f1a\u88ab\u8f93\u5165\u6cd5\u5c4f\u853d\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nis_ignore_default_ui [bool]\n \u662f\u5426\u5ffd\u7565\u81ea\u5e26\u7684UI\n\n\n\n\n\n\nCloseInputMethod\n\n\ngame.CloseInputMethod()\n\n\n\u5173\u95ed\u8f93\u5165\u6cd5\n\u5173\u95ed\u540e \u6062\u590d\u88ab\u5c4f\u853d\u7684\u6309\u952e\n\n\n\n\nIsPariticleStop\n\n\ngame.IsPariticleStop(sound_id)\n\n\n\u97f3\u6548\u662f\u5426\u64ad\u653e\u7ed3\u675f\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nsound_id [string]\n \u97f3\u6548sound_id\n\n\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nbstop [bool]\n \u662f\u5426\u64ad\u653e\u7ed3\u675f\n\n\n\n\n\n\nStopEventParticle\n\n\ngame.StopEventParticle(sound_id)\n\n\n\u4e3b\u52a8\u505c\u6b62\u64ad\u653e\u67d0\u4e2a\u97f3\u6548\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nsound_id [string]\n \u97f3\u6548sound_id\n\n\n\n\n\n\nPlayMiniMapSignalTips\n\n\ngame.PlayMiniMapSignalTips(minimap_singnal_type, x, y, unit_id, time_delay, singal_type)\n\n\n\u5728\u5730\u56fe\u4e0a\u64ad\u653e\u4fe1\u53f7\u6807\u5fd7\n\n\n\u53c2\u6570\u5217\u8868\n\n\n\n\nminimap_singnal_type [int]\n \u5c0f\u5730\u56fe\u4fe1\u53f7\u7c7b\u578b\n\n\nx [float]\n \u4fe1\u53f7\u4f4d\u7f6ex\n\n\ny [float]\n \u4fe1\u53f7\u4f4d\u7f6ey\n\n\nunit_id [int]\n \u5355\u4f4did\n\n\ntime_delay [float]\n \u6301\u7eed\u65f6\u95f4\n\n\nsingal_type [int]\n \u5927\u5730\u56fe\u4e0a\u7684\u4fe1\u53f7\u7c7b\u578b\n\n\n\n\n\n\nIsSettingOpen\n\n\ngame.IsSettingOpen()\n\n\n\u8bbe\u7f6e\u9762\u677f\u662f\u5426\u6253\u5f00\n\n\n\u8fd4\u56de\u503c\n\n\n\n\nbopen [bool]\n \u662f\u5426\u6253\u5f00\n\n\n\n\n\n\nReconnectGame\n\n\ngame.ReconnectGame()\n\n\n\u91cd\u8fde\u6e38\u620f",
             "title": "\u6e38\u620f\u63a5\u53e3"
         },
         {
@@ -946,17 +946,27 @@
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
+            "location": "/game/index.html#castspellmobile",
+            "text": "game.CastSpellMobile(spell_slot, world_location_x, world_location_y, world_location_z, target_unit_id) \n[\u6ce8\u610f]\u76ee\u524d\u53ea\u5728\u79fb\u52a8\u5e73\u53f0\u4f7f\u7528  \u8bf7\u6c42\u91ca\u653e\u6280\u80fd\uff08\u6216\u4f7f\u7528\u7269\u54c1)\u3002\u5bf9\u4e8e\u9700\u8981\u5728\u6307\u5b9a\u5750\u6807\u91ca\u653e\u7684\u6280\u80fd(\u5982\u9e7f\u76ee\u5706\u9999--\u8679\u4e4b\u96e8)\u5e94\u5f53\u7ed9\u51fa\u6709\u6548\u7684\u4e16\u754c\u5750\u6807, \u6700\u540e\u4e00\u4e2a\u53c2\u6570\u7f6e\u4e3a-1;\n\u5bf9\u4e8e\u5355\u4f53\u76ee\u6807\u6280\u80fd(\u7426\u7389--\u4e00\u62f3\u8d85\u4eba)\u5e94\u5f53\u7ed9\u51fa\u6709\u6548\u76ee\u6807\u5355\u4f4did, \u5750\u6807\u7684\u7ed9\u51fa\u9ed8\u8ba4\u76840\u5373\u53ef;\n\u5bf9\u4e8e\u65b9\u5411\u6280\u80fd(\u7535\u78c1\u70ae)\u7ed9\u51fa\u4e16\u754c\u5750\u6807\u5373\u53ef,\u8981\u6c42\u65b9\u5411\u6b63\u786e  \u6280\u80fd\u7684\u69fd\u4f4d 0 ~ 99\n\u7269\u54c1\u7684\u69fd\u4f4d 100 ~ 199\n\u9970\u54c1\u7684\u69fd\u4f4d 200 ~ 299\n\u9690\u85cf\u6280\u80fd\u7684\u69fd\u4f4d 300 ~",
+            "title": "CastSpellMobile"
+        },
+        {
+            "location": "/game/index.html#_5",
+            "text": "spell_slot [int]  \u6280\u80fd\u6216\u7269\u54c1\u7684\u69fd\u4f4d  world_location_x [float]  \u6280\u80fd\u7684\u76ee\u6807\u4f4d\u7f6ex  world_location_y [float]  \u6280\u80fd\u7684\u76ee\u6807\u4f4d\u7f6ey  world_location_z [float]  \u6280\u80fd\u7684\u76ee\u6807\u4f4d\u7f6ez  target_unit_id [int]  \u6280\u80fd\u7684\u76ee\u6807\u662f\u5355\u4f4did",
+            "title": "\u53c2\u6570\u5217\u8868"
+        },
+        {
             "location": "/game/index.html#getspelldescription",
             "text": "game.GetSpellDescription(spell_unique_id, spell_id, spell_level)  \u83b7\u53d6\u6280\u80fd\u63cf\u8ff0\u4fe1\u606f\uff0c\u8fd9\u4e2a\u63cf\u8ff0\u4fe1\u606f\u662f\u4f1a\u6839\u636e\u5f53\u524d\u4eba\u7269\u5c5e\u6027\u3001\u6280\u80fd\u7b49\u7ea7\u52a8\u6001\u53d8\u5316\u7684\u3002",
             "title": "GetSpellDescription"
         },
         {
-            "location": "/game/index.html#_5",
+            "location": "/game/index.html#_6",
             "text": "spell_unique_id [int]  \u6280\u80fd\u552f\u4e00 id  spell_id [int]  \u6280\u80fd id  spell_level [int]  \u6280\u80fd\u7b49\u7ea7\u3002\u65e0\u7b49\u7ea7\u8bbe\u5b9a\u7684\u6280\u80fd\u6216\u7269\u54c1\uff0c\u6b64\u503c\u4e3a 1",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_6",
+            "location": "/game/index.html#_7",
             "text": "spell_desc [string]  \u6280\u80fd\u63cf\u8ff0  spell_detail [string]  \u8be6\u7ec6\u63cf\u8ff0  upgrade_desc [string]  \u5347\u7ea7\u63cf\u8ff0   \u4f8b\u5b50\uff1a  local spell_unique_id = spell.slot_table[spell_slot]\nlocal spell_id = spell.get_spell_attr(spell_unique_id, \"\u6280\u80fd\u7f16\u53f7\")\nlocal spell_level = spell.get_spell_attr(spell_unique_id, \"\u7b49\u7ea7\")\nif spell_level == nil then spell_level = 1 end\n\n-- \u83b7\u53d6\u6280\u80fd\u63cf\u8ff0\nlocal spell_desc, spell_detail, upgrade_desc = \n    game.GetSpellDescription(spell_unique_id, spell_id, spell_level)",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -966,7 +976,7 @@
             "title": "ShowSpellAssist"
         },
         {
-            "location": "/game/index.html#_7",
+            "location": "/game/index.html#_8",
             "text": "spell_slot [int]  \u6280\u80fd\u69fd\u4f4d  show [bool]  \u663e\u793a/\u9690\u85cf  lock_direction [bool]  \u662f\u5426\u9501\u5b9a\u6280\u80fd\u6307\u793a\u5668\u65b9\u5411",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -976,7 +986,7 @@
             "title": "RequestMoveItem"
         },
         {
-            "location": "/game/index.html#_8",
+            "location": "/game/index.html#_9",
             "text": "spell_unique_id [int]  \u6280\u80fd\u552f\u4e00 id  target_slot [int]  \u60f3\u8981\u5c06\u6280\u80fd\u6216\u7269\u54c1\u79fb\u52a8\u5230\u54ea\u4e2a\u69fd\u4f4d",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -986,7 +996,7 @@
             "title": "RequestBuyItem"
         },
         {
-            "location": "/game/index.html#_9",
+            "location": "/game/index.html#_10",
             "text": "item_desc [string]  \u7269\u54c1\u63cf\u8ff0   \u4f8b\u5b50\uff1a  game.RequestBuyItem(\"\u6781\u901f\u4e4b\u5f71\")",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1001,7 +1011,7 @@
             "title": "RequestSaleItem"
         },
         {
-            "location": "/game/index.html#_10",
+            "location": "/game/index.html#_11",
             "text": "spell_unique_id [int]  \u7269\u54c1\u552f\u4e00 id",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1011,7 +1021,7 @@
             "title": "RequestUpgradeSpell"
         },
         {
-            "location": "/game/index.html#_11",
+            "location": "/game/index.html#_12",
             "text": "spell_unique_id [int]  \u6280\u80fd\u552f\u4e00 id",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1021,7 +1031,7 @@
             "title": "SendCustomMessage"
         },
         {
-            "location": "/game/index.html#_12",
+            "location": "/game/index.html#_13",
             "text": "message [string]  \u81ea\u5b9a\u4e49\u6d88\u606f   \u670d\u52a1\u7aef\u811a\u672c\u8fd9\u6837\u63a5\u6536\u5ba2\u6237\u7aef\u53d1\u9001\u7684\u81ea\u5b9a\u4e49\u6d88\u606f\uff1a  ac.game:event('\u81ea\u5b9a\u4e49UI-\u6d88\u606f', function(_, player , msg)\n    -- do something\nend)",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1031,7 +1041,7 @@
             "title": "SendChatMessage"
         },
         {
-            "location": "/game/index.html#_13",
+            "location": "/game/index.html#_14",
             "text": "message [string]  \u804a\u5929\u6d88\u606f",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1041,7 +1051,7 @@
             "title": "GetPlayerList"
         },
         {
-            "location": "/game/index.html#_14",
+            "location": "/game/index.html#_15",
             "text": "player_list [array]  \u8fd4\u56de\u73a9\u5bb6\u6570\u7ec4\uff0c\u5b58\u50a8\u7684\u5185\u5bb9\u4e3a\u73a9\u5bb6\u7684\u69fd\u4f4d(slot id)",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1051,12 +1061,12 @@
             "title": "GetPlayerInfo"
         },
         {
-            "location": "/game/index.html#_15",
+            "location": "/game/index.html#_16",
             "text": "slot_id [int]  \u73a9\u5bb6\u7684\u69fd\u4f4d(slot id)",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_16",
+            "location": "/game/index.html#_17",
             "text": "player_id [string]  \u73a9\u5bb6 id  player_name [string]  \u73a9\u5bb6\u540d  player_title [string]  \u73a9\u5bb6\u5934\u8854  camp_id [int]  \u9635\u8425  onlie [bool]  \u662f\u5426\u5728\u7ebf  player_type [int]  \u73a9\u5bb6\u7c7b\u578b",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1066,7 +1076,7 @@
             "title": "GetMyPlayerInfo"
         },
         {
-            "location": "/game/index.html#_17",
+            "location": "/game/index.html#_18",
             "text": "player_id [int]  \u73a9\u5bb6 id  player_name [string]  \u73a9\u5bb6\u540d  player_nick_name [string]  \u6635\u79f0",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1076,7 +1086,7 @@
             "title": "GetMyPlayerLocation"
         },
         {
-            "location": "/game/index.html#_18",
+            "location": "/game/index.html#_19",
             "text": "x [float]  \u73a9\u5bb6\u5728\u5c0f\u5730\u56fe\u4e0a\u7684 x \u5750\u6807  y [float]  \u73a9\u5bb6\u5728\u5c0f\u5730\u56fe\u4e0a\u7684 y \u5750\u6807",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1086,7 +1096,7 @@
             "title": "GetMyPlayerState"
         },
         {
-            "location": "/game/index.html#_19",
+            "location": "/game/index.html#_20",
             "text": "state [int]  \u5f53\u524d\u72b6\u6001   \u5355\u4f4d\u72b6\u6001\u7684\u679a\u4e3e\u503c\u5982\u4e0b\uff1a  -- \u5355\u4f4d\u72b6\u6001\u679a\u4e3e\nlocal US_Idle = 1\nlocal US_Walking = 2\nlocal US_Attacking = 3\nlocal US_Dead = 4\nlocal US_Dizzy = 5\nlocal US_SpecialMoving = 6\nlocal US_BUILDING_PREPARE = 7\nlocal US_Relax = 8",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1096,12 +1106,12 @@
             "title": "GetUnitLocation"
         },
         {
-            "location": "/game/index.html#_20",
+            "location": "/game/index.html#_21",
             "text": "unit_id [int]  \u5355\u4f4d id",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_21",
+            "location": "/game/index.html#_22",
             "text": "x [number]   y [number]   z [number]  \u5355\u4f4d\u5750\u6807",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1111,12 +1121,12 @@
             "title": "GetSocketLocation"
         },
         {
-            "location": "/game/index.html#_22",
+            "location": "/game/index.html#_23",
             "text": "unit_id [int]  \u5355\u4f4d id  socket_name [string]  \u7ed1\u70b9\u540d",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_23",
+            "location": "/game/index.html#_24",
             "text": "x [number]   y [number]   z [number]  \u7ed1\u70b9\u5750\u6807",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1126,12 +1136,12 @@
             "title": "GetUnitFacing"
         },
         {
-            "location": "/game/index.html#_24",
+            "location": "/game/index.html#_25",
             "text": "unit_id [int]  \u5355\u4f4d id",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_25",
+            "location": "/game/index.html#_26",
             "text": "facing [number]  \u5355\u4f4d\u671d\u5411",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1141,12 +1151,12 @@
             "title": "GetLineIntersection"
         },
         {
-            "location": "/game/index.html#_26",
+            "location": "/game/index.html#_27",
             "text": "x1 [number]   y1 [number]  \u8d77\u70b9\u5750\u6807  x2 [number]   y2 [number]  \u7ec8\u70b9\u5750\u6807",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_27",
+            "location": "/game/index.html#_28",
             "text": "x [number]   y [number]  \u78b0\u649e\u70b9\u5750\u6807",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1156,7 +1166,7 @@
             "title": "GetLocationUnderCursor"
         },
         {
-            "location": "/game/index.html#_28",
+            "location": "/game/index.html#_29",
             "text": "x [number]   y [number]  \u4e16\u754c\u5750\u6807",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1166,12 +1176,12 @@
             "title": "ScreenToWorld"
         },
         {
-            "location": "/game/index.html#_29",
+            "location": "/game/index.html#_30",
             "text": "x [number]   y [number]  \u5c4f\u5e55\u5750\u6807",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_30",
+            "location": "/game/index.html#_31",
             "text": "x [number]   y [number]   z [number]  \u4e16\u754c\u5750\u6807",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1181,12 +1191,12 @@
             "title": "WorldToScreen"
         },
         {
-            "location": "/game/index.html#_31",
+            "location": "/game/index.html#_32",
             "text": "x [number]   y [number]   y [number]  \u4e16\u754c\u5750\u6807",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_32",
+            "location": "/game/index.html#_33",
             "text": "x [number]   y [number]   z [number]  \u5c4f\u5e55\u5750\u6807",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1196,7 +1206,7 @@
             "title": "GetGameTime"
         },
         {
-            "location": "/game/index.html#_33",
+            "location": "/game/index.html#_34",
             "text": "\u5f53\u524d\u6e38\u620f\u65f6\u95f4(\u4ece\u8fdb\u5165\u6e38\u620f\u5f00\u59cb)",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1206,7 +1216,7 @@
             "title": "GetDisplayTimeSigned"
         },
         {
-            "location": "/game/index.html#_34",
+            "location": "/game/index.html#_35",
             "text": "\u6e38\u620f\u663e\u793a\u65f6\u95f4",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1216,7 +1226,7 @@
             "title": "GetScreenResolution"
         },
         {
-            "location": "/game/index.html#_35",
+            "location": "/game/index.html#_36",
             "text": "x [int]  \u7a97\u53e3\u5206\u8fa8\u7387 x  y [int]  \u7a97\u53e3\u5206\u8fa8\u7387 y",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1226,7 +1236,7 @@
             "title": "GetHotKeyList"
         },
         {
-            "location": "/game/index.html#_36",
+            "location": "/game/index.html#_37",
             "text": "hot_key_list [table]  \u8fd4\u56de\u5feb\u6377\u952e\u5217\u8868   hot_key_list \u7684\u7ed3\u6784\u5982\u4e0b:  local hot_key_list = game.GetHotKeyList()\n\n-- spell_cast[1], spell_cast[2], spell_cast[3], spell_cast[4]\n-- \u5206\u522b\u5bf9\u5e94\u6280\u80fd 1\uff0c 2\uff0c 3\uff0c 4 \u7684\u5feb\u6377\u952e\nlocal spell_cast = hot_key_list[\"spell_cast\"]\n\n-- spell_quick_cast[1], spell_quick_cast[2], spell_quick_cast[3], spell_quick_cast[4]\n-- \u5206\u522b\u5bf9\u5e94\u6280\u80fd 1\uff0c 2\uff0c 3\uff0c 4 \u7684\u667a\u80fd\u65bd\u6cd5\u5feb\u6377\u952e\nlocal spell_quick_cast = hot_key_list[\"spell_quick_cast\"]\n\n-- \u7269\u54c1\u680f\u7684\u5feb\u6377\u952e\uff0c\u548c\u4e0a\u9762\u7c7b\u4f3c\nlocal item_cast = hot_key_list[\"item_cast\"]\n\n-- \u7269\u54c1\u680f\u7684\u5feb\u6377\u952e\uff0c\u548c\u4e0a\u9762\u7c7b\u4f3c\nlocal item_quick_cast = hot_key_list[\"item_quick_cast\"]\n\n-- \u83dc\u5355\u7684\u5feb\u6377\u952e\uff0c\u5e38\u7528\u7684\u5305\u62ec\uff1a\n-- \u622a\u5c4f 1 \n-- \u961f\u4f0d\u804a\u5929 2 \n-- \u9ed1\u5e97\u804a\u5929 3 \n-- \u663e\u793a/\u9690\u85cfUI 4 \n-- \u663e\u793a/\u9690\u85cf\u5c5e\u6027\u9762\u677f 10\n-- \u663e\u793a/\u9690\u85cf\u5546\u5e97 12\nlocal menu = hot_key_list[\"menu\"]\n\n-- \u955c\u5934\u7684\u5feb\u6377\u952e\uff0c\u5e38\u7528\u7684\u5305\u62ec:\n-- \u9501\u5b9a\u955c\u5934 1\n-- \u9009\u62e9\u82f1\u96c4 2\n-- \u5c06\u82f1\u96c4\u8bbe\u7f6e\u4e3a\u7126\u70b9 3\n-- \u6682\u505c/\u5f00\u59cb\u6e38\u620f 4\nlocal scene = hot_key_list[\"scene\"]",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1256,7 +1266,7 @@
             "title": "IsWatchingGame"
         },
         {
-            "location": "/game/index.html#_37",
+            "location": "/game/index.html#_38",
             "text": "isWatching [bool]  \u662f\u5426\u5904\u4e8e\u89c2\u6218\u6a21\u5f0f",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1266,7 +1276,7 @@
             "title": "IsShipping"
         },
         {
-            "location": "/game/index.html#_38",
+            "location": "/game/index.html#_39",
             "text": "isShipping [bool]  \u662f\u5426\u4e3a shipping \u7248",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1276,7 +1286,7 @@
             "title": "ExecuteConsoleCommand"
         },
         {
-            "location": "/game/index.html#_39",
+            "location": "/game/index.html#_40",
             "text": "command [string]  \u63a7\u5236\u53f0\u547d\u4ee4",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1286,7 +1296,7 @@
             "title": "SetEnableClickThrough"
         },
         {
-            "location": "/game/index.html#_40",
+            "location": "/game/index.html#_41",
             "text": "enable [string]  \u9f20\u6807\u53f3\u952e\u662f\u5426\u7a7f\u900f\u5230\u754c\u9762",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1306,7 +1316,7 @@
             "title": "UpdateMiniMap"
         },
         {
-            "location": "/game/index.html#_41",
+            "location": "/game/index.html#_42",
             "text": "x [int]  \u6a2a\u8f74\u5750\u6807  y [int]  \u7eb5\u8f74\u5750\u6807  w [int]  \u5c0f\u5730\u56fe\u5bbd\u5ea6  h [int]  \u5c0f\u5730\u56fe\u9ad8\u5ea6",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1316,7 +1326,7 @@
             "title": "SetMiniMapBackgroundImage"
         },
         {
-            "location": "/game/index.html#_42",
+            "location": "/game/index.html#_43",
             "text": "image_path [string]  \u5c0f\u5730\u56fe\u80cc\u666f\u56fe\u7247\u8def\u5f84,\u80cc\u666f\u56fe\u7247\u9700\u8981\u653e\u5728  CustomUI\\Gaming\\MiniMap  \u8def\u5f84\u4e0b   \u4f8b\u5b50\uff1a  game.SetMiniMapBackgroundImage(\"Gaming/MiniMap/map.png\")",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1326,7 +1336,7 @@
             "title": "MoveCameraToMiniMapPosition"
         },
         {
-            "location": "/game/index.html#_43",
+            "location": "/game/index.html#_44",
             "text": "x [int]  \u5c0f\u5730\u56fe\u5750\u6807 x  y [int]  \u5c0f\u5730\u56fe\u5750\u6807 y",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1336,7 +1346,7 @@
             "title": "MoveHeroToMiniMapPosition"
         },
         {
-            "location": "/game/index.html#_44",
+            "location": "/game/index.html#_45",
             "text": "x [int]  \u5c0f\u5730\u56fe\u5750\u6807 x  y [int]  \u5c0f\u5730\u56fe\u5750\u6807 y",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1346,7 +1356,7 @@
             "title": "RequestSendMiniMapSignal"
         },
         {
-            "location": "/game/index.html#_45",
+            "location": "/game/index.html#_46",
             "text": "signal_type [int]  \u4fe1\u53f7\u7c7b\u578b  x [int]  \u5c0f\u5730\u56fe\u5750\u6807 x  y [int]  \u5c0f\u5730\u56fe\u5750\u6807 y   \u4fe1\u53f7\u7c7b\u578b\u679a\u4e3e\uff1a  -- \u5c0f\u5730\u56fe\u4fe1\u53f7\u679a\u4e3e\nlocal MINIMAP_SIGNAL_DEFEND_TOWER = 1\nlocal MINIMAP_SIGNAL_GATHER = 2\nlocal MINIMAP_SIGNAL_ATTACK = 3\nlocal MINIMAP_SIGNAL_RETREAT = 4\nlocal MINIMAP_SIGNAL_SOS = 5\nlocal MINIMAP_SIGNAL_ENEMY_DISAPPEAR = 6\nlocal MINIMAP_SIGNAL_COMING = 7",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1356,7 +1366,7 @@
             "title": "GetMiniMapCameraArea"
         },
         {
-            "location": "/game/index.html#_46",
+            "location": "/game/index.html#_47",
             "text": "area [array]  \u5305\u542b 4 \u4e2a\u70b9\uff0c\u6bcf\u4e2a\u70b9\u5305\u542b x\u3001y \u5750\u6807\u3002\u8fd9\u56db\u4e2a\u70b9\u5bf9\u5e94\u7684\u56db\u8fb9\u5f62\u5373\u4e3a\u5c0f\u5730\u56fe\u4e0a\u5bf9\u5e94\u7684\u955c\u5934\u8303\u56f4",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1366,7 +1376,7 @@
             "title": "DisableCameraMove"
         },
         {
-            "location": "/game/index.html#_47",
+            "location": "/game/index.html#_48",
             "text": "is_Disable [bool]  true\u65f6 \u7981\u6b62\u955c\u5934\u79fb\u52a8 false\u65f6\u6062\u590d",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1376,7 +1386,7 @@
             "title": "ShowEffect"
         },
         {
-            "location": "/game/index.html#_48",
+            "location": "/game/index.html#_49",
             "text": "effect_name [string]  \u7279\u6548\u540d  life_time [int]  \u6301\u7eed\u65f6\u95f4 (ms)",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1391,7 +1401,7 @@
             "title": "PlayEventParticle"
         },
         {
-            "location": "/game/index.html#_49",
+            "location": "/game/index.html#_50",
             "text": "effect_name [string]  \u97f3\u6548\u540d",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1406,12 +1416,12 @@
             "title": "AddModelToPreviewScene"
         },
         {
-            "location": "/game/index.html#_50",
+            "location": "/game/index.html#_51",
             "text": "hero_name [string]  \u82f1\u96c4\u540d  x [number]  \u6a21\u578b x \u5750\u6807  y [number]  \u6a21\u578b y \u5750\u6807  z [number]  \u6a21\u578b z \u5750\u6807",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_51",
+            "location": "/game/index.html#_52",
             "text": "model_id [int]  \u6a21\u578b id\uff0c\u4f9b\u5220\u9664\u548c\u8bbe\u7f6e\u6a21\u578b\u7f29\u653e\u548c\u671d\u5411\u65f6\u4f7f\u7528",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1421,7 +1431,7 @@
             "title": "RemoveModelFromPreviewScene"
         },
         {
-            "location": "/game/index.html#_52",
+            "location": "/game/index.html#_53",
             "text": "model_id [int]  \u6a21\u578b id",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1431,7 +1441,7 @@
             "title": "SetModelPosInPreviewScene"
         },
         {
-            "location": "/game/index.html#_53",
+            "location": "/game/index.html#_54",
             "text": "model_id [int]  \u6a21\u578b id  scale [number]  \u7f29\u653e\u7cfb\u6570\uff0c\u5927\u4e8e 1 \u4ee3\u8868\u653e\u5927\uff0c\u5c0f\u4e8e 1 \u4ee3\u8868\u7f29\u5c0f  rotate [number]  \u8bbe\u7f6e\u6a21\u578b\u671d\u5411\uff0c\u53d6\u503c\u8303\u56f4 0 ~ 360",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1441,7 +1451,7 @@
             "title": "SetModelLocationInPreviewScene"
         },
         {
-            "location": "/game/index.html#_54",
+            "location": "/game/index.html#_55",
             "text": "model_id [int]  \u6a21\u578b id  x [number]   y [number]   z [number]  \u6a21\u578b\u5728\u9884\u89c8\u573a\u666f\u4e2d\u7684\u5750\u6807",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1451,7 +1461,7 @@
             "title": "PlayAnimationInPreviewScene"
         },
         {
-            "location": "/game/index.html#_55",
+            "location": "/game/index.html#_56",
             "text": "model_id [int]  \u6a21\u578b id  animation_name [string]  \u52a8\u753b\u540d  speed [number]  \u64ad\u653e\u901f\u5ea6  loop [bool]  \u662f\u5426\u5faa\u73af\u64ad\u653e",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1461,7 +1471,7 @@
             "title": "StopAnimationInPreviewScene"
         },
         {
-            "location": "/game/index.html#_56",
+            "location": "/game/index.html#_57",
             "text": "model_id [int]  \u6a21\u578b id  animation_name [string]  \u52a8\u753b\u540d",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1471,7 +1481,7 @@
             "title": "IsPlayerMute"
         },
         {
-            "location": "/game/index.html#_57",
+            "location": "/game/index.html#_58",
             "text": "player_id [string]  \u73a9\u5bb6id",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1481,7 +1491,7 @@
             "title": "OnPlayerMute"
         },
         {
-            "location": "/game/index.html#_58",
+            "location": "/game/index.html#_59",
             "text": "player_id [string]  \u73a9\u5bb6id  bMute [bool]  \u662f\u5426\u7981\u97f3",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1491,7 +1501,7 @@
             "title": "RequestBlockPlayerSpeak"
         },
         {
-            "location": "/game/index.html#_59",
+            "location": "/game/index.html#_60",
             "text": "slot [int]  \u73a9\u5bb6\u69fd\u4f4did  bBlock [bool]  \u662f\u5426\u7981\u8a00",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1501,7 +1511,7 @@
             "title": "IsPlayerBlock"
         },
         {
-            "location": "/game/index.html#_60",
+            "location": "/game/index.html#_61",
             "text": "slot [int]  \u73a9\u5bb6\u69fd\u4f4did",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1511,12 +1521,12 @@
             "title": "PlayParticle"
         },
         {
-            "location": "/game/index.html#_61",
+            "location": "/game/index.html#_62",
             "text": "x [number]  \u6a21\u578b x \u5750\u6807  y [number]  \u6a21\u578b y \u5750\u6807  z [number]  \u6a21\u578b z \u5750\u6807  scale[number]  \u7f29\u653e\u6bd4\u4f8b",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_62",
+            "location": "/game/index.html#_63",
             "text": "psc [int]  \u521b\u5efa\u7684particle componet\u6307\u9488",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1526,7 +1536,7 @@
             "title": "ClearParticle"
         },
         {
-            "location": "/game/index.html#_63",
+            "location": "/game/index.html#_64",
             "text": "psc [int]  \u8981\u6e05\u6389\u7684particle componet\u6307\u9488",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1536,12 +1546,12 @@
             "title": "CreateParticleUnit"
         },
         {
-            "location": "/game/index.html#_64",
+            "location": "/game/index.html#_65",
             "text": "particle_name [string]  \u7279\u6548\u540d\u5b57(table/\u901a\u7528/ParticleData\u91cc\u9762\u914d\u7f6e)  x [number]  x \u5750\u6807  y [number]  y \u5750\u6807  z [number]  z \u5750\u6807",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_65",
+            "location": "/game/index.html#_66",
             "text": "unit [int]  \u521b\u5efa\u7684particle\u5355\u4f4d\u6307\u9488",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1551,7 +1561,7 @@
             "title": "DestoryParticleUnit"
         },
         {
-            "location": "/game/index.html#_66",
+            "location": "/game/index.html#_67",
             "text": "unit [int]  \u9700\u8981\u9500\u6bc1\u7684particle\u5355\u4f4d",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1561,7 +1571,7 @@
             "title": "MoveParticleUnit"
         },
         {
-            "location": "/game/index.html#_67",
+            "location": "/game/index.html#_68",
             "text": "unit [int]  \u9700\u8981\u79fb\u52a8\u7684particle\u5355\u4f4d  x [number]  x \u5750\u6807  y [number]  y \u5750\u6807  z [number]  z \u5750\u6807",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1571,12 +1581,12 @@
             "title": "CreateClientUnit"
         },
         {
-            "location": "/game/index.html#_68",
+            "location": "/game/index.html#_69",
             "text": "type_id [int]  \u5355\u4f4d\u7c7b\u578bid (UnitData.ini\u91cc\u9762\u914d\u7f6e\u7684\u5355\u4f4d\u7c7b\u578b)  x [number]  x \u5750\u6807  y [number]  y \u5750\u6807  z [number]  z \u5750\u6807  facing [number]  \u9762\u5411\u89d2\u5ea6",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_69",
+            "location": "/game/index.html#_70",
             "text": "unit [int]  \u5ba2\u6237\u7aef\u5355\u4f4d\u7684handle",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1586,7 +1596,7 @@
             "title": "DestroyClientUnit"
         },
         {
-            "location": "/game/index.html#_70",
+            "location": "/game/index.html#_71",
             "text": "unit_handle [int]  \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1596,7 +1606,7 @@
             "title": "SetClientUnitLocation"
         },
         {
-            "location": "/game/index.html#_71",
+            "location": "/game/index.html#_72",
             "text": "unit_handle [int]  \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4  x [number]  x \u5750\u6807  y [number]  y \u5750\u6807  z [number]  z \u5750\u6807",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1606,12 +1616,12 @@
             "title": "GetClientUnitLocation"
         },
         {
-            "location": "/game/index.html#_72",
+            "location": "/game/index.html#_73",
             "text": "unit_handle [int]  \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_73",
+            "location": "/game/index.html#_74",
             "text": "x [number]  x \u5750\u6807  y [number]  y \u5750\u6807  z [number]  z \u5750\u6807",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1621,7 +1631,7 @@
             "title": "SetClientUnitRotation"
         },
         {
-            "location": "/game/index.html#_74",
+            "location": "/game/index.html#_75",
             "text": "unit_handle [int]  \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4  x [number]  x \u89d2\u5ea6\u5236 \u56f4\u7ed5x\u8f74\u65cb\u8f6c  y [number]  y \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c y\u8f74\u4e3a\u6e38\u620f\u7684\u6c34\u5e73\u8f74  z [number]  z \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c z\u8f74\u4e3a\u6539\u53d8\u5355\u4f4d\u7684\u9762\u5411\u89d2\u5ea6",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1631,12 +1641,12 @@
             "title": "GetClientUnitRotation"
         },
         {
-            "location": "/game/index.html#_75",
+            "location": "/game/index.html#_76",
             "text": "unit_handle [int]  \u6709\u6548\u7684\u5355\u4f4d\u53e5\u67c4",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_76",
+            "location": "/game/index.html#_77",
             "text": "x [number]  x \u89d2\u5ea6\u5236 \u56f4\u7ed5x\u8f74\u65cb\u8f6c  y [number]  y \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c y\u8f74\u4e3a\u6e38\u620f\u7684\u6c34\u5e73\u8f74  z [number]  z \u89d2\u5ea6\u5236 \u56f4\u7ed5y\u8f74\u65cb\u8f6c z\u8f74\u4e3a\u6539\u53d8\u5355\u4f4d\u7684\u9762\u5411\u89d2\u5ea6",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1646,7 +1656,7 @@
             "title": "ShowCameraMove"
         },
         {
-            "location": "/game/index.html#_77",
+            "location": "/game/index.html#_78",
             "text": "camera_name [string]  \u955c\u5934\u4e8b\u4ef6\u7684\u540d\u5b57",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1656,7 +1666,7 @@
             "title": "SetForbidRightMouse"
         },
         {
-            "location": "/game/index.html#_78",
+            "location": "/game/index.html#_79",
             "text": "bforbid [bool]  \u662f\u5426\u7981\u6b62",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1666,7 +1676,7 @@
             "title": "SetForbidRightMouse"
         },
         {
-            "location": "/game/index.html#_79",
+            "location": "/game/index.html#_80",
             "text": "bforbid [bool]  \u662f\u5426\u7981\u6b62",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1676,7 +1686,7 @@
             "title": "SetForceGuideShop"
         },
         {
-            "location": "/game/index.html#_80",
+            "location": "/game/index.html#_81",
             "text": "bforce [bool]  \u662f\u5426\u5f3a\u5236",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1686,7 +1696,7 @@
             "title": "SetForbidKey"
         },
         {
-            "location": "/game/index.html#_81",
+            "location": "/game/index.html#_82",
             "text": "bforbid [bool]  \u662f\u5426\u7981\u6b62",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1696,12 +1706,12 @@
             "title": "GetTargetSpellDescription"
         },
         {
-            "location": "/game/index.html#_82",
+            "location": "/game/index.html#_83",
             "text": "spell_unique_id [int]  \u6280\u80fd\u552f\u4e00 id  spell_id [int]  \u6280\u80fd id  spell_level [int]  \u6280\u80fd\u7b49\u7ea7\u3002\u65e0\u7b49\u7ea7\u8bbe\u5b9a\u7684\u6280\u80fd\u6216\u7269\u54c1\uff0c\u6b64\u503c\u4e3a 1  unit_id[int]  \u5355\u4f4did",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_83",
+            "location": "/game/index.html#_84",
             "text": "spell_desc [string]  \u6280\u80fd\u63cf\u8ff0  spell_detail [string]  \u8be6\u7ec6\u63cf\u8ff0",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1711,7 +1721,7 @@
             "title": "OpenInputMethod"
         },
         {
-            "location": "/game/index.html#_84",
+            "location": "/game/index.html#_85",
             "text": "is_ignore_default_ui [bool]  \u662f\u5426\u5ffd\u7565\u81ea\u5e26\u7684UI",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1726,12 +1736,12 @@
             "title": "IsPariticleStop"
         },
         {
-            "location": "/game/index.html#_85",
+            "location": "/game/index.html#_86",
             "text": "sound_id [string]  \u97f3\u6548sound_id",
             "title": "\u53c2\u6570\u5217\u8868"
         },
         {
-            "location": "/game/index.html#_86",
+            "location": "/game/index.html#_87",
             "text": "bstop [bool]  \u662f\u5426\u64ad\u653e\u7ed3\u675f",
             "title": "\u8fd4\u56de\u503c"
         },
@@ -1741,7 +1751,7 @@
             "title": "StopEventParticle"
         },
         {
-            "location": "/game/index.html#_87",
+            "location": "/game/index.html#_88",
             "text": "sound_id [string]  \u97f3\u6548sound_id",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1751,7 +1761,7 @@
             "title": "PlayMiniMapSignalTips"
         },
         {
-            "location": "/game/index.html#_88",
+            "location": "/game/index.html#_89",
             "text": "minimap_singnal_type [int]  \u5c0f\u5730\u56fe\u4fe1\u53f7\u7c7b\u578b  x [float]  \u4fe1\u53f7\u4f4d\u7f6ex  y [float]  \u4fe1\u53f7\u4f4d\u7f6ey  unit_id [int]  \u5355\u4f4did  time_delay [float]  \u6301\u7eed\u65f6\u95f4  singal_type [int]  \u5927\u5730\u56fe\u4e0a\u7684\u4fe1\u53f7\u7c7b\u578b",
             "title": "\u53c2\u6570\u5217\u8868"
         },
@@ -1761,7 +1771,7 @@
             "title": "IsSettingOpen"
         },
         {
-            "location": "/game/index.html#_89",
+            "location": "/game/index.html#_90",
             "text": "bopen [bool]  \u662f\u5426\u6253\u5f00",
             "title": "\u8fd4\u56de\u503c"
         },
