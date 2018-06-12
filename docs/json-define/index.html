@@ -78,6 +78,9 @@
     <li class="toctree-l2"><a href="#_5">控件类型：标签</a></li>
     
 
+    <li class="toctree-l2"><a href="#richtextblock">控件类型：富文本框(RichTextBlock)</a></li>
+    
+
     <li class="toctree-l2"><a href="#_6">控件类型：进度条</a></li>
     
 
@@ -427,6 +430,14 @@ end
 <li><code>model_view [bool]</code> 设置为 true 时，可以显示模型预览框</li>
 <li><code>animation_duration [number]</code> 设置使用 <code>show_with_animation</code> 和 <code>hide_with_animation</code> 播放动画时，动画的持续时间</li>
 <li><code>Capture_Touch [bool]</code> 是否捕获焦点, 设置为 true 时，则捕获焦点,即手指离开控件区域, 控件仍然可以接受手指滑动事件, 默认false</li>
+</ul>
+<hr />
+<h2 id="richtextblock">控件类型：富文本框(RichTextBlock)</h2>
+<p>[注意]目前只在移动平台使用</p>
+<p>在移动平台上普通的标签不支持富文本显示,如要显示富文本(比如spell/buff的提示信息),则需要使用富文本控件</p>
+<ul>
+<li><code>text [string]</code> 文本内容</li>
+<li><code>text_align [string]</code> 对齐方式 ： left，center，right</li>
 </ul>
 <hr />
 <h2 id="_6">控件类型：进度条</h2>
