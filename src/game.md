@@ -756,6 +756,22 @@ local MINIMAP_SIGNAL_COMING = 7
 
 ---
 
+### ShowEffectInPreviewScene
+
+**game.ShowEffectInPreviewScene(effect_name, scale, x, y, z)**
+
+在模型预览控件上播放特效
+
+#### _参数列表_
+
+- `effect_name [string]` 特效名
+- `scale [number]` 缩放比例
+- `x [number]` x 坐标
+- `y [number]` y 坐标
+- `z [number]` z 坐标
+
+---
+
 ### RemoveModelFromPreviewScene
 
 **game.RemoveModelFromPreviewScene(model_id)**
