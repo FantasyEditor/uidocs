@@ -132,6 +132,8 @@
         
             <li><a class="toctree-l3" href="#gethotkeylist">GetHotKeyList</a></li>
         
+            <li><a class="toctree-l3" href="#gethotkeylistex">GetHotKeyListEx</a></li>
+        
             <li><a class="toctree-l3" href="#togglesettingpanel">ToggleSettingPanel</a></li>
         
             <li><a class="toctree-l3" href="#toggleshoppanel">ToggleShopPanel</a></li>
@@ -161,6 +163,8 @@
             <li><a class="toctree-l3" href="#moveherotominimapposition">MoveHeroToMiniMapPosition</a></li>
         
             <li><a class="toctree-l3" href="#requestsendminimapsignal">RequestSendMiniMapSignal</a></li>
+        
+            <li><a class="toctree-l3" href="#requestsendminimapsignalonscreen">RequestSendMiniMapSignalOnScreen</a></li>
         
             <li><a class="toctree-l3" href="#getminimapcameraarea">GetMiniMapCameraArea</a></li>
         
@@ -243,6 +247,30 @@
             <li><a class="toctree-l3" href="#issettingopen">IsSettingOpen</a></li>
         
             <li><a class="toctree-l3" href="#reconnectgame">ReconnectGame</a></li>
+        
+            <li><a class="toctree-l3" href="#unitisincamera">UnitIsInCamera</a></li>
+        
+            <li><a class="toctree-l3" href="#surrendervote">SurrenderVote</a></li>
+        
+            <li><a class="toctree-l3" href="#reqsurrender">ReqSurrender</a></li>
+        
+            <li><a class="toctree-l3" href="#getdefaultconfig">GetDefaultConfig</a></li>
+        
+            <li><a class="toctree-l3" href="#getgamesetting">GetGameSetting</a></li>
+        
+            <li><a class="toctree-l3" href="#savegamesetting">SaveGameSetting</a></li>
+        
+            <li><a class="toctree-l3" href="#issystem32bits">IsSystem32Bits</a></li>
+        
+            <li><a class="toctree-l3" href="#clickexitgame">ClickExitGame</a></li>
+        
+            <li><a class="toctree-l3" href="#getgamestate">GetGameState</a></li>
+        
+            <li><a class="toctree-l3" href="#starttestingmicrophone">StartTestingMicroPhone</a></li>
+        
+            <li><a class="toctree-l3" href="#stoptestingmicrophone">StopTestingMicroPhone</a></li>
+        
+            <li><a class="toctree-l3" href="#issettinginput">IsSettingInput</a></li>
         
         </ul>
     
@@ -657,6 +685,14 @@ local scene = hot_key_list[&quot;scene&quot;]
 </code></pre>
 
 <hr />
+<h3 id="gethotkeylistex">GetHotKeyListEx</h3>
+<p><strong>game.GetHotKeyListEx()</strong></p>
+<p>是对获取快捷键列表扩展（可获取组合键 ctrl+Q shift+Q 这种）</p>
+<h4 id="_38"><em>返回值</em></h4>
+<ul>
+<li><code>hot_key_list [table]</code> 返回快捷键列表</li>
+</ul>
+<hr />
 <h3 id="togglesettingpanel">ToggleSettingPanel</h3>
 <p><strong>game.ToggleSettingPanel()</strong></p>
 <p>打开/关闭设置面板</p>
@@ -674,7 +710,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="iswatchinggame">IsWatchingGame</h3>
 <p><strong>game.IsWatchingGame()</strong></p>
 <p>判断是否处于观战模式</p>
-<h4 id="_38"><em>返回值</em></h4>
+<h4 id="_39"><em>返回值</em></h4>
 <ul>
 <li><code>isWatching [bool]</code> 是否处于观战模式</li>
 </ul>
@@ -682,7 +718,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="isshipping">IsShipping</h3>
 <p><strong>game.IsShipping()</strong></p>
 <p>客户端是否为 shipping 版</p>
-<h4 id="_39"><em>返回值</em></h4>
+<h4 id="_40"><em>返回值</em></h4>
 <ul>
 <li><code>isShipping [bool]</code> 是否为 shipping 版</li>
 </ul>
@@ -690,7 +726,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="executeconsolecommand">ExecuteConsoleCommand</h3>
 <p><strong>game.ExecuteConsoleCommand(command)</strong></p>
 <p>执行控制台命令</p>
-<h4 id="_40"><em>参数列表</em></h4>
+<h4 id="_41"><em>参数列表</em></h4>
 <ul>
 <li><code>command [string]</code> 控制台命令</li>
 </ul>
@@ -698,7 +734,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="setenableclickthrough">SetEnableClickThrough</h3>
 <p><strong>game.SetEnableClickThrough(enable)</strong></p>
 <p>设置鼠标右键穿透</p>
-<h4 id="_41"><em>参数列表</em></h4>
+<h4 id="_42"><em>参数列表</em></h4>
 <ul>
 <li><code>enable [string]</code> 鼠标右键是否穿透到界面</li>
 </ul>
@@ -714,7 +750,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="updateminimap">UpdateMiniMap</h3>
 <p><strong>game.UpdateMiniMap(x, y, w, h)</strong></p>
 <p>修改小地图大小及位置</p>
-<h4 id="_42"><em>参数列表</em></h4>
+<h4 id="_43"><em>参数列表</em></h4>
 <ul>
 <li><code>x [int]</code> 横轴坐标</li>
 <li><code>y [int]</code> 纵轴坐标</li>
@@ -725,7 +761,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="setminimapbackgroundimage">SetMiniMapBackgroundImage</h3>
 <p><strong>game.SetMiniMapBackgroundImage(iamge_path)</strong></p>
 <p>设置小地图背景图片,图片必须为 png 格式</p>
-<h4 id="_43"><em>参数列表</em></h4>
+<h4 id="_44"><em>参数列表</em></h4>
 <ul>
 <li><code>image_path [string]</code> 小地图背景图片路径,背景图片需要放在 <code>CustomUI\Gaming\MiniMap</code> 路径下</li>
 </ul>
@@ -737,7 +773,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="movecameratominimapposition">MoveCameraToMiniMapPosition</h3>
 <p><strong>game.MoveCameraToMiniMapPosition(x, y)</strong></p>
 <p>移动镜头到指定小地图坐标</p>
-<h4 id="_44"><em>参数列表</em></h4>
+<h4 id="_45"><em>参数列表</em></h4>
 <ul>
 <li><code>x [int]</code> 小地图坐标 x</li>
 <li><code>y [int]</code> 小地图坐标 y</li>
@@ -746,7 +782,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="moveherotominimapposition">MoveHeroToMiniMapPosition</h3>
 <p><strong>game.MoveHeroToMiniMapPosition(x, y)</strong></p>
 <p>移动英雄到指定小地图坐标</p>
-<h4 id="_45"><em>参数列表</em></h4>
+<h4 id="_46"><em>参数列表</em></h4>
 <ul>
 <li><code>x [int]</code> 小地图坐标 x</li>
 <li><code>y [int]</code> 小地图坐标 y</li>
@@ -755,7 +791,7 @@ local scene = hot_key_list[&quot;scene&quot;]
 <h3 id="requestsendminimapsignal">RequestSendMiniMapSignal</h3>
 <p><strong>game.RequestSendMiniMapSignal(singal_type, x, y)</strong></p>
 <p>在小地图上显示信号</p>
-<h4 id="_46"><em>参数列表</em></h4>
+<h4 id="_47"><em>参数列表</em></h4>
 <ul>
 <li><code>signal_type [int]</code> 信号类型</li>
 <li><code>x [int]</code> 小地图坐标 x</li>
@@ -773,10 +809,31 @@ local MINIMAP_SIGNAL_COMING = 7
 </code></pre>
 
 <hr />
+<h3 id="requestsendminimapsignalonscreen">RequestSendMiniMapSignalOnScreen</h3>
+<p><strong>game.RequestSendMiniMapSignalOnScreen(singal_type, x, y)</strong></p>
+<p>在小地图上点击发射信号显示在大地图屏幕上</p>
+<h4 id="_48"><em>参数列表</em></h4>
+<ul>
+<li><code>signal_type [int]</code> 信号类型</li>
+<li><code>x [int]</code> 屏幕坐标 x</li>
+<li><code>y [int]</code> 屏幕坐标 y</li>
+</ul>
+<p>信号类型枚举：</p>
+<pre><code>-- 小地图信号枚举
+local MINIMAP_SIGNAL_DEFEND_TOWER = 1
+local MINIMAP_SIGNAL_GATHER = 2
+local MINIMAP_SIGNAL_ATTACK = 3
+local MINIMAP_SIGNAL_RETREAT = 4
+local MINIMAP_SIGNAL_SOS = 5
+local MINIMAP_SIGNAL_ENEMY_DISAPPEAR = 6
+local MINIMAP_SIGNAL_COMING = 7
+</code></pre>
+
+<hr />
 <h3 id="getminimapcameraarea">GetMiniMapCameraArea</h3>
 <p><strong>game.GetMiniMapCameraArea()</strong></p>
 <p>获取小地图上对应的镜头范围</p>
-<h4 id="_47"><em>返回值</em></h4>
+<h4 id="_49"><em>返回值</em></h4>
 <ul>
 <li><code>area [array]</code> 包含 4 个点，每个点包含 x、y 坐标。这四个点对应的四边形即为小地图上对应的镜头范围 </li>
 </ul>
@@ -785,7 +842,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="disablecameramove">DisableCameraMove</h3>
 <p><strong>game.DisableCameraMove(is_Disable)</strong></p>
 <p>关闭鼠标在窗口边缘时 镜头会移动的接口</p>
-<h4 id="_48"><em>参数列表</em></h4>
+<h4 id="_50"><em>参数列表</em></h4>
 <ul>
 <li><code>is_Disable [bool]</code> true时 禁止镜头移动 false时恢复</li>
 </ul>
@@ -793,7 +850,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="showeffect">ShowEffect</h3>
 <p><strong>game.ShowEffect(effect_name, life_time)</strong></p>
 <p>播放特效</p>
-<h4 id="_49"><em>参数列表</em></h4>
+<h4 id="_51"><em>参数列表</em></h4>
 <ul>
 <li><code>effect_name [string]</code> 特效名</li>
 <li><code>life_time [int]</code> 持续时间 (ms)</li>
@@ -806,7 +863,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="playeventparticle">PlayEventParticle</h3>
 <p><strong>game.PlayEventParticle(effect_name)</strong></p>
 <p>播放音效</p>
-<h4 id="_50"><em>参数列表</em></h4>
+<h4 id="_52"><em>参数列表</em></h4>
 <ul>
 <li><code>effect_name [string]</code> 音效名</li>
 </ul>
@@ -818,14 +875,14 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="addmodeltopreviewscene">AddModelToPreviewScene</h3>
 <p><strong>game.AddModelToPreviewScene(hero_name, x, y, z)</strong></p>
 <p>添加预览模型到模型预览控件</p>
-<h4 id="_51"><em>参数列表</em></h4>
+<h4 id="_53"><em>参数列表</em></h4>
 <ul>
 <li><code>hero_name [string]</code> 英雄名</li>
 <li><code>x [number]</code> 模型 x 坐标</li>
 <li><code>y [number]</code> 模型 y 坐标</li>
 <li><code>z [number]</code> 模型 z 坐标</li>
 </ul>
-<h4 id="_52"><em>返回值</em></h4>
+<h4 id="_54"><em>返回值</em></h4>
 <ul>
 <li><code>model_id [int]</code> 模型 id，供删除和设置模型缩放和朝向时使用</li>
 </ul>
@@ -833,7 +890,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="showeffectinpreviewscene">ShowEffectInPreviewScene</h3>
 <p><strong>game.ShowEffectInPreviewScene(effect_name, scale, x, y, z)</strong></p>
 <p>在模型预览控件上播放特效</p>
-<h4 id="_53"><em>参数列表</em></h4>
+<h4 id="_55"><em>参数列表</em></h4>
 <ul>
 <li><code>effect_name [string]</code> 特效名</li>
 <li><code>scale [number]</code> 缩放比例</li>
@@ -845,7 +902,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="removemodelfrompreviewscene">RemoveModelFromPreviewScene</h3>
 <p><strong>game.RemoveModelFromPreviewScene(model_id)</strong></p>
 <p>删除预览模型</p>
-<h4 id="_54"><em>参数列表</em></h4>
+<h4 id="_56"><em>参数列表</em></h4>
 <ul>
 <li><code>model_id [int]</code> 模型 id</li>
 </ul>
@@ -853,7 +910,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="setmodelposinpreviewscene">SetModelPosInPreviewScene</h3>
 <p><strong>game.SetModelPosInPreviewScene(model_id, scale, rotate)</strong></p>
 <p>设置模型缩放和朝向</p>
-<h4 id="_55"><em>参数列表</em></h4>
+<h4 id="_57"><em>参数列表</em></h4>
 <ul>
 <li><code>model_id [int]</code> 模型 id</li>
 <li><code>scale [number]</code> 缩放系数，大于 1 代表放大，小于 1 代表缩小</li>
@@ -863,7 +920,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="setmodellocationinpreviewscene">SetModelLocationInPreviewScene</h3>
 <p><strong>game.SetModelLocationInPreviewScene(model_id, x, y, z)</strong></p>
 <p>设置模型在预览场景中的位置</p>
-<h4 id="_56"><em>参数列表</em></h4>
+<h4 id="_58"><em>参数列表</em></h4>
 <ul>
 <li><code>model_id [int]</code> 模型 id</li>
 <li><code>x [number]</code> <code>y [number]</code> <code>z [number]</code> 模型在预览场景中的坐标</li>
@@ -872,7 +929,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="playanimationinpreviewscene">PlayAnimationInPreviewScene</h3>
 <p><strong>game.PlayAnimationInPreviewScene(model_id, animation_name, speed, loop)</strong></p>
 <p>使预览场景中的模型播放动画</p>
-<h4 id="_57"><em>参数列表</em></h4>
+<h4 id="_59"><em>参数列表</em></h4>
 <ul>
 <li><code>model_id [int]</code> 模型 id</li>
 <li><code>animation_name [string]</code> 动画名</li>
@@ -883,7 +940,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="stopanimationinpreviewscene">StopAnimationInPreviewScene</h3>
 <p><strong>game.StopAnimationInPreviewScene(model_id, animation_name)</strong></p>
 <p>使预览场景中的模型停止播放动画</p>
-<h4 id="_58"><em>参数列表</em></h4>
+<h4 id="_60"><em>参数列表</em></h4>
 <ul>
 <li><code>model_id [int]</code> 模型 id</li>
 <li><code>animation_name [string]</code> 动画名</li>
@@ -892,7 +949,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="isplayermute">IsPlayerMute</h3>
 <p><strong>game.IsPlayerMute(player_id)</strong></p>
 <p>玩家是否被禁音</p>
-<h4 id="_59"><em>参数列表</em></h4>
+<h4 id="_61"><em>参数列表</em></h4>
 <ul>
 <li><code>player_id [string]</code> 玩家id</li>
 </ul>
@@ -900,7 +957,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="onplayermute">OnPlayerMute</h3>
 <p><strong>game.OnPlayerMute(player_id, bMute)</strong></p>
 <p>禁音玩家</p>
-<h4 id="_60"><em>参数列表</em></h4>
+<h4 id="_62"><em>参数列表</em></h4>
 <ul>
 <li><code>player_id [string]</code> 玩家id</li>
 <li><code>bMute [bool]</code> 是否禁音</li>
@@ -909,7 +966,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="requestblockplayerspeak">RequestBlockPlayerSpeak</h3>
 <p><strong>game.RequestBlockPlayerSpeak(slot, bBlock)</strong></p>
 <p>请求禁言玩家</p>
-<h4 id="_61"><em>参数列表</em></h4>
+<h4 id="_63"><em>参数列表</em></h4>
 <ul>
 <li><code>slot [int]</code> 玩家槽位id</li>
 <li><code>bBlock [bool]</code> 是否禁言</li>
@@ -918,7 +975,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="isplayerblock">IsPlayerBlock</h3>
 <p><strong>game.IsPlayerBlock(slot)</strong></p>
 <p>玩家是否被禁音</p>
-<h4 id="_62"><em>参数列表</em></h4>
+<h4 id="_64"><em>参数列表</em></h4>
 <ul>
 <li><code>slot [int]</code> 玩家槽位id</li>
 </ul>
@@ -926,14 +983,14 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="playparticle">PlayParticle</h3>
 <p><strong>game.PlayParticle(x, y, z, scale)</strong></p>
 <p>在指定点播放particle</p>
-<h4 id="_63"><em>参数列表</em></h4>
+<h4 id="_65"><em>参数列表</em></h4>
 <ul>
 <li><code>x [number]</code> 模型 x 坐标</li>
 <li><code>y [number]</code> 模型 y 坐标</li>
 <li><code>z [number]</code> 模型 z 坐标</li>
 <li><code>scale[number]</code> 缩放比例</li>
 </ul>
-<h4 id="_64"><em>返回值</em></h4>
+<h4 id="_66"><em>返回值</em></h4>
 <ul>
 <li><code>psc [int]</code> 创建的particle componet指针</li>
 </ul>
@@ -941,7 +998,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="clearparticle">ClearParticle</h3>
 <p><strong>game.ClearParticle(psc)</strong></p>
 <p>在指定点播放particle</p>
-<h4 id="_65"><em>参数列表</em></h4>
+<h4 id="_67"><em>参数列表</em></h4>
 <ul>
 <li><code>psc [int]</code> 要清掉的particle componet指针</li>
 </ul>
@@ -949,14 +1006,14 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="createparticleunit">CreateParticleUnit</h3>
 <p><strong>game.CreateParticleUnit(x, y, z)</strong></p>
 <p>创建一个特效（需要保存创建的特效单位，方便销毁和移动用）</p>
-<h4 id="_66"><em>参数列表</em></h4>
+<h4 id="_68"><em>参数列表</em></h4>
 <ul>
 <li><code>particle_name [string]</code> 特效名字(table/通用/ParticleData里面配置)</li>
 <li><code>x [number]</code> x 坐标</li>
 <li><code>y [number]</code> y 坐标</li>
 <li><code>z [number]</code> z 坐标</li>
 </ul>
-<h4 id="_67"><em>返回值</em></h4>
+<h4 id="_69"><em>返回值</em></h4>
 <ul>
 <li><code>unit [int]</code> 创建的particle单位指针</li>
 </ul>
@@ -964,7 +1021,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="destoryparticleunit">DestoryParticleUnit</h3>
 <p><strong>game.DestoryParticleUnit(unit)</strong></p>
 <p>显示镜头移动</p>
-<h4 id="_68"><em>参数列表</em></h4>
+<h4 id="_70"><em>参数列表</em></h4>
 <ul>
 <li><code>unit [int]</code> 需要销毁的particle单位</li>
 </ul>
@@ -972,7 +1029,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="moveparticleunit">MoveParticleUnit</h3>
 <p><strong>game.MoveParticleUnit(unit, x, y, z)</strong></p>
 <p>创建一个特效</p>
-<h4 id="_69"><em>参数列表</em></h4>
+<h4 id="_71"><em>参数列表</em></h4>
 <ul>
 <li><code>unit [int]</code> 需要移动的particle单位</li>
 <li><code>x [number]</code> x 坐标</li>
@@ -983,7 +1040,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="createclientunit">CreateClientUnit</h3>
 <p><strong>game.CreateClientUnit(type_id,x, y, z,facing)</strong></p>
 <p>创建一个客户端单位（只有模型显示，不跑服务端，只完全被客户端操控的单位）</p>
-<h4 id="_70"><em>参数列表</em></h4>
+<h4 id="_72"><em>参数列表</em></h4>
 <ul>
 <li><code>type_id [int]</code> 单位类型id (UnitData.ini里面配置的单位类型)</li>
 <li><code>x [number]</code> x 坐标</li>
@@ -991,7 +1048,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <li><code>z [number]</code> z 坐标</li>
 <li><code>facing [number]</code> 面向角度</li>
 </ul>
-<h4 id="_71"><em>返回值</em></h4>
+<h4 id="_73"><em>返回值</em></h4>
 <ul>
 <li><code>unit [int]</code> 客户端单位的handle</li>
 </ul>
@@ -999,7 +1056,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="destroyclientunit">DestroyClientUnit</h3>
 <p><strong>game.DestroyClientUnit(unit_handle)</strong></p>
 <p>销毁一个客户端单位</p>
-<h4 id="_72"><em>参数列表</em></h4>
+<h4 id="_74"><em>参数列表</em></h4>
 <ul>
 <li><code>unit_handle [int]</code> 有效的单位句柄</li>
 </ul>
@@ -1007,7 +1064,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="setclientunitlocation">SetClientUnitLocation</h3>
 <p><strong>game.SetClientUnitLocation(unit_handle,x, y, z)</strong></p>
 <p>设置客户端单位的位置 (改变显示的位置)</p>
-<h4 id="_73"><em>参数列表</em></h4>
+<h4 id="_75"><em>参数列表</em></h4>
 <ul>
 <li><code>unit_handle [int]</code> 有效的单位句柄</li>
 <li><code>x [number]</code> x 坐标</li>
@@ -1018,11 +1075,11 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="getclientunitlocation">GetClientUnitLocation</h3>
 <p><strong>game.GetClientUnitLocation(unit_handle,x, y, z)</strong></p>
 <p>获取客户端单位的位置 (当前位置)</p>
-<h4 id="_74"><em>参数列表</em></h4>
+<h4 id="_76"><em>参数列表</em></h4>
 <ul>
 <li><code>unit_handle [int]</code> 有效的单位句柄</li>
 </ul>
-<h4 id="_75"><em>返回值</em></h4>
+<h4 id="_77"><em>返回值</em></h4>
 <ul>
 <li><code>x [number]</code> x 坐标</li>
 <li><code>y [number]</code> y 坐标</li>
@@ -1032,7 +1089,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="setclientunitrotation">SetClientUnitRotation</h3>
 <p><strong>game.SetClientUnitRotation(unit_handle,x, y, z)</strong></p>
 <p>设置客户端单位的旋转轴参数 (旋转模型跟设置面向)</p>
-<h4 id="_76"><em>参数列表</em></h4>
+<h4 id="_78"><em>参数列表</em></h4>
 <ul>
 <li><code>unit_handle [int]</code> 有效的单位句柄</li>
 <li><code>x [number]</code> x 角度制 围绕x轴旋转</li>
@@ -1043,11 +1100,11 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="getclientunitrotation">GetClientUnitRotation</h3>
 <p><strong>game.GetClientUnitRotation(unit_handle,x, y, z)</strong></p>
 <p>获取客户端单位的旋转轴参数 (旋转模型)</p>
-<h4 id="_77"><em>参数列表</em></h4>
+<h4 id="_79"><em>参数列表</em></h4>
 <ul>
 <li><code>unit_handle [int]</code> 有效的单位句柄</li>
 </ul>
-<h4 id="_78"><em>返回值</em></h4>
+<h4 id="_80"><em>返回值</em></h4>
 <ul>
 <li><code>x [number]</code> x 角度制 围绕x轴旋转</li>
 <li><code>y [number]</code> y 角度制 围绕y轴旋转 y轴为游戏的水平轴</li>
@@ -1057,7 +1114,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="showcameramove">ShowCameraMove</h3>
 <p><strong>game.ShowCameraMove(camera_name)</strong></p>
 <p>显示镜头移动</p>
-<h4 id="_79"><em>参数列表</em></h4>
+<h4 id="_81"><em>参数列表</em></h4>
 <ul>
 <li><code>camera_name [string]</code> 镜头事件的名字</li>
 </ul>
@@ -1065,7 +1122,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="setforbidrightmouse">SetForbidRightMouse</h3>
 <p><strong>game.SetForbidRightMouse(bforbid)</strong></p>
 <p>禁止右键移动</p>
-<h4 id="_80"><em>参数列表</em></h4>
+<h4 id="_82"><em>参数列表</em></h4>
 <ul>
 <li><code>bforbid [bool]</code> 是否禁止</li>
 </ul>
@@ -1073,7 +1130,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="setforbidrightmouse_1">SetForbidRightMouse</h3>
 <p><strong>game.SetForbidRightMouse(bforbid)</strong></p>
 <p>禁止右键移动</p>
-<h4 id="_81"><em>参数列表</em></h4>
+<h4 id="_83"><em>参数列表</em></h4>
 <ul>
 <li><code>bforbid [bool]</code> 是否禁止</li>
 </ul>
@@ -1081,7 +1138,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="setforceguideshop">SetForceGuideShop</h3>
 <p><strong>game.SetForceGuideShop(bforce)</strong></p>
 <p>设置是否强制商店引导</p>
-<h4 id="_82"><em>参数列表</em></h4>
+<h4 id="_84"><em>参数列表</em></h4>
 <ul>
 <li><code>bforce [bool]</code> 是否强制</li>
 </ul>
@@ -1089,7 +1146,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="setforbidkey">SetForbidKey</h3>
 <p><strong>game.SetForbidKey(bforce)</strong></p>
 <p>设置是否禁止按键响应</p>
-<h4 id="_83"><em>参数列表</em></h4>
+<h4 id="_85"><em>参数列表</em></h4>
 <ul>
 <li><code>bforbid [bool]</code> 是否禁止</li>
 </ul>
@@ -1097,14 +1154,14 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="gettargetspelldescription">GetTargetSpellDescription</h3>
 <p><strong>game.GetTargetSpellDescription(spell_unique_id, spell_id, spell_level, unit_id)</strong></p>
 <p>获取单位左上角技能描述信息，这个描述信息是会根据当前人物属性、技能等级动态变化的(敌方的不会随等级变化)</p>
-<h4 id="_84"><em>参数列表</em></h4>
+<h4 id="_86"><em>参数列表</em></h4>
 <ul>
 <li><code>spell_unique_id [int]</code> 技能唯一 id</li>
 <li><code>spell_id [int]</code> 技能 id</li>
 <li><code>spell_level [int]</code> 技能等级。无等级设定的技能或物品，此值为 1</li>
 <li><code>unit_id[int]</code> 单位id</li>
 </ul>
-<h4 id="_85"><em>返回值</em></h4>
+<h4 id="_87"><em>返回值</em></h4>
 <ul>
 <li><code>spell_desc [string]</code> 技能描述</li>
 <li><code>spell_detail [string]</code> 详细描述</li>
@@ -1114,7 +1171,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <p><strong>game.OpenInputMethod(is_ignore_default_ui)</strong></p>
 <p>打开输入法，忽略掉默认的ui
 打开后 游戏里的按键操作会被输入法屏蔽</p>
-<h4 id="_86"><em>参数列表</em></h4>
+<h4 id="_88"><em>参数列表</em></h4>
 <ul>
 <li><code>is_ignore_default_ui [bool]</code> 是否忽略自带的UI</li>
 </ul>
@@ -1127,11 +1184,11 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="ispariticlestop">IsPariticleStop</h3>
 <p><strong>game.IsPariticleStop(sound_id)</strong></p>
 <p>音效是否播放结束</p>
-<h4 id="_87"><em>参数列表</em></h4>
+<h4 id="_89"><em>参数列表</em></h4>
 <ul>
 <li><code>sound_id [string]</code> 音效sound_id</li>
 </ul>
-<h4 id="_88"><em>返回值</em></h4>
+<h4 id="_90"><em>返回值</em></h4>
 <ul>
 <li><code>bstop [bool]</code> 是否播放结束</li>
 </ul>
@@ -1139,7 +1196,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="stopeventparticle">StopEventParticle</h3>
 <p><strong>game.StopEventParticle(sound_id)</strong></p>
 <p>主动停止播放某个音效</p>
-<h4 id="_89"><em>参数列表</em></h4>
+<h4 id="_91"><em>参数列表</em></h4>
 <ul>
 <li><code>sound_id [string]</code> 音效sound_id</li>
 </ul>
@@ -1147,7 +1204,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="playminimapsignaltips">PlayMiniMapSignalTips</h3>
 <p><strong>game.PlayMiniMapSignalTips(minimap_singnal_type, x, y, unit_id, time_delay, singal_type)</strong></p>
 <p>在地图上播放信号标志</p>
-<h4 id="_90"><em>参数列表</em></h4>
+<h4 id="_92"><em>参数列表</em></h4>
 <ul>
 <li><code>minimap_singnal_type [int]</code> 小地图信号类型</li>
 <li><code>x [float]</code> 信号位置x</li>
@@ -1160,7 +1217,7 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="issettingopen">IsSettingOpen</h3>
 <p><strong>game.IsSettingOpen()</strong></p>
 <p>设置面板是否打开</p>
-<h4 id="_91"><em>返回值</em></h4>
+<h4 id="_93"><em>返回值</em></h4>
 <ul>
 <li><code>bopen [bool]</code> 是否打开</li>
 </ul>
@@ -1168,6 +1225,101 @@ local MINIMAP_SIGNAL_COMING = 7
 <h3 id="reconnectgame">ReconnectGame</h3>
 <p><strong>game.ReconnectGame()</strong></p>
 <p>重连游戏</p>
+<hr />
+<h3 id="unitisincamera">UnitIsInCamera</h3>
+<p><strong>game.UnitIsInCamera()</strong></p>
+<p>单位是否在屏幕中显示</p>
+<h4 id="_94"><em>返回值</em></h4>
+<ul>
+<li><code>bShow [bool]</code> 是否显示</li>
+</ul>
+<h4 id="_95"><em>参数列表</em></h4>
+<ul>
+<li><code>unit_id [int]</code> 单位id</li>
+</ul>
+<hr />
+<h3 id="surrendervote">SurrenderVote</h3>
+<p><strong>game.SurrenderVote(confirm)</strong></p>
+<p>投降投票</p>
+<h4 id="_96"><em>参数列表</em></h4>
+<ul>
+<li><code>confirm [bool]</code> 是否同意</li>
+</ul>
+<hr />
+<h3 id="reqsurrender">ReqSurrender</h3>
+<p><strong>game.ReqSurrender()</strong></p>
+<p>请求投降 (GlobalLogic.cpp中的方法，大厅和游戏内都可以用，比如设置)</p>
+<hr />
+<h3 id="getdefaultconfig">GetDefaultConfig</h3>
+<p><strong>game.GetDefaultConfig()</strong></p>
+<p>获得默认设置配置 (GlobalLogic.cpp)</p>
+<h4 id="_97"><em>返回值</em></h4>
+<ul>
+<li><code>configStr [string]</code> 获取的默认配置字符串</li>
+</ul>
+<hr />
+<h3 id="getgamesetting">GetGameSetting</h3>
+<p><strong>game.GetGameSetting()</strong></p>
+<p>获得当前设置配置 (GlobalLogic.cpp)</p>
+<h4 id="_98"><em>返回值</em></h4>
+<ul>
+<li><code>configStr [string]</code> 获取的配置字符串</li>
+</ul>
+<hr />
+<h3 id="savegamesetting">SaveGameSetting</h3>
+<p><strong>game.SaveGameSetting()</strong></p>
+<p>保存当前设置配置 (GlobalLogic.cpp)</p>
+<h4 id="_99"><em>参数列表</em></h4>
+<ul>
+<li><code>configStr [string]</code> 当前配置的字符串</li>
+</ul>
+<hr />
+<h3 id="issystem32bits">IsSystem32Bits</h3>
+<p><strong>game.IsSystem32Bits()</strong></p>
+<p>是不是32位系统 (GlobalLogic.cpp)</p>
+<h4 id="_100"><em>返回值</em></h4>
+<ul>
+<li><code>b32Bits [bool]</code> 是否32位系统</li>
+</ul>
+<hr />
+<h3 id="clickexitgame">ClickExitGame</h3>
+<p><strong>game.ClickExitGame()</strong></p>
+<p>点击退出游戏按钮 (GlobalLogic.cpp)</p>
+<hr />
+<h3 id="getgamestate">GetGameState</h3>
+<p><strong>game.GetGameState()</strong></p>
+<p>获取当前游戏状态 (GlobalLogic.cpp)</p>
+<h4 id="_101"><em>返回值</em></h4>
+<ul>
+<li><code>state [int]</code> 客户端状态机状态</li>
+</ul>
+<p>客户端状态机枚举：</p>
+<pre><code>-- 小地图信号枚举
+local GAME_STATE_IDLE = 0
+local GAME_STATE_MAP_LOADING = 1
+local GAME_STATE_PICK_WAITING = 2
+local GAME_STATE_PICK = 3
+local GAME_STATE_GAMING = 4
+local GAME_STATE_ENDIBG = 5
+local GAME_STATE_EXITING = 6
+</code></pre>
+
+<hr />
+<h3 id="starttestingmicrophone">StartTestingMicroPhone</h3>
+<p><strong>game.StartTestingMicroPhone()</strong></p>
+<p>开始测试麦克风 (GlobalLogic.cpp)</p>
+<hr />
+<h3 id="stoptestingmicrophone">StopTestingMicroPhone</h3>
+<p><strong>game.StopTestingMicroPhone()</strong></p>
+<p>停止测试麦克风 (GlobalLogic.cpp)</p>
+<hr />
+<h3 id="issettinginput">IsSettingInput</h3>
+<p><strong>game.IsSettingInput()</strong></p>
+<p>是否设置面板按键正在输入 (GlobalLogic.cpp)</p>
+<h4 id="_102"><em>返回值</em></h4>
+<ul>
+<li><code>bInput [bool]</code> 是否正在输入</li>
+</ul>
 <hr />
               
             </div>
@@ -1193,12 +1345,12 @@ local MINIMAP_SIGNAL_COMING = 7
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -1212,7 +1364,10 @@ local MINIMAP_SIGNAL_COMING = 7
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
     <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
 
 </body>
 </html>

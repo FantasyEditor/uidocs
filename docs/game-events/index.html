@@ -171,6 +171,8 @@
         
             <li><a class="toctree-l3" href="#on_minimap_show_spell_indicator_1">on_minimap_show_spell_indicator</a></li>
         
+            <li><a class="toctree-l3" href="#on_minimap_creep_appear_notify">on_minimap_creep_appear_notify</a></li>
+        
             <li><a class="toctree-l3" href="#on_show_unit_tip">on_show_unit_tip</a></li>
         
             <li><a class="toctree-l3" href="#on_unit_destory">on_unit_destory</a></li>
@@ -196,6 +198,26 @@
             <li><a class="toctree-l3" href="#on_sound_play_finished">on_sound_play_finished</a></li>
         
             <li><a class="toctree-l3" href="#on_speech_channel_changed">on_speech_channel_changed</a></li>
+        
+            <li><a class="toctree-l3" href="#on_start_loading">on_start_loading</a></li>
+        
+            <li><a class="toctree-l3" href="#on_finish_loading">on_finish_loading</a></li>
+        
+            <li><a class="toctree-l3" href="#on_loading_progress_notify">on_loading_progress_notify</a></li>
+        
+            <li><a class="toctree-l3" href="#on_start_pick">on_start_pick</a></li>
+        
+            <li><a class="toctree-l3" href="#on_req_surrender_vote_res">on_req_surrender_vote_res</a></li>
+        
+            <li><a class="toctree-l3" href="#on_surrender_vote_start">on_surrender_vote_start</a></li>
+        
+            <li><a class="toctree-l3" href="#on_surrender_vote_notify">on_surrender_vote_notify</a></li>
+        
+            <li><a class="toctree-l3" href="#on_surrender_vote_end">on_surrender_vote_end</a></li>
+        
+            <li><a class="toctree-l3" href="#on_click_setting">on_click_setting</a></li>
+        
+            <li><a class="toctree-l3" href="#on_state_change">on_state_change</a></li>
         
         </ul>
     
@@ -797,6 +819,19 @@ local MINIMAP_SIGNAL_COMING = 7
 <li><code>radius [int]</code> 技能指示器半径</li>
 </ul>
 <hr />
+<h3 id="on_minimap_creep_appear_notify">on_minimap_creep_appear_notify</h3>
+<p><strong>on_minimap_creep_appear_notify(has_time, pos_x, pos_y, time, map_width, map_height)</strong></p>
+<p>小地图野怪出现消消息通知</p>
+<h4 id="_42"><em>参数列表</em></h4>
+<ul>
+<li><code>has_time [bool]</code> 是否有时间</li>
+<li><code>pos_x [number]</code> 野怪坐标 x</li>
+<li><code>pos_y [number]</code> 野怪坐标 y</li>
+<li><code>time [number]</code> 野怪出现时间</li>
+<li><code>map_width [number]</code> 地图宽度</li>
+<li><code>map_height [number]</code> 地图高度</li>
+</ul>
+<hr />
 <h3 id="on_show_unit_tip">on_show_unit_tip</h3>
 <p><strong>on_show_unit_tip(panel_visible, tip_title, tip_content, pos_x, pos_y)</strong></p>
 <p>显示单位tip
@@ -806,7 +841,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 </code></pre>
 
 <p>来确定要显示的标题，内容，以及文字颜色</p>
-<h4 id="_42"><em>参数列表</em></h4>
+<h4 id="_43"><em>参数列表</em></h4>
 <ul>
 <li><code>panel_visible[bool]</code> 单位tip显示还是关闭</li>
 <li><code>tip_title [string]</code> tip 标题</li>
@@ -818,7 +853,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_unit_destory">on_unit_destory</h3>
 <p><strong>on_unit_destory(unit_id)</strong></p>
 <p>单位销毁</p>
-<h4 id="_43"><em>参数列表</em></h4>
+<h4 id="_44"><em>参数列表</em></h4>
 <ul>
 <li><code>unit_id [int]</code> 单位 id</li>
 </ul>
@@ -826,7 +861,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_game_over_lobby_reward">on_game_over_lobby_reward</h3>
 <p><strong>on_game_over_lobby_reward(lobby_data_info)</strong></p>
 <p>大厅相关数据通知</p>
-<h4 id="_44"><em>参数列表</em></h4>
+<h4 id="_45"><em>参数列表</em></h4>
 <ul>
 <li><code>lobby_data_info [string]</code> 大厅战报数据</li>
 </ul>
@@ -834,7 +869,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_game_result">on_game_result</h3>
 <p><strong>on_game_result(result_info)</strong></p>
 <p>游戏结束数据通知</p>
-<h4 id="_45"><em>参数列表</em></h4>
+<h4 id="_46"><em>参数列表</em></h4>
 <ul>
 <li><code>result_info [string]</code> 游戏内战报数据</li>
 </ul>
@@ -842,7 +877,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_block_speak_res">on_block_speak_res</h3>
 <p><strong>on_block_speak_res(slot_id, result)</strong></p>
 <p>玩家禁言结果返回</p>
-<h4 id="_46"><em>参数列表</em></h4>
+<h4 id="_47"><em>参数列表</em></h4>
 <ul>
 <li><code>slot_id [int]</code> 玩家槽位id</li>
 <li><code>result [int]</code> 禁言结果返回(0成功，其他失败)</li>
@@ -851,7 +886,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_unblock_speak_res">on_unblock_speak_res</h3>
 <p><strong>on_unblock_speak_res(slot_id, result)</strong></p>
 <p>玩家解除禁言结果返回</p>
-<h4 id="_47"><em>参数列表</em></h4>
+<h4 id="_48"><em>参数列表</em></h4>
 <ul>
 <li><code>slot_id [int]</code> 玩家槽位id</li>
 <li><code>result [int]</code> 禁言结果返回(0成功，其他失败)</li>
@@ -860,7 +895,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_user_guide_notify">on_user_guide_notify</h3>
 <p><strong>on_user_guide_notify(msg_str)</strong></p>
 <p>新手引导流程通知</p>
-<h4 id="_48"><em>参数列表</em></h4>
+<h4 id="_49"><em>参数列表</em></h4>
 <ul>
 <li><code>msg_str [string]</code> 引导步骤消息内容</li>
 </ul>
@@ -868,7 +903,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_user_guide_showhide_shop">on_user_guide_showhide_shop</h3>
 <p><strong>on_user_guide_showhide_shop(bshop)</strong></p>
 <p>打开关闭商店通知</p>
-<h4 id="_49"><em>参数列表</em></h4>
+<h4 id="_50"><em>参数列表</em></h4>
 <ul>
 <li><code>bshop [bool]</code> 是否打开</li>
 </ul>
@@ -876,7 +911,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_user_move_target">on_user_move_target</h3>
 <p><strong>on_user_move_target(pos_x, pos_y)</strong></p>
 <p>移动到指定位置通知</p>
-<h4 id="_50"><em>参数列表</em></h4>
+<h4 id="_51"><em>参数列表</em></h4>
 <ul>
 <li><code>pos_x [number]</code> x 坐标</li>
 <li><code>pos_y [number]</code> y 坐标</li>
@@ -885,7 +920,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_disconnected">on_disconnected</h3>
 <p><strong>on_disconnected(error_code)</strong></p>
 <p>断开连接通知</p>
-<h4 id="_51"><em>参数列表</em></h4>
+<h4 id="_52"><em>参数列表</em></h4>
 <ul>
 <li><code>error_code [int]</code> 返回的errorcode</li>
 </ul>
@@ -893,7 +928,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_tower_attack_notify">on_tower_attack_notify</h3>
 <p><strong>on_tower_attack_notify(tower_id, tower_target_id)</strong></p>
 <p>被塔攻击的消息通知</p>
-<h4 id="_52"><em>参数列表</em></h4>
+<h4 id="_53"><em>参数列表</em></h4>
 <ul>
 <li><code>tower_id [int]</code> 塔的Id</li>
 <li><code>tower_target_id [int]</code> 塔攻击的目标Id</li>
@@ -902,7 +937,7 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_sound_play_finished">on_sound_play_finished</h3>
 <p><strong>on_sound_play_finished(sound_id)</strong></p>
 <p>声音播完的通知</p>
-<h4 id="_53"><em>参数列表</em></h4>
+<h4 id="_54"><em>参数列表</em></h4>
 <ul>
 <li><code>sound_id [string]</code> 播完的soundId</li>
 </ul>
@@ -910,10 +945,101 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 <h3 id="on_speech_channel_changed">on_speech_channel_changed</h3>
 <p><strong>on_speech_channel_changed(current_channel)</strong></p>
 <p>语音频道切换通知</p>
-<h4 id="_54"><em>参数列表</em></h4>
+<h4 id="_55"><em>参数列表</em></h4>
 <ul>
 <li><code>current_channel [int]</code> 当前语音频道</li>
 </ul>
+<hr />
+<h3 id="on_start_loading">on_start_loading</h3>
+<p><strong>on_start_loading(left_time)</strong></p>
+<p>开始加载游戏通知</p>
+<h4 id="_56"><em>参数列表</em></h4>
+<ul>
+<li><code>left_time [int]</code> 加载剩余时间</li>
+</ul>
+<hr />
+<h3 id="on_finish_loading">on_finish_loading</h3>
+<p><strong>on_finish_loading()</strong></p>
+<p>结束加载游戏通知</p>
+<hr />
+<h3 id="on_loading_progress_notify">on_loading_progress_notify</h3>
+<p><strong>on_loading_progress_notify(slot_id, progress)</strong></p>
+<p>加载进度通知</p>
+<h4 id="_57"><em>参数列表</em></h4>
+<ul>
+<li><code>slot_id [int]</code> 玩家槽位</li>
+<li><code>progress [int]</code> 进度（0-100）</li>
+</ul>
+<hr />
+<h3 id="on_start_pick">on_start_pick</h3>
+<p><strong>on_start_pick()</strong></p>
+<p>开始选人通知</p>
+<hr />
+<h3 id="on_req_surrender_vote_res">on_req_surrender_vote_res</h3>
+<p><strong>on_req_surrender_vote_res(result)</strong></p>
+<p>请求投降投票返回</p>
+<h4 id="_58"><em>参数列表</em></h4>
+<ul>
+<li><code>result [bool]</code> 返回结果 <ul>
+<li>1： 阵营不合法</li>
+<li>2： 没有到投降时间</li>
+<li>3： 投降在cd中</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="on_surrender_vote_start">on_surrender_vote_start</h3>
+<p><strong>on_surrender_vote_start(vote_info, left_time, player_count)</strong></p>
+<p>开始投降投票</p>
+<h4 id="_59"><em>参数列表</em></h4>
+<ul>
+<li><code>vote_info [table]</code> 投票信息数组 (slot_id, confirm) </li>
+<li><code>left_time [int]</code> 投票剩余时间 </li>
+<li><code>player_count [int]</code> 有几个玩家参与投票 </li>
+</ul>
+<hr />
+<h3 id="on_surrender_vote_notify">on_surrender_vote_notify</h3>
+<p><strong>on_surrender_vote_notify(slot_id, confirm)</strong></p>
+<p>投降投票消息通知</p>
+<h4 id="_60"><em>参数列表</em></h4>
+<ul>
+<li><code>slot_id [int]</code> 玩家槽位id </li>
+<li><code>confirm [bool]</code> 是否确认投降 </li>
+</ul>
+<hr />
+<h3 id="on_surrender_vote_end">on_surrender_vote_end</h3>
+<p><strong>on_surrender_vote_end(agree_count, total_count, vote_result, camp_id)</strong></p>
+<p>投降投票结果通知</p>
+<h4 id="_61"><em>参数列表</em></h4>
+<ul>
+<li><code>agree_count [int]</code> 同意投降人数 </li>
+<li><code>total_count [int]</code> 总参与投票人数 </li>
+<li><code>vote_result [bool]</code> 投降结果 </li>
+<li><code>camp_id [int]</code> 阵营id </li>
+</ul>
+<hr />
+<h3 id="on_click_setting">on_click_setting</h3>
+<p><strong>on_click_setting()</strong></p>
+<p>大厅点击设置按钮 (GlobalLogic.cpp)</p>
+<hr />
+<h3 id="on_state_change">on_state_change</h3>
+<p><strong>on_state_change(state)</strong></p>
+<p>客户端状态改变消息 (GlobalLogic.cpp)</p>
+<h4 id="_62"><em>参数列表</em></h4>
+<ul>
+<li><code>state [int]</code> state </li>
+</ul>
+<p>客户端状态机枚举：</p>
+<pre><code>-- 小地图信号枚举
+local GAME_STATE_IDLE = 0
+local GAME_STATE_MAP_LOADING = 1
+local GAME_STATE_PICK_WAITING = 2
+local GAME_STATE_PICK = 3
+local GAME_STATE_GAMING = 4
+local GAME_STATE_ENDIBG = 5
+local GAME_STATE_EXITING = 6
+</code></pre>
+
 <hr />
               
             </div>
@@ -939,12 +1065,12 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -958,7 +1084,10 @@ TipContent=&quot;&lt;FONT COLOR='#0000ff'&gt;怎么办怎么办水利水电拉�
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
     <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
 
 </body>
 </html>

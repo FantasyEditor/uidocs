@@ -609,6 +609,42 @@ common.InvokeFrontEndMethod("set_text", "label", "测试文本")
     * `points [array]` - 折线上拐点的数组，`[{x1, y1}, {x2, y2} ...]`
     * `color [string]` - 颜色
     * `line_width [int]` - 线的宽度
+    * `clip_rect[array]` - 将折线裁剪在一个矩形范围内 `{x,y,w,h}`
+    * `close_path` - 是否闭合路径
+    * `dash` - 是否显示虚线
+    * `dashArray` - 虚线的间隔 如果不传这个参数 默认为`[{10, 5}]`
+    * `image_info [string]` 画的图片相关参数
+        * `w` - 图片的宽度
+        * `h` - 图片的高度
+        * `image_path` - 图片资源
+
+---
+### draw_dash_line
+
+**draw_dash_line(canvas_id, context, x, y, x2, y2, dashArray, image_info)**
+
+在画布上两点之间画虚线和图片
+
+#### _参数列表_
+
+* `canvas_id [string]` 画布控件 id
+* `context` 画布背景
+* `x [number]` 第一个点的x坐标
+* `y [number]` 第一个点的y坐标
+* `x2 [number]` 第二个点的x坐标
+* `y2 [number]` 第二个点的y坐标
+* `dashArray[array]` 虚线的间隔 如果不传这个参数 默认为`[{10, 5}]`
+* `image_info [string]` 画折线相关参数，是一个 json 字符串，包含如下属性：
+    * `points [array]` - 折线上拐点的数组，`[{x1, y1}, {x2, y2} ...]`
+    * `color [string]` - 颜色
+    * `line_width [int]` - 线的宽度
+    * `clip_rect[array]` - 将折线裁剪在一个矩形范围内 `{x,y,w,h}`
+    * `close_path` - 是否闭合路径
+    * `dash` - 是否显示虚线
+    * `image_info [string]` 画的图片相关参数
+        * `w` - 图片的宽度
+        * `h` - 图片的高度
+        * `image_path` - 图片资源
 
 ---
 ### play_animation_on_canvas

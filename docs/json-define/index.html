@@ -400,6 +400,7 @@ end
 <li><code>outline_Image [string]</code> [目前只在移动平台使用]额外的图片属性,通常用于給技能按钮设置一个圆形的环</li>
 <li><code>Brush_Percent [float]</code> [目前只在移动平台使用]设置图片在控件上的比例[0.1, 1.0],默认0.9,通常跟技能的圆形环配合,即按钮最边缘是0.1宽度(相对于按钮自身的半径比例)的环,环内部是0.9直径的技能Icon</li>
 <li><code>Ignore_TouchMove [bool]</code> [目前只在移动平台使用]是否忽略TouchMove事件,默认为true</li>
+<li><code>stop_propagation [bool]</code> 阻止事件冒泡，事件停止向下传播</li>
 </ul>
 <p>按钮控件也可以用来显示技能的冷却效果，相关属性如下：</p>
 <ul>
@@ -533,12 +534,12 @@ end
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -552,7 +553,10 @@ end
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
     <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
 
 </body>
 </html>

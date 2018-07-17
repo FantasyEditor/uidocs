@@ -1,60 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    
     <url>
      <loc>/index.html</loc>
-     <lastmod>2018-06-20</lastmod>
+     <lastmod>2018-07-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>/json-define/index.html</loc>
-     <lastmod>2018-06-20</lastmod>
+     <lastmod>2018-07-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>/front-end/index.html</loc>
-     <lastmod>2018-06-20</lastmod>
+     <lastmod>2018-07-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>/front-end-events/index.html</loc>
-     <lastmod>2018-06-20</lastmod>
+     <lastmod>2018-07-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>/game/index.html</loc>
-     <lastmod>2018-06-20</lastmod>
+     <lastmod>2018-07-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>/game-events/index.html</loc>
-     <lastmod>2018-06-20</lastmod>
+     <lastmod>2018-07-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>/common/index.html</loc>
-     <lastmod>2018-06-20</lastmod>
+     <lastmod>2018-07-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
 </urlset>

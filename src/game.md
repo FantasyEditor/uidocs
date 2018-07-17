@@ -492,6 +492,18 @@ local scene = hot_key_list["scene"]
 
 ---
 
+### GetHotKeyListEx
+
+**game.GetHotKeyListEx()**
+
+是对获取快捷键列表扩展（可获取组合键 ctrl+Q shift+Q 这种）
+
+#### _返回值_
+
+- `hot_key_list [table]` 返回快捷键列表
+
+---
+
 ### ToggleSettingPanel
 
 **game.ToggleSettingPanel()**
@@ -654,6 +666,32 @@ game.SetMiniMapBackgroundImage("Gaming/MiniMap/map.png")
 - `signal_type [int]` 信号类型
 - `x [int]` 小地图坐标 x
 - `y [int]` 小地图坐标 y
+
+信号类型枚举：
+```
+-- 小地图信号枚举
+local MINIMAP_SIGNAL_DEFEND_TOWER = 1
+local MINIMAP_SIGNAL_GATHER = 2
+local MINIMAP_SIGNAL_ATTACK = 3
+local MINIMAP_SIGNAL_RETREAT = 4
+local MINIMAP_SIGNAL_SOS = 5
+local MINIMAP_SIGNAL_ENEMY_DISAPPEAR = 6
+local MINIMAP_SIGNAL_COMING = 7
+```
+
+---
+
+### RequestSendMiniMapSignalOnScreen
+
+**game.RequestSendMiniMapSignalOnScreen(singal_type, x, y)**
+
+在小地图上点击发射信号显示在大地图屏幕上
+
+#### _参数列表_
+
+- `signal_type [int]` 信号类型
+- `x [int]` 屏幕坐标 x
+- `y [int]` 屏幕坐标 y
 
 信号类型枚举：
 ```
@@ -1238,5 +1276,149 @@ local MINIMAP_SIGNAL_COMING = 7
 **game.ReconnectGame()**
 
 重连游戏
+
+---
+
+### UnitIsInCamera
+
+**game.UnitIsInCamera()**
+
+单位是否在屏幕中显示
+
+#### _返回值_
+
+- `bShow [bool]` 是否显示
+
+#### _参数列表_
+
+- `unit_id [int]` 单位id
+
+---
+
+### SurrenderVote
+
+**game.SurrenderVote(confirm)**
+
+投降投票
+
+#### _参数列表_
+
+- `confirm [bool]` 是否同意
+
+---
+
+### ReqSurrender
+
+**game.ReqSurrender()**
+
+请求投降 (GlobalLogic.cpp中的方法，大厅和游戏内都可以用，比如设置)
+
+---
+
+### GetDefaultConfig
+
+**game.GetDefaultConfig()**
+
+获得默认设置配置 (GlobalLogic.cpp)
+
+#### _返回值_
+
+- `configStr [string]` 获取的默认配置字符串
+
+---
+
+### GetGameSetting
+
+**game.GetGameSetting()**
+
+获得当前设置配置 (GlobalLogic.cpp)
+
+#### _返回值_
+
+- `configStr [string]` 获取的配置字符串
+
+---
+
+### SaveGameSetting
+
+**game.SaveGameSetting()**
+
+保存当前设置配置 (GlobalLogic.cpp)
+
+#### _参数列表_
+
+- `configStr [string]` 当前配置的字符串
+
+---
+
+### IsSystem32Bits
+
+**game.IsSystem32Bits()**
+
+是不是32位系统 (GlobalLogic.cpp)
+
+#### _返回值_
+
+- `b32Bits [bool]` 是否32位系统
+
+---
+
+### ClickExitGame
+
+**game.ClickExitGame()**
+
+点击退出游戏按钮 (GlobalLogic.cpp)
+
+---
+
+### GetGameState
+
+**game.GetGameState()**
+
+获取当前游戏状态 (GlobalLogic.cpp)
+
+#### _返回值_
+
+- `state [int]` 客户端状态机状态
+
+客户端状态机枚举：
+```
+-- 小地图信号枚举
+local GAME_STATE_IDLE = 0
+local GAME_STATE_MAP_LOADING = 1
+local GAME_STATE_PICK_WAITING = 2
+local GAME_STATE_PICK = 3
+local GAME_STATE_GAMING = 4
+local GAME_STATE_ENDIBG = 5
+local GAME_STATE_EXITING = 6
+```
+
+---
+
+### StartTestingMicroPhone
+
+**game.StartTestingMicroPhone()**
+
+开始测试麦克风 (GlobalLogic.cpp)
+
+---
+
+### StopTestingMicroPhone
+
+**game.StopTestingMicroPhone()**
+
+停止测试麦克风 (GlobalLogic.cpp)
+
+---
+
+### IsSettingInput
+
+**game.IsSettingInput()**
+
+是否设置面板按键正在输入 (GlobalLogic.cpp)
+
+#### _返回值_
+
+- `bInput [bool]` 是否正在输入
 
 ---

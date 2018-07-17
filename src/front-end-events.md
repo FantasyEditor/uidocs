@@ -83,6 +83,30 @@ end
 
 ---
 
+### button_mousedown
+
+**on_button_mousedown(button_id)**
+
+按钮按下
+
+#### _参数列表_
+
+- `button_id [string]` 按钮控件的 id
+
+---
+
+### button_mouseup
+
+**on_button_mouseup(button_id)**
+
+按钮弹起
+
+#### _参数列表_
+
+- `button_id [string]` 按钮控件的 id
+
+---
+
 ### button_touch_started
 
 **on_button_touch_started(button_id, localPosX, localPosY)**
@@ -267,6 +291,30 @@ end
 
 ---
 
+### canvas_mouseleave
+
+**on_canvas_mouseleave(canvas_id, x, y)**
+
+画布控件的leave事件
+
+#### _参数列表_
+
+- `canvas_id [string]` 画布控件的 id
+
+---
+
+### canvas_mouseenter
+
+**on_canvas_mouseenter(canvas_id, x, y)**
+
+画布控件的enter事件
+
+#### _参数列表_
+
+- `canvas_id [string]` 画布控件的 id
+
+---
+
 ### input_text_changed
 
 **on_input_text_changed(input_id, text)**
@@ -297,6 +345,43 @@ end
 **on_input_lose_focus(input_id)**
 
 输入框失去焦点
+
+#### _参数列表_
+
+- `input_id [string]` 输入框 id
+
+---
+
+### input_mousedown
+
+**on_input_mousedown(input_id, which_state)**
+
+输入框中哪个鼠标按键按下
+
+#### _参数列表_
+
+- `input_id [string]` 输入框 id
+- `which_state [int]` 哪个鼠标按键按下（1： 左键  2：中键  3：右键）
+
+---
+
+### input_mouse_enter
+
+**on_input_mouse_enter(input_id)**
+
+鼠标指针移入输入框控件
+
+#### _参数列表_
+
+- `input_id [string]` 输入框 id
+
+---
+
+### input_mouse_leave
+
+**on_input_mouse_leave(input_id)**
+
+鼠标指针移出输入框控件
 
 #### _参数列表_
 

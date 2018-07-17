@@ -156,6 +156,8 @@
         
             <li><a class="toctree-l3" href="#draw_lines">draw_lines</a></li>
         
+            <li><a class="toctree-l3" href="#draw_dash_line">draw_dash_line</a></li>
+        
             <li><a class="toctree-l3" href="#play_animation_on_canvas">play_animation_on_canvas</a></li>
         
             <li><a class="toctree-l3" href="#preload_image_folder">preload_image_folder</a></li>
@@ -671,6 +673,45 @@ common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测�
 <li><code>points [array]</code> - 折线上拐点的数组，<code>[{x1, y1}, {x2, y2} ...]</code></li>
 <li><code>color [string]</code> - 颜色</li>
 <li><code>line_width [int]</code> - 线的宽度</li>
+<li><code>clip_rect[array]</code> - 将折线裁剪在一个矩形范围内 <code>{x,y,w,h}</code></li>
+<li><code>close_path</code> - 是否闭合路径</li>
+<li><code>dash</code> - 是否显示虚线</li>
+<li><code>dashArray</code> - 虚线的间隔 如果不传这个参数 默认为<code>[{10, 5}]</code></li>
+<li><code>image_info [string]</code> 画的图片相关参数<ul>
+<li><code>w</code> - 图片的宽度</li>
+<li><code>h</code> - 图片的高度</li>
+<li><code>image_path</code> - 图片资源</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="draw_dash_line">draw_dash_line</h3>
+<p><strong>draw_dash_line(canvas_id, context, x, y, x2, y2, dashArray, image_info)</strong></p>
+<p>在画布上两点之间画虚线和图片</p>
+<h4 id="_46"><em>参数列表</em></h4>
+<ul>
+<li><code>canvas_id [string]</code> 画布控件 id</li>
+<li><code>context</code> 画布背景</li>
+<li><code>x [number]</code> 第一个点的x坐标</li>
+<li><code>y [number]</code> 第一个点的y坐标</li>
+<li><code>x2 [number]</code> 第二个点的x坐标</li>
+<li><code>y2 [number]</code> 第二个点的y坐标</li>
+<li><code>dashArray[array]</code> 虚线的间隔 如果不传这个参数 默认为<code>[{10, 5}]</code></li>
+<li><code>image_info [string]</code> 画折线相关参数，是一个 json 字符串，包含如下属性：<ul>
+<li><code>points [array]</code> - 折线上拐点的数组，<code>[{x1, y1}, {x2, y2} ...]</code></li>
+<li><code>color [string]</code> - 颜色</li>
+<li><code>line_width [int]</code> - 线的宽度</li>
+<li><code>clip_rect[array]</code> - 将折线裁剪在一个矩形范围内 <code>{x,y,w,h}</code></li>
+<li><code>close_path</code> - 是否闭合路径</li>
+<li><code>dash</code> - 是否显示虚线</li>
+<li><code>image_info [string]</code> 画的图片相关参数<ul>
+<li><code>w</code> - 图片的宽度</li>
+<li><code>h</code> - 图片的高度</li>
+<li><code>image_path</code> - 图片资源</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -678,7 +719,7 @@ common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测�
 <h3 id="play_animation_on_canvas">play_animation_on_canvas</h3>
 <p><strong>play_animation_on_canvas(canvas_id, params)</strong></p>
 <p>在画布上播放序列帧动画，序列帧的命名规则详见 <a href="#play_animation">play_animation</a></p>
-<h4 id="_46"><em>参数列表</em></h4>
+<h4 id="_47"><em>参数列表</em></h4>
 <ul>
 <li><code>canvas_id [string]</code> 画布控件 id</li>
 <li><code>params [string]</code> 播放动画的相关参数，是一个 json 字符串，包含如下属性：<ul>
@@ -699,7 +740,7 @@ common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测�
 <p><strong>preload_image_folder(image_folder_path, image_count)</strong></p>
 <p>预加载序列帧图片。</p>
 <p>当序列帧图片过大，数量过多时，第一次播放序列帧时会卡顿。可以在界面初始化的时候调用此接口将序列帧图片预加载一下，让序列帧动画能够流畅播放</p>
-<h4 id="_47"><em>参数列表</em></h4>
+<h4 id="_48"><em>参数列表</em></h4>
 <ul>
 <li><code>image_folder_path [string]</code> 序列帧图片目录</li>
 <li><code>image_count [int]</code> 序列帧数量</li>
@@ -709,7 +750,7 @@ common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测�
 <p><strong>preload_image_folder(image_folder_path, image_count)</strong></p>
 <p>预加载序列帧图片。</p>
 <p>当序列帧图片过大，数量过多时，第一次播放序列帧时会卡顿。可以在界面初始化的时候调用此接口将序列帧图片预加载一下，让序列帧动画能够流畅播放</p>
-<h4 id="_48"><em>参数列表</em></h4>
+<h4 id="_49"><em>参数列表</em></h4>
 <ul>
 <li><code>image_folder_path [string]</code> 序列帧图片目录</li>
 <li><code>image_count [int]</code> 序列帧数量</li>
@@ -726,7 +767,7 @@ common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测�
 <h3 id="set_global_mask">set_global_mask</h3>
 <p><strong>game.set_global_mask(mask_info)</strong></p>
 <p>设置蒙版的颜色，以及镂空区域信息</p>
-<h4 id="_49"><em>参数列表</em></h4>
+<h4 id="_50"><em>参数列表</em></h4>
 <ul>
 <li><code>mask_info [string]</code> 一个 json 字符串，包含如下参数<ul>
 <li><code>mask_color [string]</code> 蒙版颜色</li>
@@ -746,7 +787,7 @@ common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测�
 <p>返回给定控件的子控件ID列表, 第一个参数是容器控件ID, 第二控件类型以及可选参数构成的表,如果为空,则返回全部子控件.可以指定是否递归查询, 默认开启递归查询
 这里之所以用表作为参数,是为了接口一致性,确保从comon.InvokeFunction()调用不会出错</p>
 <p>例如 find_children_by_type("Spell_Panel_Canvas", {"Button", false})  是非递归查询Spell_Panel_Canvas里面的所有Button</p>
-<h4 id="_50"><em>参数列表</em></h4>
+<h4 id="_51"><em>参数列表</em></h4>
 <ul>
 <li><code>InWidgetID [string]</code> 一个 字符串，是要查找的容器控件ID</li>
 <li><code>InParams[table]</code><ul>
@@ -780,12 +821,12 @@ common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测�
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -799,7 +840,10 @@ common.InvokeFrontEndMethod(&quot;set_text&quot;, &quot;label&quot;, &quot;测�
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
     <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
 
 </body>
 </html>

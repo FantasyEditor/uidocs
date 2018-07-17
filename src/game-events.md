@@ -781,6 +781,23 @@ local MINIMAP_SIGNAL_COMING = 7
 
 ---
 
+### on_minimap_creep_appear_notify
+
+**on_minimap_creep_appear_notify(has_time, pos_x, pos_y, time, map_width, map_height)**
+
+小地图野怪出现消消息通知
+
+#### _参数列表_
+
+- `has_time [bool]` 是否有时间
+- `pos_x [number]` 野怪坐标 x
+- `pos_y [number]` 野怪坐标 y
+- `time [number]` 野怪出现时间
+- `map_width [number]` 地图宽度
+- `map_height [number]` 地图高度
+
+---
+
 ### on_show_unit_tip
 
 **on_show_unit_tip(panel_visible, tip_title, tip_content, pos_x, pos_y)**
@@ -952,5 +969,136 @@ TipContent="<FONT COLOR='#0000ff'>怎么办怎么办水利水电拉法基怎么�
 #### _参数列表_
 
 - `current_channel [int]` 当前语音频道
+
+---
+
+### on_start_loading
+
+**on_start_loading(left_time)**
+
+开始加载游戏通知
+
+#### _参数列表_
+
+- `left_time [int]` 加载剩余时间
+
+---
+
+### on_finish_loading
+
+**on_finish_loading()**
+
+结束加载游戏通知
+
+---
+
+### on_loading_progress_notify
+
+**on_loading_progress_notify(slot_id, progress)**
+
+加载进度通知
+
+#### _参数列表_
+
+- `slot_id [int]` 玩家槽位
+- `progress [int]` 进度（0-100）
+
+---
+
+### on_start_pick
+
+**on_start_pick()**
+
+开始选人通知
+
+---
+
+### on_req_surrender_vote_res
+
+**on_req_surrender_vote_res(result)**
+
+请求投降投票返回
+
+#### _参数列表_
+
+- `result [bool]` 返回结果 
+    - 1： 阵营不合法
+    - 2： 没有到投降时间
+    - 3： 投降在cd中
+
+---
+
+### on_surrender_vote_start
+
+**on_surrender_vote_start(vote_info, left_time, player_count)**
+
+开始投降投票
+
+#### _参数列表_
+
+- `vote_info [table]` 投票信息数组 (slot_id, confirm) 
+- `left_time [int]` 投票剩余时间 
+- `player_count [int]` 有几个玩家参与投票 
+
+---
+
+### on_surrender_vote_notify
+
+**on_surrender_vote_notify(slot_id, confirm)**
+
+投降投票消息通知
+
+#### _参数列表_
+
+- `slot_id [int]` 玩家槽位id 
+- `confirm [bool]` 是否确认投降 
+
+---
+
+### on_surrender_vote_end
+
+**on_surrender_vote_end(agree_count, total_count, vote_result, camp_id)**
+
+投降投票结果通知
+
+#### _参数列表_
+
+- `agree_count [int]` 同意投降人数 
+- `total_count [int]` 总参与投票人数 
+- `vote_result [bool]` 投降结果 
+- `camp_id [int]` 阵营id 
+
+---
+
+
+### on_click_setting
+
+**on_click_setting()**
+
+大厅点击设置按钮 (GlobalLogic.cpp)
+
+---
+
+### on_state_change
+
+**on_state_change(state)**
+
+客户端状态改变消息 (GlobalLogic.cpp)
+
+#### _参数列表_
+
+- `state [int]` state 
+
+客户端状态机枚举：
+```
+-- 小地图信号枚举
+local GAME_STATE_IDLE = 0
+local GAME_STATE_MAP_LOADING = 1
+local GAME_STATE_PICK_WAITING = 2
+local GAME_STATE_PICK = 3
+local GAME_STATE_GAMING = 4
+local GAME_STATE_ENDIBG = 5
+local GAME_STATE_EXITING = 6
+```
 
 ---
